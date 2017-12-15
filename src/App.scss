@@ -1,0 +1,45 @@
+/* importing variables */
+@import './scss/variables';
+
+/* importing page elements */
+
+@import './scss/main_container';
+@import './scss/navbar';
+@import './scss/footer';
+@import './scss/shop';
+
+@font-face {
+  font-family: 'CaslonAntique';
+  src: url('./fonts/CaslonAntique.ttf');
+}
+
+* {
+  font-family: 'CaslonAntique';
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+}
+
+.game-box {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-flow: row;
+}
+
+.panel {
+	width: 150px;
+	height: 100%;
+}
+
+.location-box {
+	width: 500px;
+	height: 500px;
+}
+
+.dialog-box {
+	width: 100%;
+	height: 100px;
+}
