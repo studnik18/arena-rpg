@@ -3,16 +3,24 @@ const initialState = {
   inventory: []
 }
 
-const handleTransaction = ( state = initialState.inventory, action ) => {
+const handleTransaction = ( state = initialState, action ) => {
 
-	switch(action) {
+	switch(action.type) {
 		case 'BUY_ITEM':
 
 			console.log('works!');
-			return [ ...state, action.item.name ]
+			const quantity = state.inventory.filter(
+				item => item.id === action.item.id 
+			);
+			console.log(quantity.length)
+
+			return Object.assign({}, state, {
+				inventory: [ ...state.inventory, action.item]
+			})
 
 
-		default: 
+		default:
+			console.log('default');
 			return state;
 
 	}

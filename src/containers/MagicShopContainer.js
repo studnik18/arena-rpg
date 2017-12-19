@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { buyItem } from '../actions';
-import { sellItem } from '../actions';
-import { handleTransaction } from '../reducers/handleTransaction.js';
+import { buyItem, sellItem } from '../actions';
+/*import { handleTransaction } from '../reducers/handleTransaction.js';*/
 import MagicShop from '../components/MagicShop.jsx';
 
 /*const MagicShopContainer = ({ buyItem, sellItem, inventory }) => (

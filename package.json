@@ -11,7 +11,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",

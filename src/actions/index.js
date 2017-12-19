@@ -1,23 +1,21 @@
-export const sellItem = ( item ) => ({
+/*export const sellItem =  (item)  => ({
 
+	dispatch({
 		type: 'SELL_ITEM',
-		item
-
-
+		item	
+	})
 
 
 
 }) 
+*/
+
+export const buyItem = (item) => ({
 
 
-export const buyItem = ( item ) => ({
-
+	type: 'BUY_ITEM',
+	item		
 	
-		type: 'BUY_ITEM',
-		item
-
-
-
 })
 
 /*export const handleTransaction = ( item ) => ({

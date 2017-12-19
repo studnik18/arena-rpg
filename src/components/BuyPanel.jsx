@@ -1,21 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { buyItem } from '../actions';
 
-const BuyPanel = ({items, location, buyItem, children}) => (
+class BuyPanel extends React.Component {
+	handleClick = (el) => {
+		this.props.buyItem(el)
+	}
 
-	
+	render() {
+		const { items, gamelocation, buyItem, children } = this.props;
+		return (
 
-	<div className="panel" location={location}>
+			<div className="panel" gamelocation={gamelocation}>
 		
+				{ items.map((el, i) => 
 
-		{ items.map((el, i) => 
-
-			<div key={i} className='item-container' onClick={() => console.log(buyItem)}>
-				<p>{el.name}</p>			
+					<div key={i} className='item-container'>
+						<p onClick={() => this.handleClick(el)}>{el.name}</p>			
+					</div>
+				)}
+				
 			</div>
-		)}
 
-	</div>
 
-);
 
-export default BuyPanel;
+
+		)
+	}
+};
+
+export default connect(null, {
+	buyItem
+})(BuyPanel);
