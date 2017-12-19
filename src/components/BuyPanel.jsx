@@ -8,7 +8,7 @@ class BuyPanel extends React.Component {
 	}
 
 	render() {
-		const { items, gamelocation, buyItem, children } = this.props;
+		const { items, gamelocation, buyItem, children, gold } = this.props;
 		return (
 
 			<div className="panel" gamelocation={gamelocation}>
@@ -16,9 +16,11 @@ class BuyPanel extends React.Component {
 				{ items.map((el, i) => 
 
 					<div key={i} className='item-container'>
-						<p onClick={() => this.handleClick(el)}>{el.name}</p>			
+						<p onClick={() => this.handleClick(el)}>{el.name}</p>
+
 					</div>
 				)}
+				<p>{gold}</p>
 				
 			</div>
 
@@ -29,6 +31,11 @@ class BuyPanel extends React.Component {
 	}
 };
 
-export default connect(null, {
+const mapStateToProps = (state) => ({
+	gold: state.gold
+})
+	
+
+export default connect(mapStateToProps, {
 	buyItem
 })(BuyPanel);

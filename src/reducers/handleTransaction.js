@@ -1,6 +1,7 @@
 
 const initialState = {
-  inventory: []
+  inventory: [],
+  gold: 500
 }
 
 const handleTransaction = ( state = initialState, action ) => {
@@ -22,7 +23,8 @@ const handleTransaction = ( state = initialState, action ) => {
 				?
 
 				Object.assign({}, state, {
-					inventory: [ ...state.inventory, { ...action.item, quantity : 1}]
+					inventory: [ ...state.inventory, { ...action.item, quantity : 1}],
+					gold: state.gold - action.item.buyValue
 				})
 
 				:
@@ -30,14 +32,12 @@ const handleTransaction = ( state = initialState, action ) => {
 				Object.assign({}, state, {
 					inventory: Object.assign([ ...state.inventory], {
 						[index] : {
-
 							...action.item,
 							quantity: ++currentItem[0].quantity
 
-						}
-						
-						
-					})
+						}										
+					}),
+					gold: state.gold - action.item.buyValue
 				})
 
 		default:
