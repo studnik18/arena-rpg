@@ -1,14 +1,15 @@
-/*export const sellItem =  (item)  => ({
+export const sellItem =  (item, index)  => ({
 
-	dispatch({
+
 		type: 'SELL_ITEM',
-		item	
-	})
+		item,
+		index	
+
 
 
 
 }) 
-*/
+
 
 export const buyItem = (item) => ({
 
