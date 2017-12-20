@@ -1,8 +1,16 @@
 .shop {
 	background-image: url(./img/backgrounds/shop_bg.png);
-	background-repeat: no-repeat;
-	background-position: center;
 	background-size: 100% 100%;
+}
+
+.blacksmith {
+	background-image: url(./img/backgrounds/blacksmith_bg.png);
+	background-size: cover;
+}
+
+.shop, .blacksmith {
+	background-repeat: no-repeat;
+	background-position: center;	
 	width: 100%;
 	height: 400px;
 }

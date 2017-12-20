@@ -7,7 +7,6 @@
 		buyValue: 50,
 		sellValue: 25,
 		restore: 20
-
 	}, 
 
 	{
@@ -17,37 +16,17 @@
 		buyValue: 150,
 		sellValue: 75,
 		restore: 75
-
-	},
-
-/*	{
-		potions : [
-
-			smallHealthPotion: {
-
-				buyValue: 50,
-				sellValue: 25,
-				restore: 20
-			},
-
-			largeHealthPotion: {
-
-				buyValue: 150,
-				sellValue: 75,
-				restore: 75
-			}
-		]
 	},
 
 	{
-		scrolls : {
+		id: 22,
+		category: 'rings',
+		name: 'Ring of elemental protection',
+		buyValue: 500,
+		sellValue: 250,
+		resistance: {all: 15}
+	}
 
-			fireballScroll: {
-				buyValue: 200,
-				sellValue: 100,
-				dmg: 120
-			}
-		}
-	}*/
+
 ]
 

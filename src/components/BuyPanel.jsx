@@ -16,7 +16,9 @@ class BuyPanel extends React.Component {
 				{ items.map((el, i) => 
 
 					<div key={i} className='item-container'>
-						<p onClick={() => this.handleClick(el)}>{el.name}</p>
+						<p onClick={ gold >= el.buyValue ? () => this.handleClick(el) : () => ''}>
+							{el.name}
+						</p>
 
 					</div>
 				)}

@@ -9,16 +9,16 @@ import DialogBox from './DialogBox.jsx';
 /*Data array*/
 import { shopItems } from '../data/shopItems.js';
 
-const MagicShop = ( inventory ) => (
+const MagicShop = () => (
 
 	<GameBox>
-		<SellPanel inventory={inventory} />
+		<SellPanel />
 		<div className="location-box">
 			<div className="shop">
 			</div>
 			<DialogBox gamelocation="shop"/>	
 		</div>
-		<BuyPanel items={shopItems} gamelocation="shop"/>		
+		<BuyPanel items={ shopItems } gamelocation="shop"/>		
 	</GameBox>	
 
 );
