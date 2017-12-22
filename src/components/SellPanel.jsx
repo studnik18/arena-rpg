@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { sellItem } from '../actions';
 
 class SellPanel extends React.Component {
-	handleClick = (el, i) => {
-		this.props.sellItem(el, i)
+	handleClick = (el) => {
+		this.props.sellItem(el)
 	}
 
 	render() {
@@ -21,7 +21,7 @@ class SellPanel extends React.Component {
 					inventory.map((el, i) => 
 
 						<div key={i} className='item-container'>
-							<p onClick={() => this.handleClick(el, i)}>{`${el.name} ${el.quantity} ${i}`}</p>
+							<p onClick={() => this.handleClick(el)}>{`${el.name} ${el.quantity} ${i}`}</p>
 
 						</div>
 					)	
@@ -44,8 +44,8 @@ class SellPanel extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-	gold: state.gold,
-	inventory: state.inventory
+	gold: state.handleGold.gold,
+	inventory: state.handleInventory.inventory
 })
 
 export default connect(mapStateToProps, {

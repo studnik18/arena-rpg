@@ -1,12 +1,7 @@
-export const sellItem =  (item, index)  => ({
-
+export const sellItem =  (item)  => ({
 
 		type: 'SELL_ITEM',
-		item,
-		index	
-
-
-
+		item
 
 }) 
 
@@ -19,13 +14,9 @@ export const buyItem = (item) => ({
 	
 })
 
-/*export const handleTransaction = ( item ) => ({
+export const equipItem = (item) => ({
 
-  dispatch({
-    type: 'BUY_ITEM',
-    item
-  })	
+	type: 'EQUIP_ITEM',
+	item	
 
-	
-
-})*/
+})

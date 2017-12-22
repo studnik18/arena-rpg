@@ -34,7 +34,7 @@ class BuyPanel extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
-	gold: state.gold
+	gold: state.handleGold.gold
 })
 	
 
