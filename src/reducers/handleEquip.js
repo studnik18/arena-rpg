@@ -3,13 +3,8 @@ const initialState = {
 }
 
 
-
 export const handleEquip = ( state = initialState, action ) => {
 	
-	
-
-
-
 	switch(action.type) {
 		
 		case 'EQUIP_ITEM':
@@ -57,7 +52,7 @@ export const handleEquip = ( state = initialState, action ) => {
 
 				Object.assign({}, state, {
 					equipped: Object.assign([ ...state.equipped], {
-						[equippedIndex] : {
+						[unequippedIndex] : {
 							...action.item,
 							quantity: --unequippedItem[0].quantity
 
@@ -70,14 +65,13 @@ export const handleEquip = ( state = initialState, action ) => {
 				{ 
 					...state,  
 					equipped: 
-						[	...state.equipped.slice(0, unequippedItem.index), 
-							...state.equipped.slice(unequippedIndex.index + 1)
+						[	...state.equipped.slice(0, unequippedIndex), 
+							...state.equipped.slice(unequippedIndex + 1)
 						] 
 				}
 
 		default:
 			return state;
-
 	}
 
 }
