@@ -14,7 +14,7 @@ class SellPanel extends React.Component {
 			<div className="panel" gamelocation={gamelocation}>
 				
 				{ 
-					inventory.length > 0 
+					inventory.length > 0
 
 					?
 
@@ -26,7 +26,7 @@ class SellPanel extends React.Component {
 						</div>
 					)	
 
-					: 
+					:
 
 					<p>You have no items</p>
 
@@ -34,10 +34,6 @@ class SellPanel extends React.Component {
 				<p>{gold}</p>
 				
 			</div>
-
-
-
-
 		)
 	}
 };

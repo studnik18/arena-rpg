@@ -26,3 +26,17 @@ export const unequipItem = (item) => ({
 	item	
 
 })
+
+export const incrementAttribute = (attribute) => ({
+
+	type: 'INCREMENT_ATTRIBUTE',
+	attribute
+
+})
+
+export const earnExp = (exp) => {
+
+	type: 'EARN_EXP',
+	exp
+
+}
