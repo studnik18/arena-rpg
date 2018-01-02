@@ -18,6 +18,42 @@ const initialState = {
 export const handlePlayerStats = (state = initialState, action) => {
 	switch(action.type) {
 
+		case 'EQUIP_ITEM':
+
+			switch(action.item.category){
+				case 'helmets':
+				case 'armors':
+
+					return {
+
+						...state, 
+						playerStats: 
+							{
+								...state.playerStats, 
+								defense: state.playerStats.defense + action.item.defense
+							}
+					}
+
+			}
+
+		case 'UNEQUIP_ITEM':
+
+			switch(action.item.category){
+				case 'helmets':
+				case 'armors':
+
+					return {
+
+						...state, 
+						playerStats: 
+							{
+								...state.playerStats, 
+								defense: state.playerStats.defense - action.item.defense
+							}
+					}
+
+			}
+
 		default: 
 			return state
 

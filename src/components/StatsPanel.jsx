@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 class StatsPanel extends React.Component {
 
+	
+
+		
 	render() {
 		const { playerStats, attributePoints } = this.props;
 		return (
@@ -22,7 +25,8 @@ class StatsPanel extends React.Component {
 
 const mapStateToProps = (state) => ({
 	playerStats: state.handlePlayerStats.playerStats,
-	attributePoints: state.handlePlayerStats.attributePoints
+	attributePoints: state.handlePlayerStats.attributePoints,
+	equipped: state.handleEquip.equipped
 })
 
 export default connect(mapStateToProps, null)(StatsPanel)

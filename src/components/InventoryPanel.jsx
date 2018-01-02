@@ -1,15 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { equipItem } from '../actions';
+import { equipItem, unequipItem } from '../actions';
+
 
 class InventoryPanel extends React.Component {
 	
 	handleClick = (el) => {
+		const maxOneAllowed = ['weapons', 'helmets', 'armors'];
+		if (maxOneAllowed.includes(el.category)) {
+			const equippedOneAllowed = this.props.equipped.filter(
+				item => item.category === el.category
+			);
+			if (equippedOneAllowed.length > 0) {
+				this.props.unequipItem(equippedOneAllowed[0]);
+			}		
+		}
 		this.props.equipItem(el);
 	}
 
 	render() {
-		const { inventory, equipItem } = this.props;
+		const { inventory, equipped, equipItem, unequipItem } = this.props;
 		return (
 			<div className="panel">
 				{
@@ -30,11 +40,12 @@ class InventoryPanel extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	inventory: state.handleInventory.inventory,	
+	inventory: state.handleInventory.inventory,
+	equipped: state.handleEquip.equipped
 })
 
 export default connect(mapStateToProps, {
-	equipItem 
+	equipItem, unequipItem
 })(InventoryPanel)
 
 

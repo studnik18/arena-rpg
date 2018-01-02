@@ -24,7 +24,7 @@ export const blacksmithItems = [
 		name: 'Hood',
 		buyValue: 20,
 		sellValue: 10,
-		def: 5
+		defense: 5
 	}, 
 
 	{
@@ -33,7 +33,7 @@ export const blacksmithItems = [
 		name: 'Hide armor',
 		buyValue: 100,
 		sellValue: 50,
-		def: 15
+		defense: 15
 	}, 
 
 	{
@@ -42,7 +42,7 @@ export const blacksmithItems = [
 		name: 'Breastplate',
 		buyValue: 200,
 		sellValue: 100,
-		def: 30
+		defense: 30
 	}, 
 
 
