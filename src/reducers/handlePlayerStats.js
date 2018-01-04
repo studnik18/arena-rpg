@@ -9,10 +9,12 @@ const initialState = {
 		agility: 10,
 		vitality: 10
 	},
-
+	attributePoints: 20,
 	armor: 0,
+	blockChance: 0.05,
 	damage: [2, 4],
-	attributePoints: 20
+	hitChance: 0.5
+
 
 
 

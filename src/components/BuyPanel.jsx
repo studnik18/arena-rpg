@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { buyItem } from '../actions';
+import { BuyPanelEl } from './BuyPanelEl';
 
 class BuyPanel extends React.Component {
 	handleClick = (el) => {
@@ -15,14 +16,21 @@ class BuyPanel extends React.Component {
 		
 				{ items.map((el, i) => 
 
-					<div key={i} className='item-container'>
+					<BuyPanelEl
+						key={i}
+						handleClick={this.handleClick}
+						gold={gold}
+						item={el}
+					/>
+
+/*					<div key={i} className='item-container'>
 						<p onClick={ gold >= el.buyValue ? () => this.handleClick(el) : () => ''}>
 							{el.name}
 						</p>
 
-					</div>
+					</div>*/
 				)}
-				<p>{gold}</p>
+
 				
 			</div>
 

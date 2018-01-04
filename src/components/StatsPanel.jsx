@@ -11,7 +11,7 @@ class StatsPanel extends React.Component {
 
 		
 	render() {
-		const { attributes, armor, damage, attributePoints, incrementAttribute } = this.props;
+		const { attributes, armor, blockChance, damage, hitChance, attributePoints, incrementAttribute } = this.props;
 
 		return (
 			<div>
@@ -21,8 +21,12 @@ class StatsPanel extends React.Component {
 					)
 				}
 				<p>Attribute Points: {attributePoints}</p>
-				<p>Armor: {armor}</p>
+				
 				<p>Damage: {`${damage[0]} - ${damage[1]}`}</p>
+				<p>Hit chance: {hitChance * 100}%</p>
+
+				<p>Armor: {armor}</p>
+				<p>Block chance: {blockChance * 100}%</p>
 			</div>
 		)
 	}
@@ -34,6 +38,8 @@ const mapStateToProps = (state) => ({
 	attributePoints: state.handlePlayerStats.attributePoints,
 	damage: state.handlePlayerStats.damage,
 	armor: state.handlePlayerStats.armor,
+	hitChance: state.handlePlayerStats.hitChance,
+	blockChance: state.handlePlayerStats.blockChance,
 	equipped: state.handleEquip.equipped
 })
 
