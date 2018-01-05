@@ -1,8 +1,6 @@
 
 const initialState = {
 	
-
-
 	attributes: {
 		strength: 10,
 		defense: 10,
@@ -14,9 +12,6 @@ const initialState = {
 	blockChance: 0.05,
 	damage: [2, 4],
 	hitChance: 0.5
-
-
-
 
 }
 
@@ -40,7 +35,8 @@ export const handlePlayerStats = (state = initialState, action) => {
 					
 					return {
 						...state,
-						damage: action.item.dmgRange
+						damage: action.item.dmgRange,
+						hitChance: action.item.hitChance
 					}
 				default: 
 					return state;
@@ -66,7 +62,9 @@ export const handlePlayerStats = (state = initialState, action) => {
 					return {
 						
 						...state,
-						damage: [2,4]
+						damage: [2,4],
+						hitChance: 0.5
+
 
 					}
 				default: 

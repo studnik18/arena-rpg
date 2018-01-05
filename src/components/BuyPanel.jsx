@@ -5,6 +5,10 @@ import { BuyPanelEl } from './BuyPanelEl';
 
 class BuyPanel extends React.Component {
 	handleClick = (el) => {
+/*		gamelocation === 'inn' 
+		?
+		this.props.restoreHP(hp)
+		:*/
 		this.props.buyItem(el)
 	}
 
@@ -22,16 +26,8 @@ class BuyPanel extends React.Component {
 						gold={gold}
 						item={el}
 					/>
-
-/*					<div key={i} className='item-container'>
-						<p onClick={ gold >= el.buyValue ? () => this.handleClick(el) : () => ''}>
-							{el.name}
-						</p>
-
-					</div>*/
 				)}
 
-				
 			</div>
 
 

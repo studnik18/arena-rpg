@@ -7,7 +7,8 @@ import BuyPanel from './BuyPanel.jsx';
 import DialogBox from './DialogBox.jsx';
 
 /*Data array*/
-import { blacksmithItems } from '../data/blacksmithItems.js';
+import { weapons } from '../data/weapons.js';
+import { armory } from '../data/armory.js';
 
 const Blacksmith = () => (
 
@@ -18,7 +19,7 @@ const Blacksmith = () => (
 			</div>
 			<DialogBox gamelocation="blacksmith"/>	
 		</div>
-		<BuyPanel items={ blacksmithItems } gamelocation="blacksmith"/>		
+		<BuyPanel items={ [...weapons, ...armory] } gamelocation="blacksmith"/>		
 	</GameBox>	
 
 );

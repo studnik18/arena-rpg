@@ -40,3 +40,10 @@ export const earnExp = (exp) => {
 	exp
 
 }
+
+export const restoreHP = (hp) => {
+
+	type: 'RESTORE_HP',
+	hp
+
+}

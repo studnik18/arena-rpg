@@ -7,7 +7,8 @@ import BuyPanel from './BuyPanel.jsx';
 import DialogBox from './DialogBox.jsx';
 
 /*Data array*/
-import { shopItems } from '../data/shopItems.js';
+import { magicalMixtures } from '../data/magicalMixtures.js';
+import { jewellery } from '../data/jewellery.js'
 
 const MagicShop = () => (
 
@@ -18,7 +19,7 @@ const MagicShop = () => (
 			</div>
 			<DialogBox gamelocation="shop"/>	
 		</div>
-		<BuyPanel items={ shopItems } gamelocation="shop"/>		
+		<BuyPanel items={ [...magicalMixtures, ...jewellery] } gamelocation="shop"/>		
 	</GameBox>	
 
 );
