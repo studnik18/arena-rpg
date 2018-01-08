@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { unequipItem } from '../actions';
+import { unequipItem, calculateAttributeBonus } from '../actions';
+
 
 class EquipPanel extends React.Component {
 
 	handleClick = (el) => {
 		this.props.unequipItem(el);
+		this.props.calculateAttributeBonus(el);
 	}
 
 	render() {
 
-		const { equipped, unequipItem } = this.props;
+		const { equipped, unequipItem, calculateAttributeBonus } = this.props;
 
 		return (
 			<div className="panel">
@@ -30,9 +32,10 @@ class EquipPanel extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	equipped: state.handleEquip.equipped,	
+	equipped: state.handleEquip.equipped
+
 })
 
 export default connect(mapStateToProps, {
-	unequipItem 
+	unequipItem, calculateAttributeBonus
 })(EquipPanel)

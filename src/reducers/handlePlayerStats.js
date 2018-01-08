@@ -1,4 +1,6 @@
 
+//base statisicts - without bonus from attributes
+
 const initialState = {
 	
 	attributes: {
@@ -9,9 +11,12 @@ const initialState = {
 	},
 	attributePoints: 20,
 	armor: 0,
-	blockChance: 0.05,
+	baseBlockChance: 0.05,
+	baseDamage: [2, 4],
+	baseHitChance: 0.5,
+	blockChance: 0.1,
 	damage: [2, 4],
-	hitChance: 0.5
+	hitChance: 0.55
 
 }
 
@@ -28,15 +33,16 @@ export const handlePlayerStats = (state = initialState, action) => {
 
 					return {
 						...state, 
-						armor: state.armor + action.item.armor							
+						armor: state.armor + action.item.armor,
+						baseHitChance: state.baseHitChance - action.item.hitChancePenalty
 					}
 
 				case 'weapons': 
 					
 					return {
 						...state,
-						damage: action.item.dmgRange,
-						hitChance: action.item.hitChance
+						baseDamage: action.item.dmgRange,
+						baseHitChance: action.item.hitChance
 					}
 				default: 
 					return state;
@@ -54,7 +60,8 @@ export const handlePlayerStats = (state = initialState, action) => {
 					return {
 
 						...state, 
-							armor: state.armor - action.item.armor
+							armor: state.armor - action.item.armor,
+							baseHitChance: state.baseHitChance + action.item.hitChancePenalty
 							
 					}
 
@@ -62,10 +69,8 @@ export const handlePlayerStats = (state = initialState, action) => {
 					return {
 						
 						...state,
-						damage: [2,4],
-						hitChance: 0.5
-
-
+						baseDamage: [2,4],
+						baseHitChance: 0.5
 					}
 				default: 
 					return state;
@@ -82,7 +87,14 @@ export const handlePlayerStats = (state = initialState, action) => {
 
 			}
 
+		case 'CALCULATE_ATTRIBUTE_BONUS':
 
+			return {
+				...state,
+				blockChance: state.baseBlockChance + (state.attributes.defense * 0.005),
+				hitChance: state.baseHitChance + (state.attributes.agility * 0.005),
+				damage: [state.baseDamage[0] * (1 + state.attributes.strength * 0.01), state.baseDamage[1] * (1 + state.attributes.strength * 0.01)]
+			}
 
 		default: 
 			return state

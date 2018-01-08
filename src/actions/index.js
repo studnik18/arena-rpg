@@ -1,10 +1,9 @@
-export const sellItem =  (item)  => ({
+export const sellItem = (item)  => ({
 
 	type: 'SELL_ITEM',
 	item
 
 }) 
-
 
 export const buyItem = (item) => ({
 
@@ -45,5 +44,11 @@ export const restoreHP = (hp) => {
 
 	type: 'RESTORE_HP',
 	hp
+
+}
+
+export const calculateAttributeBonus = () => {
+	
+	type: 'CALCULATE_ATTRIBUTE_BONUS'
 
 }

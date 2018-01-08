@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { equipItem, unequipItem } from '../actions';
+import { equipItem, unequipItem, calculateAttributeBonus } from '../actions';
 
 
 class InventoryPanel extends React.Component {
 	
 	handleClick = (el) => {
-		const maxOneAllowed = ['weapons', 'helmets', 'armors'];
-		if (maxOneAllowed.includes(el.category)) {
+		if (el.category !== 'potions' && el.category !== 'oils') {
 			const equippedOneAllowed = this.props.equipped.filter(
 				item => item.category === el.category
 			);
@@ -16,10 +15,14 @@ class InventoryPanel extends React.Component {
 			}		
 		}
 		this.props.equipItem(el);
+
+
+
+
 	}
 
 	render() {
-		const { inventory, equipped, equipItem, unequipItem } = this.props;
+		const { inventory, equipped, equipItem, unequipItem, calculateAttributeBonus } = this.props;
 		return (
 			<div className="panel">
 				{
@@ -45,7 +48,7 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-	equipItem, unequipItem
+	equipItem, unequipItem, calculateAttributeBonus
 })(InventoryPanel)
 
 
