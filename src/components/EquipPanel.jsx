@@ -8,7 +8,7 @@ class EquipPanel extends React.Component {
 
 	handleClick = (el) => {
 		this.props.unequipItem(el);
-		this.props.calculateAttributeBonus(el);
+		this.props.calculateAttributeBonus();
 	}
 
 	render() {

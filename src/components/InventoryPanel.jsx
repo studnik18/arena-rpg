@@ -15,10 +15,7 @@ class InventoryPanel extends React.Component {
 			}		
 		}
 		this.props.equipItem(el);
-
-
-
-
+		this.props.calculateAttributeBonus();
 	}
 
 	render() {

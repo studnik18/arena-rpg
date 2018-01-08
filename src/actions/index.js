@@ -33,22 +33,22 @@ export const incrementAttribute = (attribute) => ({
 
 })
 
-export const earnExp = (exp) => {
+export const earnExp = (exp) => ({
 
 	type: 'EARN_EXP',
 	exp
 
-}
+})
 
-export const restoreHP = (hp) => {
+export const restoreHP = (hp) => ({
 
 	type: 'RESTORE_HP',
 	hp
 
-}
+})
 
-export const calculateAttributeBonus = () => {
+export const calculateAttributeBonus = () => ({
 	
 	type: 'CALCULATE_ATTRIBUTE_BONUS'
 
-}
+})
