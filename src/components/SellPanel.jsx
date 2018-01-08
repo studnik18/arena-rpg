@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sellItem } from '../actions';
+import { PanelElement } from './PanelElement';
 
 class SellPanel extends React.Component {
 	handleClick = (el) => {
@@ -8,31 +9,53 @@ class SellPanel extends React.Component {
 	}
 
 	render() {
-		const { inventory, gamelocation, sellItem, children, gold } = this.props;
+		const { inventory, gamelocation, sellItem, gold } = this.props;
 		return (
 
-			<div className="panel" gamelocation={gamelocation}>
+			<div>
+				<div>
+					<div className="flex-row gold-container">
+						<p className="price">
+							{gold}
+						</p>
+						<div className="coin-bg"></div>
+					</div>
+					{
+						inventory.length > 0 
+						? <p className="inventory-header">
+							Your inventory
+						</p> 
+						: ''
+					}
+				</div>
 				
-				{ 
-					inventory.length > 0
+					{ 
+						inventory.length > 0
 
-					?
+						?
+						<div className="panel sell-panel" gamelocation={gamelocation}>
+						{	
+							inventory.map((el, i) => 
 
-					inventory.map((el, i) => 
-
-						<div key={i} className='item-container'>
-							<p onClick={() => this.handleClick(el)}>{`${el.name} ${el.quantity} ${i}`}</p>
+								<PanelElement
+									key={i}
+									handleClick={this.handleClick}
+									gold={gold}
+									item={el}
+									action="sell"
+									gamelocation={gamelocation}
+								/>
+						
+							)
+						}
 
 						</div>
-					)	
+						:
 
-					:
+						<p className="inventory-header">Your inventory is empty</p>
+					}
 
-					<p>You have no items</p>
-
-				}
-				<p>{gold}</p>
-				
+		
 			</div>
 		)
 	}

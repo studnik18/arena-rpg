@@ -18,7 +18,7 @@
 		background-size: contain;
 	}
 
-	.buy-btn {
+	.buy-btn, .sell-btn {
 		font-weight: 700;
 		font-size: 15px;
 		height: 32px;
@@ -45,8 +45,28 @@
 		padding: 2px;
 	}
 
+}
 
+.buy-panel {
+	height: 100%;
+}
 
+.price {
+	font-size: 20px;
+	padding: 2px;
+}
 
+.inventory-header {
+	font-size: 18px;
+	margin-bottom: 11px;
+}
 
+.gold-container, .inventory-header {
+	justify-content: center;
+	text-align: center;
+	width: 190px;
+}
+
+.sell-panel {
+	max-height: 444px;
 }

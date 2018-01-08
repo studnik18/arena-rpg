@@ -12,7 +12,7 @@ class StatsPanel extends React.Component {
 
 		
 	render() {
-		const { attributes, armor, baseBlockChance, blockChance, baseDamage, damage, baseHitChance, hitChance, attributePoints, incrementAttribute, calculateAttributeBonus } = this.props;
+		const { attributes, armor, blockChance, damage, hitChance, attributePoints, incrementAttribute, calculateAttributeBonus } = this.props;
 
 		return (
 			<div>

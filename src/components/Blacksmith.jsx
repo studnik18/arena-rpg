@@ -13,7 +13,7 @@ import { armory } from '../data/armory.js';
 const Blacksmith = () => (
 
 	<GameBox>
-		<SellPanel />
+		<SellPanel gamelocation="blacksmith"/>
 		<div className="location-box">
 			<div className="blacksmith">
 			</div>

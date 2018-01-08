@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { buyItem } from '../actions';
-import { BuyPanelEl } from './BuyPanelEl';
+import { PanelElement } from './PanelElement';
 
 class BuyPanel extends React.Component {
 	handleClick = (el) => {
@@ -13,26 +13,23 @@ class BuyPanel extends React.Component {
 	}
 
 	render() {
-		const { items, gamelocation, buyItem, children, gold } = this.props;
+		const { items, gamelocation, buyItem, gold } = this.props;
 		return (
 
-			<div className="panel" gamelocation={gamelocation}>
+			<div className="panel buy-panel" gamelocation={gamelocation}>
 		
 				{ items.map((el, i) => 
 
-					<BuyPanelEl
+					<PanelElement
 						key={i}
 						handleClick={this.handleClick}
 						gold={gold}
 						item={el}
+						action="buy"
 					/>
 				)}
 
 			</div>
-
-
-
-
 		)
 	}
 };

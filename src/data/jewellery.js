@@ -2,7 +2,7 @@ export const jewellery = [
 
 	{
 		id: 13,
-		category: 'necklace',
+		category: 'necklaces',
 		name: 'Necklace of accuracy',
 		buyValue: 150,
 		sellValue: 75,
@@ -12,7 +12,7 @@ export const jewellery = [
 
 	{
 		id: 14,
-		category: 'necklace',
+		category: 'necklaces',
 		name: 'Necklace of strength',
 		buyValue: 400,
 		sellValue: 200,
@@ -21,7 +21,7 @@ export const jewellery = [
 
 	{
 		id: 15,
-		category: 'necklace',
+		category: 'necklaces',
 		name: 'Necklace of defense',
 		buyValue: 400,
 		sellValue: 200,
@@ -30,7 +30,7 @@ export const jewellery = [
 
 	{
 		id: 16,
-		category: 'necklace',
+		category: 'necklaces',
 		name: 'Necklace of agility',
 		buyValue: 400,
 		sellValue: 200,
@@ -39,7 +39,7 @@ export const jewellery = [
 
 	{
 		id: 17,
-		category: 'necklace',
+		category: 'necklaces',
 		name: 'Necklace of vitality',
 		buyValue: 400,
 		sellValue: 200,
@@ -48,7 +48,7 @@ export const jewellery = [
 
 	{
 		id: 18,
-		category: 'necklace',
+		category: 'necklaces',
 		name: 'Necklace of champions',
 		buyValue: 2000,
 		sellValue: 1000,
