@@ -169,5 +169,4 @@ export const armory = [
 		hitChancePenalty: 0.02,
 		blockChanceBonus: 0.3
 	}
-
 ];

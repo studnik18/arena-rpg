@@ -1,9 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Arena = () => (
+// Copmponents
+import GameBox from './GameBox.jsx';
+import StatsPanel from './StatsPanel.jsx';
+import Opponents from './Opponents.jsx';
 
-	<p> Arena </p>
+// Data
+import { opponentList } from '../data/opponentList.js';
 
-);
+class Arena extends React.Component {
 
-export default Arena;
+
+	render() {
+
+		return (
+
+
+			<GameBox>
+				<StatsPanel />
+				<Opponents list={opponentList}/>
+			</GameBox>	
+
+		)
+
+	}
+
+}
+
+export default connect(null, null)(Arena);

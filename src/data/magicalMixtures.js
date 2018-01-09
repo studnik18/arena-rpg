@@ -73,7 +73,6 @@
 		name: "Potion of defense",
 		buyValue: 500,
 		sellValue: 150,
-		damage: 200,
 		effect: {
 			statIncrease: 'defense'	
 		},
@@ -86,7 +85,6 @@
 		name: 'Potion of agility',
 		buyValue: 500,
 		sellValue: 250,
-		damage: 100,
 		effect: {
 			statIncrease: 'agilty'	
 		},

@@ -37,13 +37,10 @@ class StatsPanel extends React.Component {
 const mapStateToProps = (state) => ({
 	attributes: state.handlePlayerStats.attributes,
 	attributePoints: state.handlePlayerStats.attributePoints,
-	baseDamage: state.handlePlayerStats.baseDamage,
 	damage: state.handlePlayerStats.damage,
 	armor: state.handlePlayerStats.armor,
-	baseHitChance: state.handlePlayerStats.baseHitChance,
 	hitChance: state.handlePlayerStats.hitChance,
 	blockChance: state.handlePlayerStats.blockChance,
-	baseBlockChance: state.handlePlayerStats.baseBlockChance,
 	equipped: state.handleEquip.equipped
 })
 
