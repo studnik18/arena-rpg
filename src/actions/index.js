@@ -42,7 +42,7 @@ export const earnExp = (exp) => ({
 
 export const restoreHP = (hp) => ({
 
-	type: 'RESTORE_HP',
+	type: 'HEAL',
 	hp
 
 })
@@ -52,3 +52,26 @@ export const calculateAttributeBonus = () => ({
 	type: 'CALCULATE_ATTRIBUTE_BONUS'
 
 })
+
+
+export const chooseOpponent = (opponent) => ({
+	
+	type: 'CHOOSE_OPPONENT',
+	opponent
+
+})
+
+export const dealDamage = (damage) => ({
+
+	type: 'DEAL_DAMAGE',
+	damage
+
+})
+
+export const sufferDamage = (damage) => ({
+
+	type: 'SUFFER_DAMAGE',
+	damage
+
+})
+

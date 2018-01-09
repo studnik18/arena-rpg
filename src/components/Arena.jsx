@@ -3,23 +3,48 @@ import { connect } from 'react-redux';
 
 // Copmponents
 import GameBox from './GameBox.jsx';
-import StatsPanel from './StatsPanel.jsx';
+import HeroBattleScreen from './HeroBattleScreen.jsx';
 import Opponents from './Opponents.jsx';
+import Console from './Console.jsx';
+import OpponentScreen from './OpponentScreen.jsx';
 
 // Data
 import { opponentList } from '../data/opponentList.js';
 
+// Actions
+
+import { chooseOpponent } from '../actions';
+
 class Arena extends React.Component {
 
+	handleClick = ( opponent ) => {
+		this.props.chooseOpponent(opponent);
+	}
 
 	render() {
+		const { opponent, equipped } = this.props;
 
 		return (
 
 
 			<GameBox>
-				<StatsPanel />
-				<Opponents list={opponentList}/>
+				<HeroBattleScreen />
+				
+				{
+					opponent === 'none' 
+
+					?
+
+					<Opponents handleClick={this.handleClick} list={opponentList}/>
+
+					:
+
+					<div>
+						<Console />
+						<OpponentScreen opponent={opponent} />
+					</div>
+				}
+
 			</GameBox>	
 
 		)
@@ -27,5 +52,15 @@ class Arena extends React.Component {
 	}
 
 }
+ 
+const mapStateToProps = (state) => ({
 
-export default connect(null, null)(Arena);
+	opponent: state.handleOpponent.opponent,
+	equipped: state.handleEquip.equipped
+
+
+})
+
+export default connect(mapStateToProps, {
+	chooseOpponent
+})(Arena);

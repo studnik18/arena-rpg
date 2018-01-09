@@ -1,13 +1,12 @@
 import React from 'react';
 
-const Opponents = ({ list }) => (
+const Opponents = ({ list, handleClick }) => (
 
 	<div>
 		{
 			list.map((opponent, i) =>
-				<p key={i}>{opponent.name}</p>
+				<p key={i} onClick={()=> handleClick(opponent)}>{opponent.name}</p>
 			)
-
 		}
 	</div>
 

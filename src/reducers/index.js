@@ -4,13 +4,17 @@ import { handleEquip } from './handleEquip.js';
 import { handleGold } from './handleGold.js';
 import { handlePlayerStats } from './handlePlayerStats.js';
 import { handleExp } from './handleExp.js';
+import { handleHP } from './handleHP.js';
+import { handleOpponent } from './handleOpponent.js';
 
 export const rootReducer = combineReducers({
 	handleInventory,
 	handleEquip,
 	handleGold,
 	handlePlayerStats,
-	handleExp
+	handleExp,
+	handleHP,
+	handleOpponent
 });
 
 export default rootReducer;
