@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // Copmponents
 import GameBox from './GameBox.jsx';
 import HeroBattleScreen from './HeroBattleScreen.jsx';
-import Opponents from './Opponents.jsx';
+import OpponentList from './OpponentList.jsx';
 import Console from './Console.jsx';
 import OpponentScreen from './OpponentScreen.jsx';
 
@@ -35,7 +35,7 @@ class Arena extends React.Component {
 
 					?
 
-					<Opponents handleClick={this.handleClick} list={opponentList}/>
+					<OpponentList handleClick={this.handleClick} list={opponentList}/>
 
 					:
 

@@ -1,0 +1,59 @@
+.opponents-container {
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.opponent-slot {
+	height: 240px;
+	display: flex;
+	flex-flow: row;
+}
+
+.opponent-image {
+	height: 240px;
+	width: 240px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.rusalka {
+	background-image: url(./img/opponents/rusalka.jpg);
+}
+
+.wodnik {
+	background-image: url(./img/opponents/wodnik.jpg);
+	background-size: contain;
+	background-position: right;
+}
+
+.mamuna {
+	background-image: url(./img/opponents/mamuna.jpg);
+}
+
+.nocnica {
+	background-image: url(./img/opponents/nocnica.jpg);
+}
+
+.poludnica {
+	background-image: url(./img/opponents/poludnica.jpg);
+}
+
+.lesnik {
+	background-image: url(./img/opponents/lesnik.jpg);
+}
+
+.bies {
+	background-image: url(./img/opponents/bies.png);
+}
+
+.striga {
+	background-image: url(./img/opponents/striga.jpg);
+}
+
+.vilkolak {
+	background-image: url(./img/opponents/vilkolak.png);
+}
+
+.zmij {
+	background-image: url(./img/opponents/zmij.jpg);
+}
