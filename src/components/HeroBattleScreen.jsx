@@ -35,7 +35,7 @@ class HeroBattleScreen extends React.Component {
 		)
 
 		return (
-			<div>
+			<div class="hero-battle-screen">
 				<p>HeroBattleScreen  {currentHP} </p>
 				<p>{battlePotions.map(potion =>
 						potion.name

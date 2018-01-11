@@ -1,0 +1,49 @@
+.attribute {
+	display: flex;
+	flex-flow: row;
+}
+
+.attr-pic {
+	width: 40px;
+	height: 40px;
+	background-size: contain;
+}
+
+.panel-strength {
+	background-image: url('./img/icons/attributes/strength.png');
+}
+.panel-defense {
+	background-image: url('./img/icons/attributes/defense.png');
+}
+.panel-agility {
+	background-image: url('./img/icons/attributes/agility.png');
+}
+.panel-vitality {
+	background-image: url('./img/icons/attributes/vitality.png');
+}
+.panel-damage {
+	background-image: url('./img/icons/attributes/damage.png');
+}
+.panel-hit-chance {
+	background-image: url('./img/icons/attributes/hit-chance.png');
+}
+.panel-armor {
+	background-image: url('./img/icons/attributes/armor.png');
+}
+.panel-block-chance {
+	background-image: url('./img/icons/attributes/block-chance.png');
+}
+
+
+
+
+
+
+
+
+
+// Battle
+
+.hero-battle-screen {
+	width: 35%;
+}
