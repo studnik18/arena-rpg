@@ -14,14 +14,23 @@ class EquipPanel extends React.Component {
 	render() {
 
 		const { equipped, unequipItem, calculateAttributeBonus } = this.props;
+		
 
 		return (
-			<div className="panel">
+			
+
+
+
+
+
+
+
+			<div className="equip-panel">
 				{
 					equipped.map((el, i) =>
 
-						<div key={i} className='item-container'>
-							<p onClick={() => this.handleClick(el)}>{`${el.name} ${el.quantity} ${i}`}</p>
+						<div key={i} className={`equipped-item ${el.category}`}>
+							<p onClick={() => this.handleClick(el)}>{`${el.name}`}</p>
 
 						</div>
 					)

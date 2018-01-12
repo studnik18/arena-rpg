@@ -23,12 +23,49 @@
 	background-position: right;
 	position: absolute;
 	right: 0;
+
+	&.bies, &.wodnik, &.striga, &.nocnica {
+		min-width: 238px;
+		background-size: cover;
+	}
 }
 
 .opponent-info {
-	width: 350px;
+	width: 330px;
 	height: 100%;
 	position: absolute;
+	z-index: 1;
+	opacity: 0.8;
+	background-color: #fff;
+}
+
+.opponent-name {
+	text-transform: capitalize;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.info-header {
+	justify-content: space-around;
+	margin: 8px 0;
+	align-items: center;
+}
+
+.info-column {
+	margin-left: 5px;
+	align-items: space-around;
+}
+
+.fight-button {
+	align-items: center;
+	div {
+		height: 30px;
+		width: 30px;
+		align-content: center;
+		background-image: url(./img/icons/attributes/crossed-swords.png);
+		background-size: contain;
+		margin-right: 5px;
+	}
 }
 
 .rusalka {
@@ -37,8 +74,6 @@
 
 .wodnik {
 	background-image: url(./img/opponents/wodnik.jpg);
-	background-size: contain;
-	background-position: right;
 }
 
 .mamuna {
@@ -74,3 +109,4 @@
 	background-image: url(./img/opponents/zmij.jpg);
 	right: -20px;
 }
+

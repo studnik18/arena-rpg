@@ -1,14 +1,111 @@
 .attribute {
 	display: flex;
 	flex-flow: row;
+	p {
+		text-transform: capitalize;
+	}
 }
 
 .attr-pic {
 	width: 40px;
 	height: 40px;
 	background-size: contain;
+	margin: 2px 5px;
+
+	&.coin-bg {
+		border-radius: 0;
+		width: 40px;
+		height: 40px;
+	}
 }
 
+.attr-pts {
+	text-align: center;
+	padding: 5px;
+	border-bottom: 1px solid;
+	margin-bottom: 15px;
+}
+
+.hero-attributes {
+	margin: 0 10px;
+	.attribute {
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	p {
+		align-content: center;
+		padding: 0 5px;
+	}
+}
+
+.hero-right-panel {
+	margin: 0 10px;
+}
+
+.increment-button {
+	font-size: 20px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	border-radius: 100%;
+	border: none;
+
+	&.enabled {
+		background-color: #afd9ae;
+	}
+	&.disabled {
+		background-color: #db3039;
+	}
+}
+
+.panel-bar {
+	position: relative;
+	width: 150px;
+	height: 30px;
+	padding: 5px;
+	text-align: center;
+	border: 1px solid black;
+	opacity: 0.8;
+}
+
+.damage, .exp {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: -1;
+}
+
+.health-bar {
+
+	background-color: #afd9ae;
+
+	.damage {
+		background-color: #db3039;
+		right: 0;
+	}
+}
+
+.exp-bar {
+	background-color: #ebe9e7;
+
+	.exp {
+		background-color: #edc534;
+		left: 0;
+	}
+}
+
+.player-name {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+
+
+
+.panel-hp {
+	background-image: url('./img/icons/attributes/hp.png');
+}
 .panel-strength {
 	background-image: url('./img/icons/attributes/strength.png');
 }
@@ -33,14 +130,18 @@
 .panel-block-chance {
 	background-image: url('./img/icons/attributes/block-chance.png');
 }
-
-
-
-
-
-
-
-
+.panel-undead {
+	background-image: url('./img/icons/attributes/undead.png');
+}
+.panel-living {
+	background-image: url('./img/icons/attributes/living.png');
+}
+.panel-life-drain {
+	background-image: url('./img/icons/attributes/life-drain.png');
+}
+.panel-xp {
+	background-image: url('./img/icons/attributes/xp.png');
+}
 
 // Battle
 

@@ -16,46 +16,58 @@ class StatsPanel extends React.Component {
 				calculateAttributeBonus, exp, level, nextLevel, maxHP, currentHP } = this.props;
 
 		return (
-			<div>
-				<div className="expBar" />	
+			<div className="flex-row">
+				<div className="hero-attributes">
 
-				<div className="hero-pic">
-
-				</div>
-				<div className="healthBar">
-				</div>
-				{
-					Object.keys(attributes).map((key, i) =>
-							<div className="attribute">
+					{
+						Object.keys(attributes).map((key, i) =>
+							<div key={i} className="attribute">
 								<div className={`panel-${key} attr-pic`} />
-								<p key={i} >{`${key} : ${attributes[key]}`}</p>
-								<button onClick={ attributePoints > 0 ? () => this.handleClick(key) : () => '' }>+</button>
+								<p>{`${key}:`}<br/>{`${attributes[key]}`}</p>
+								<button className={`${attributePoints > 0 ? 'enabled' : 'disabled'} increment-button`} onClick={ attributePoints > 0 ? () => this.handleClick(key) : () => '' }>+</button>
 							</div>
-					)
-				}
-				
-					<div className="flex-row">
-						<div className="panel-attr-pts attr-pic" />
-						<p>Attribute Points: {attributePoints}</p>
-					</div>
+						)
+					}
 					
-					<div className="flex-row">
-						<div className="panel-damage attr-pic" />
-						<p>Damage: {`${damage[0]} - ${damage[1]}`}</p>
+						<div className="attr-pts">
+							<p>Attribute Points: {attributePoints}</p>
+						</div>
+						
+						<div className="flex-row">
+							<div className="panel-damage attr-pic" />
+							<p>Damage:<br/> {`${Math.round(damage[0])} - ${Math.round(damage[1])}`}</p>
+						</div>
+						<div className="flex-row">
+							<div className="panel-hit-chance attr-pic" />
+							<p>Hit chance:<br/> {Math.round(hitChance * 100)}%</p>
+						</div>
+
+						<div className="flex-row">
+							<div className="panel-armor attr-pic" />
+							<p>Armor:<br/> {armor}</p>
+						</div>
+						<div className="flex-row">
+							<div className="panel-block-chance attr-pic" />
+							<p>Block chance:<br/> {Math.round(blockChance * 100)}%</p>
+						</div>
+				</div>
+				<div className="hero-right-panel">
+					<p className="player-name">Player</p>
+					<p>Level: {level}</p>
+					<div className="panel-bar exp-bar">
+						<p>EXP: {`${exp} / ${nextLevel}`}</p>
+						<div style={{width: `${Math.floor(exp / nextLevel - 1)}%`}} className="exp" />
+					</div>	
+
+					<div className="hero-pic">
+
 					</div>
-					<div className="flex-row">
-						<div className="panel-hit-chance attr-pic" />
-						<p>Hit chance: {hitChance * 100}%</p>
+					<div className="panel-bar health-bar">
+						<p>HP: {`${currentHP} / ${maxHP}`}</p>
+						<div style={{width: `${Math.floor(currentHP / maxHP - 1)}%`}} className="damage" />
 					</div>
 
-					<div className="flex-row">
-						<div className="panel-armor attr-pic" />
-						<p>Armor: {armor}</p>
-					</div>
-					<div className="flex-row">
-						<div className="panel-block-chance attr-pic" />
-						<p>Block chance: {blockChance * 100}%</p>
-					</div>
+				</div>
 			</div>
 		)
 	}
@@ -73,7 +85,7 @@ const mapStateToProps = (state) => ({
 	exp: state.handleExp.exp,
 	level: state.handleExp.level,
 	nextLevel: state.handleExp.nextLevel,
-	maxXP: state.handleHP.maxHP,
+	maxHP: state.handleHP.maxHP,
 	currentHP: state.handleHP.currentHP
 })
 

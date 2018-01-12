@@ -8,6 +8,10 @@ export const opponentList = [
 		hitChance: 0.75,
 		damage: [8, 10],
 		dodgeChance: 0.2,
+		reward: {
+			gold: 20,
+			XP: 15
+		},
 		source: {
 			author: 'Dominika Sikora', 
 			link: 'http://www.makota.pl/images/Galeria/Portfolio/Digital_painting/pelne_wersje/RUSALKA_ostatwczna.jpg'
@@ -22,6 +26,10 @@ export const opponentList = [
 		hitChance: 0.75,
 		damage: [10, 14],
 		dodgeChance: 0.5,
+		reward: {
+			gold: 30,
+			XP: 20
+		},
 		source: {
 			author: 'Dominika Sikora', 
 			link: 'http://www.makota.pl/images/utopiecmin.jpg'
@@ -36,6 +44,10 @@ export const opponentList = [
 		hitChance: 0.7,
 		damage: [16, 18],
 		dodgeChance: 0.3,
+		reward: {
+			gold: 50,
+			XP: 30
+		},
 		source: {
 			author: 'chmurnik', 
 			link: 'http://www.digart.pl/praca/7485628/Mamuna.html'
@@ -50,6 +62,11 @@ export const opponentList = [
 		hitChance: 0.75,
 		damage: [20, 24],
 		dodgeChance: 0.3,
+		type: 'undead',
+		reward: {
+			gold: 75,
+			XP: 50
+		},
 		source: {
 			author: 'Dominika Sikora', 
 			link: 'http://www.makota.pl/images/Galeria/Portfolio/Digital_painting/pelne_wersje/nocnice.jpg'
@@ -64,6 +81,11 @@ export const opponentList = [
 		hitChance: 0.75,
 		damage: [22, 26],
 		dodgeChance: 0.3,
+		type: 'undead',
+		reward: {
+			gold: 90,
+			XP: 60
+		},
 		source: {
 			author: 'Dominika Sikora', 
 			link: 'http://www.makota.pl/images/Galeria/Portfolio/Digital_painting/pelne_wersje/poludnica.jpg'
@@ -78,6 +100,10 @@ export const opponentList = [
 		hitChance: 0.8,
 		damage: [30, 38],
 		dodgeChance: 0.35,
+		reward: {
+			gold: 120,
+			XP: 80
+		},
 		source: {
 			author: 'Dominika Sikora', 
 			link: 'http://www.makota.pl/images/Galeria/Portfolio/Digital_painting/pelne_wersje/borowy.jpg'
@@ -92,6 +118,10 @@ export const opponentList = [
 		hitChance: 0.65,
 		damage: [45, 50],
 		dodgeChance: 0.3,
+		reward: {
+			gold: 150,
+			XP: 100
+		},
 		source: {
 			author: 'woari', 
 			link: 'https://woari.deviantart.com/art/Bies-344352634'
@@ -107,6 +137,11 @@ export const opponentList = [
 		damage: [40, 45],
 		dodgeChance: 0.3,
 		lifeDrain: 0.05,
+		type: 'undead',
+		reward: {
+			gold: 200,
+			XP: 130
+		},
 		source: {
 			author: 'Gwallchmai', 
 			link: 'http://gwallchmai.deviantart.com/art/Strix-Strzyga-60856403'
@@ -121,6 +156,11 @@ export const opponentList = [
 		hitChance: 0.7,
 		damage: [50, 60],
 		dodgeChance: 0.3,
+		armor: 20,
+		reward: {
+			gold: 300,
+			XP: 200
+		},
 		source: {
 			author: 'woari', 
 			link: 'https://woari.deviantart.com/art/Destiny-344478409'
@@ -135,6 +175,11 @@ export const opponentList = [
 		hitChance: 0.8,
 		damage: [70, 85],
 		dodgeChance: 0.1,
+		armor: 15,
+		reward: {
+			gold: 1000,
+			XP: 600
+		},
 		source: {
 			author: 'Vasylina', 
 			link: 'http://vasylina.deviantart.com/art/Slavic-mythology-Zmey-Gorynych-498372603'

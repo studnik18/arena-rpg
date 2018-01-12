@@ -12,6 +12,7 @@
 @import './scss/blacksmith_icons_bg';
 @import './scss/opponents';
 @import './scss/hero';
+@import './scss/inventory_panel';
 
 @font-face {
   font-family: 'CaslonAntique';
@@ -77,4 +78,9 @@ a {
 
 .align-center {
   align-items: center;
+}
+
+.inventory-panel {
+  overflow-x: hidden;
+  width: 175px;
 }
