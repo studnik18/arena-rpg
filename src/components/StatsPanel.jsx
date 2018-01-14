@@ -56,7 +56,7 @@ class StatsPanel extends React.Component {
 					<p>Level: {level}</p>
 					<div className="panel-bar exp-bar">
 						<p>EXP: {`${exp} / ${nextLevel}`}</p>
-						<div style={{width: `${Math.floor(exp / nextLevel - 1)}%`}} className="exp" />
+						<div style={{width: `${Math.floor(exp / nextLevel * 100)}%`}} className="exp" />
 					</div>	
 
 					<div className="hero-pic">
@@ -64,7 +64,7 @@ class StatsPanel extends React.Component {
 					</div>
 					<div className="panel-bar health-bar">
 						<p>HP: {`${currentHP} / ${maxHP}`}</p>
-						<div style={{width: `${Math.floor(currentHP / maxHP - 1)}%`}} className="damage" />
+						<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />
 					</div>
 
 				</div>

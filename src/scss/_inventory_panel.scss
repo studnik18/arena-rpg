@@ -1,51 +1,86 @@
 .equip-panel {
 	background-image: url('./img/backgrounds/hero_bg.png');
+	background-position: -50px;
 	width: 360px;
+	position: relative;
 }
 
 .equipped-item {
-	width: 35px;
-	height: 35px;
+	width: 45px;
+	height: 45px;
 	background-color: #fff;
-	opacity: 0.7;
+	position: absolute;
+	border: 1px grey solid;
+	background-size: contain;
+
+	&.empty-slot {
+		opacity: 0.4;
+	}
+
+	&.used-slot {
+		opacity: 0.8;
+	}
+}
+
+.potion-bag {
+	position: absolute;
+	width: 90px;
+	height: 350px;
+	border: 1px black solid;
+	top: 130px;
+	left: 260px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	.potion  {
+		width: 45px;
+		height: 45px;
+		background-size: contain;	
+	}
+}
+
+.equip-icon {
+	
+	background-image: url('./img/icons/switch_weapon.png');
+	background-size: contain;
 }
 
 .weapons {
-
+	top: 40px;
+	left: 30px;
 }
 
 .helmets {
-
+	top: 50px;
+	left: 105px;
 }
 
 .necklaces {
-
+	top: 100px;
+	left: 105px;
 }
 
 .armors {
-
+	top: 190px;
+	left: 105px;
 }
 
 .boots {
-
+	top: 420px;
+	left: 105px;
 }
 
 .gloves {
-
+	top: 180px;
+	left: 30px;
 }
 
 .rings {
-
+	top: 230px;
+	left: 160px;
 }
 
 .shields {
-
-}
-
-.potions {
-
-}
-
-.oils {
-	
+	top: 180px;
+	left: 200px;
 }

@@ -1,6 +1,7 @@
 .shop {
 	background-image: url(./img/backgrounds/shop_bg.png);
 	background-size: 100% 100%;
+
 }
 
 .blacksmith {
@@ -8,9 +9,19 @@
 	background-size: cover;
 }
 
-.shop, .blacksmith {
+.inn {
+	background-image: url(./img/backgrounds/inn_bg.jpg);
+	background-size: 100% 100%;	
+}
+
+.inn-box {
+	width: 400px;
+}
+
+.shop, .blacksmith, .inn {
 	background-repeat: no-repeat;
 	background-position: center;	
 	width: 100%;
 	height: 400px;
 }
+

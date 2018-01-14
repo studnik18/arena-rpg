@@ -23,12 +23,28 @@
 		font-size: 15px;
 		height: 32px;
 		width: 40px;
+		border: none;
 
 		&.enabled {
 			background-color: #afd9ae;
 		}
 		&.disabled {
 			background-color: #db3039;
+		}
+	}
+
+	.equip-btn {
+		font-weight: 700;
+		font-size: 15px;
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		width: 90px;
+		justify-content: space-around;
+		.equip-icon {
+			
+			width: 35px;
+			height: 35px;
 		}
 	}
 

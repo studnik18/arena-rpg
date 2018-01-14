@@ -19,6 +19,47 @@
 	}
 }
 
+.hero-right-panel .hero-pic {
+	width: 100%;
+	height: 185px;
+
+}
+
+.hero-pic {
+	background-image: url('./img/hero.jpg');
+	background-size: contain;
+}
+
+.hero-arena {
+	width: 250px;
+	padding: 10px;
+	.header {
+		font-size: 20px;
+	}
+	.panel-bar {
+		width: 220px;
+	}
+	.hero-pic {
+		width: 220px;
+		height: 275px;
+	}
+}
+
+.hero-inn {
+	width: 290px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+
+	.hero-pic {
+		width: 240px;
+		height: 300px;
+	}
+	.panel-bar {
+		width: 240px;
+	}
+}
+
 .attr-pts {
 	text-align: center;
 	padding: 5px;

@@ -7,6 +7,7 @@ import HeroBattleScreen from './HeroBattleScreen.jsx';
 import OpponentList from './OpponentList.jsx';
 import Console from './Console.jsx';
 import OpponentScreen from './OpponentScreen.jsx';
+import HeroPortrait from './HeroPortrait.jsx';
 
 // Data
 import { opponentList } from '../data/opponentList.js';
@@ -27,25 +28,31 @@ class Arena extends React.Component {
 		return (
 
 
-			<GameBox>
-				<HeroBattleScreen />
+			<div className="full-width">
+				
 				
 				{
 					opponent === 'none' 
 
 					?
 
-					<OpponentList handleClick={this.handleClick} list={opponentList}/>
+					<GameBox>
+						<HeroPortrait gamelocation="arena"/>
+						<OpponentList handleClick={this.handleClick} list={opponentList}/>
+					</GameBox>
 
 					:
 
-					<div>
-						<Console />
-						<OpponentScreen opponent={opponent} />
-					</div>
+					<GameBox>
+						<HeroBattleScreen />
+						<div>
+							<Console />
+							<OpponentScreen opponent={opponent} />
+						</div>
+					</GameBox>
 				}
 
-			</GameBox>	
+			</div>
 
 		)
 

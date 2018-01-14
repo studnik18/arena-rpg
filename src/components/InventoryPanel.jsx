@@ -63,6 +63,7 @@ class InventoryPanel extends React.Component {
 									onClick={ () => this.handleClick(el) }			
 								>
 									Equip
+									<div className="equip-icon" />
 								</button>
 
 							</div>
