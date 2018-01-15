@@ -1,19 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { buyItem } from '../actions';
+import { buyItem, innBuy } from '../actions';
 import { PanelElement } from './PanelElement';
 
 class BuyPanel extends React.Component {
+	
 	handleClick = (el) => {
-/*		gamelocation === 'inn' 
+		
+		this.props.gamelocation === 'inn'
+
 		?
-		this.props.restoreHP(hp)
-		:*/
+
+		this.props.innBuy(el)
+
+		:
+
 		this.props.buyItem(el)
 	}
 
 	render() {
-		const { items, gamelocation, buyItem, gold } = this.props;
+		const { items, gamelocation, buyItem, innBuy, gold } = this.props;
 		return (
 
 			<div className="panel buy-panel" gamelocation={gamelocation}>
@@ -40,5 +46,5 @@ const mapStateToProps = (state) => ({
 	
 
 export default connect(mapStateToProps, {
-	buyItem
+	buyItem, innBuy
 })(BuyPanel);

@@ -49,7 +49,7 @@
 		category: 'potions',
 		name: 'Freeze blast',
 		buyValue: 300,
-		sellValue: 250,
+		sellValue: 150,
 		damage: 100,
 		effect: 'freeze',
 		useLocation: 'battle'

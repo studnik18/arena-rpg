@@ -6,7 +6,9 @@ export const jewellery = [
 		name: 'Necklace of accuracy',
 		buyValue: 150,
 		sellValue: 75,
-		skillIncrease: 'hitChance'
+		skillIncrease: {
+			hitChance: 0.05
+		}
 
 	}, 
 
@@ -16,7 +18,9 @@ export const jewellery = [
 		name: 'Necklace of strength',
 		buyValue: 400,
 		sellValue: 200,
-		skillIncrease: 'strength'
+		skillIncrease:{
+			strength: 10
+		}
 	}, 
 
 	{
@@ -25,7 +29,9 @@ export const jewellery = [
 		name: 'Necklace of defense',
 		buyValue: 400,
 		sellValue: 200,
-		skillIncrease: 'defense'
+		skillIncrease:{
+			defense: 10
+		}
 	}, 	
 
 	{
@@ -34,7 +40,9 @@ export const jewellery = [
 		name: 'Necklace of agility',
 		buyValue: 400,
 		sellValue: 200,
-		skillIncrease: 'agility'
+		skillIncrease:{
+			agility: 10
+		}
 	}, 	
 
 	{
@@ -43,7 +51,9 @@ export const jewellery = [
 		name: 'Necklace of vitality',
 		buyValue: 400,
 		sellValue: 200,
-		skillIncrease: 'vitality'
+		skillIncrease:{
+			vitality: 10
+		}
 	}, 
 
 	{
@@ -52,7 +62,9 @@ export const jewellery = [
 		name: 'Necklace of champions',
 		buyValue: 2000,
 		sellValue: 1000,
-		skillIncrease: 'allAttributes'
+		skillIncrease:{
+			all: 10
+		}
 	}, 	
 
 	{
@@ -61,7 +73,9 @@ export const jewellery = [
 		name: 'Ring of dodge',
 		buyValue: 200,
 		sellValue: 100,
-		skillIncrease: 'blockChance'
+		skillIncrease:{
+			blockChance: 0.05
+		}
 	},
 
 	{
@@ -93,7 +107,9 @@ export const jewellery = [
 		name: 'Ring of protection',
 		buyValue: 600,
 		sellValue: 300,
-		armor: 5
+		skillIncrease:{
+			armor: 5
+		}
 	}, 	
 
 	{
@@ -102,7 +118,9 @@ export const jewellery = [
 		name: 'Lesser ring of life drain',
 		buyValue: 300,
 		sellValue: 150,
-		lifeDrain: 0.05
+		skillIncrease:{
+			lifeDrain: 0.05
+		}		
 	},
 
 	{
@@ -111,7 +129,9 @@ export const jewellery = [
 		name: 'Greater ring of life drain',
 		buyValue: 700,
 		sellValue: 350,
-		lifeDrain: 0.1
+		skillIncrease:{
+			lifeDrain: 0.1
+		}
 		
 	}
 

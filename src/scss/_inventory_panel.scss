@@ -24,13 +24,45 @@
 
 .potion-bag {
 	position: absolute;
-	width: 90px;
+	width: 95px;
 	height: 350px;
 	border: 1px black solid;
 	top: 130px;
 	left: 260px;
-	overflow-y: scroll;
-	overflow-x: hidden;
+
+	.bag-img {
+		background-image: url('./img/icons/potion-bag.png');
+		background-size: contain;
+		width: 93px;
+		height: 93px;
+	}
+
+	.scroll-container {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		width: 100%;
+		height: 250px;
+		margin-top: 5px;
+	}
+
+	.potion-container {
+		margin-bottom: 5px;
+		border: 1px solid black;
+	}
+
+	.use-btn {
+		height: 100%;
+		font-weight: 700;
+		font-size: 14px;
+		border: none;
+
+		&.enabled {
+			background-color: #afd9ae;
+		}
+		&.disabled {
+			background-color: #db3039;
+		}
+	}
 
 	.potion  {
 		width: 45px;
@@ -38,6 +70,8 @@
 		background-size: contain;	
 	}
 }
+
+
 
 .equip-icon {
 	

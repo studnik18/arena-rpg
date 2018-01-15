@@ -16,11 +16,13 @@ const initialState = {
 	baseHitChance: 0.5,
 	blockChance: 0.1,
 	damage: [2, 4],
-	hitChance: 0.55
+	hitChance: 0.55,
+	lifeDrain: 0
 
 }
 
 export const handlePlayerStats = (state = initialState, action) => {
+
 	switch(action.type) {
 
 		case 'EQUIP_ITEM':
@@ -44,12 +46,15 @@ export const handlePlayerStats = (state = initialState, action) => {
 						baseDamage: action.item.dmgRange,
 						baseHitChance: action.item.hitChance
 					}
+
 				case 'shields':
 
 					return {
 						...state,
 						baseBlockChance: state.baseBlockChance + action.item.blockChanceBonus
 					}
+
+
 
 				default: 
 					return state;
@@ -79,11 +84,15 @@ export const handlePlayerStats = (state = initialState, action) => {
 						baseDamage: [2,4],
 						baseHitChance: state.baseHitChance - action.item.hitChance + 0.5
 					}
+
 				case 'shields':
 					return {
 						...state,
 						baseBlockChance: state.baseBlockChance - action.item.blockChanceBonus
 					}
+
+
+					
 				default: 
 					return state;
 			}
@@ -106,6 +115,13 @@ export const handlePlayerStats = (state = initialState, action) => {
 				blockChance: state.baseBlockChance * (1 + (state.attributes.defense * 0.005)),
 				hitChance: state.baseHitChance * (1 + (state.attributes.agility * 0.005)),
 				damage: [state.baseDamage[0] * (1 + state.attributes.strength * 0.01), state.baseDamage[1] * (1 + state.attributes.strength * 0.01)]
+			}
+
+		case 'NEW_LEVEL':
+
+			return {
+				...state,
+				attributePoints: state.attributePoints + 20
 			}
 
 		default: 

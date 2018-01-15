@@ -7,11 +7,12 @@ export const handleHP = ( state = initialState, action) => {
 
 	switch(action.type) {
 
+		case 'INN_BUY':
 		case 'HEAL':
 
 			return {
 				...state,
-				currentHP: state.currentHP + action.hp <= state.maxHP ? state.currentHP + action.hp : state.maxHP
+				currentHP: state.currentHP + action.item.restore <= state.maxHP ? state.currentHP + action.item.restore : state.maxHP
 			}
 
 		case 'SUFFER_DAMAGE':

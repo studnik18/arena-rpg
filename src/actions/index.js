@@ -40,10 +40,17 @@ export const earnExp = (exp) => ({
 
 })
 
-export const restoreHP = (hp) => ({
+export const earnGold = (gold) => ({
+
+	type: 'EARN_GOLD',
+	gold
+
+})
+
+export const restoreHP = (item) => ({
 
 	type: 'HEAL',
-	hp
+	item
 
 })
 
@@ -72,6 +79,20 @@ export const sufferDamage = (damage) => ({
 
 	type: 'SUFFER_DAMAGE',
 	damage
+
+})
+
+export const innBuy = (item) => ({
+	
+	type: 'INN_BUY',
+	item
+
+})
+
+export const addEffect = (item) => ({
+
+	type: 'ADD_EFFECT',
+	item
 
 })
 

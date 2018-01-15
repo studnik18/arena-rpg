@@ -6,6 +6,7 @@ import { handlePlayerStats } from './handlePlayerStats.js';
 import { handleExp } from './handleExp.js';
 import { handleHP } from './handleHP.js';
 import { handleOpponent } from './handleOpponent.js';
+import { handleTemporaryEffects } from './handleTemporaryEffects.js';
 
 export const rootReducer = combineReducers({
 	handleInventory,
@@ -14,7 +15,8 @@ export const rootReducer = combineReducers({
 	handlePlayerStats,
 	handleExp,
 	handleHP,
-	handleOpponent
+	handleOpponent,
+	handleTemporaryEffects
 });
 
 export default rootReducer;

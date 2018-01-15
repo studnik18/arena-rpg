@@ -37,6 +37,8 @@ export const handleEquip = ( state = initialState, action ) => {
 				})
 
 		case 'UNEQUIP_ITEM':
+		case 'HEAL':
+		case 'ADD_EFFECT':
 			
 			const unequippedItem = state.equipped.filter(
 				item => item.id === action.item.id 
