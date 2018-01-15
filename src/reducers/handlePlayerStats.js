@@ -175,7 +175,6 @@ export const handlePlayerStats = (state = initialState, action) => {
 					...state.attributes, [action.attribute]: state.attributes[action.attribute] + 1
 				},
 				attributePoints: state.attributePoints - 1
-
 			}
 
 		case 'CALCULATE_ATTRIBUTE_BONUS':
@@ -193,6 +192,26 @@ export const handlePlayerStats = (state = initialState, action) => {
 				...state,
 				attributePoints: state.attributePoints + 20
 			}
+
+		case 'ADD_EFFECT': 
+			const increasedStat = action.item.effect.statIncrease;
+			if (Object.keys(state.attributes).includes(increasedStat)) {
+				return {
+					...state,
+					attributes: {
+						...state.attributes, [increasedStat]: state.attributes[increasedStat] + 10
+					}				
+				}
+			}
+
+/*		case 'RESET_EFFECTS':
+			console.log(state)
+			const increasedStats = state.temporaryEffects.filter(effect =>
+				typeof effect.statIncrease !== 'undefined'
+			)
+			console.log(increasedStats)
+			console.log(state)
+			return state*/
 
 		default: 
 			return state

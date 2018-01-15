@@ -65,7 +65,6 @@ const mapStateToProps = (state) => ({
 	opponent: state.handleOpponent.opponent,
 	equipped: state.handleEquip.equipped
 
-
 })
 
 export default connect(mapStateToProps, {

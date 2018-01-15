@@ -2,12 +2,23 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
+import EffectList from './EffectList';
+
 
 
 class HeroPortrait extends React.Component {
 
 	render() {
-		const { maxHP, currentHP, gold, gamelocation } = this.props;
+		const { maxHP, currentHP, gold, gamelocation, temporaryEffects } = this.props;
+		
+		const increasedStats = temporaryEffects.filter(effect =>
+			typeof effect.statIncrease !== 'undefined'
+		)
+
+		const increasedDamage = temporaryEffects.filter(effect =>
+			typeof effect.dmgIncrease !== 'undefined'
+		)
+
 		return (
 
 			<div className={`hero-${gamelocation}`}>
@@ -31,6 +42,10 @@ class HeroPortrait extends React.Component {
 					<p>HP: {`${currentHP} / ${maxHP}`}</p>
 					<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />
 				</div>
+				{
+					gamelocation === "arena" && 
+					<EffectList increasedStats={increasedStats} increasedDamage={increasedDamage} temporaryEffects={temporaryEffects} />
+				}
 			</div>
 		)
 	}
@@ -40,7 +55,8 @@ class HeroPortrait extends React.Component {
 const mapStateToProps = (state) => ({
 	maxHP: state.handleHP.maxHP,
 	currentHP: state.handleHP.currentHP,
-	gold: state.handleGold.gold
+	gold: state.handleGold.gold,
+	temporaryEffects: state.handleTemporaryEffects.temporaryEffects
 
 })
 

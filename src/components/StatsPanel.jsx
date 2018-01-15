@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { incrementAttribute, calculateAttributeBonus } from '../actions';
+import EffectList from './EffectList'
 
 
 class StatsPanel extends React.Component {
@@ -9,11 +10,18 @@ class StatsPanel extends React.Component {
 		this.props.incrementAttribute(attr);
 		this.props.calculateAttributeBonus();
 	}
-
 		
 	render() {
 		const { attributes, armor, blockChance, damage, hitChance, lifeDrain, attributePoints, incrementAttribute, 
-				calculateAttributeBonus, exp, level, nextLevel, maxHP, currentHP } = this.props;
+				calculateAttributeBonus, exp, level, nextLevel, maxHP, currentHP, temporaryEffects } = this.props;
+
+		const increasedStats = temporaryEffects.filter(effect =>
+			typeof effect.statIncrease !== 'undefined'
+		)
+
+		const increasedDamage = temporaryEffects.filter(effect =>
+			typeof effect.dmgIncrease !== 'undefined'
+		)				
 
 		return (
 			<div className="flex-row">
@@ -70,7 +78,8 @@ class StatsPanel extends React.Component {
 						<p>HP: {`${currentHP} / ${maxHP}`}</p>
 						<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />
 					</div>
-
+					
+					<EffectList increasedStats={increasedStats} increasedDamage={increasedDamage} temporaryEffects={temporaryEffects} />
 				</div>
 			</div>
 		)
@@ -91,7 +100,8 @@ const mapStateToProps = (state) => ({
 	level: state.handleExp.level,
 	nextLevel: state.handleExp.nextLevel,
 	maxHP: state.handleHP.maxHP,
-	currentHP: state.handleHP.currentHP
+	currentHP: state.handleHP.currentHP,
+	temporaryEffects: state.handleTemporaryEffects.temporaryEffects
 })
 
 export default connect(mapStateToProps, {

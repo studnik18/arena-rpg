@@ -20,7 +20,8 @@ class EquipPanel extends React.Component {
 		if (typeof el.effect !== "undefined" && this.props.temporaryEffects.includes(el.effect) === false) {
 			this.props.addEffect(el)
 		}
-		
+
+		this.props.calculateAttributeBonus();	
 	}
 
 	render() {

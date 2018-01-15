@@ -24,7 +24,6 @@ export const handleTemporaryEffects = (state = initialState, action) => {
 		default:
 			return state
 
-
 	}
 }
 
