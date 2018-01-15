@@ -76,7 +76,11 @@ class EquipPanel extends React.Component {
 				{
 					battleGear.map((el, i) =>
 
-						<div key={i} className={`used-slot equipped-item ${el.category} id_${el.id}`} />
+						<div 
+							key={i}
+							className={`used-slot equipped-item ${el.category} id_${el.id}`}
+							onClick={() => this.handleClick(el)} 
+						/>
 
 					)
 				}

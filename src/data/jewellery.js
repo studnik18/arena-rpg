@@ -7,7 +7,7 @@ export const jewellery = [
 		buyValue: 150,
 		sellValue: 75,
 		skillIncrease: {
-			hitChance: 0.05
+			baseHitChance: 0.05
 		}
 
 	}, 
@@ -74,7 +74,7 @@ export const jewellery = [
 		buyValue: 200,
 		sellValue: 100,
 		skillIncrease:{
-			blockChance: 0.05
+			baseBlockChance: 0.05
 		}
 	},
 
@@ -86,7 +86,7 @@ export const jewellery = [
 		sellValue: 200,
 		damage: 100,
 		skillIncrease: {
-			damage: 0.05
+			baseDamage: 0.05
 		}
 	},
 
@@ -97,7 +97,7 @@ export const jewellery = [
 		buyValue: 800,
 		sellValue: 400,
 		skillIncrease: {
-			damage: 0.1
+			baseDamage: 0.1
 		}
 	},
 

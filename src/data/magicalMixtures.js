@@ -72,7 +72,7 @@
 		category: 'potions',
 		name: "Potion of defense",
 		buyValue: 500,
-		sellValue: 150,
+		sellValue: 250,
 		effect: {
 			statIncrease: 'defense'	
 		},
@@ -86,7 +86,7 @@
 		buyValue: 500,
 		sellValue: 250,
 		effect: {
-			statIncrease: 'agilty'	
+			statIncrease: 'agility'	
 		},
 		useLocation: 'exploration'
 	},

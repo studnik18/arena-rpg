@@ -21,6 +21,7 @@ const initialState = {
 
 }
 
+
 export const handlePlayerStats = (state = initialState, action) => {
 
 	switch(action.type) {
@@ -54,7 +55,42 @@ export const handlePlayerStats = (state = initialState, action) => {
 						baseBlockChance: state.baseBlockChance + action.item.blockChanceBonus
 					}
 
+				case 'rings':
+				case 'necklaces':
 
+
+					const skill = Object.keys(action.item.skillIncrease)[0];
+
+					if (skill === 'all') {
+						return {
+							...state,
+							attributes: {
+								strength: state.attributes.strength + action.item.skillIncrease[skill],
+								defense: state.attributes.defense + action.item.skillIncrease[skill],
+								agility: state.attributes.agility + action.item.skillIncrease[skill],
+								vitality: state.attributes.vitality + action.item.skillIncrease[skill]
+							}		
+						}
+					}
+
+					return Object.keys(state.attributes).includes(skill) 
+
+					?
+
+					{
+						...state,
+						attributes: {
+							...state.attributes,
+							[skill]: state.attributes[skill] + action.item.skillIncrease[skill]
+						}		
+					}
+
+					:
+
+					{
+						...state,
+						[skill]: state[skill] + action.item.skillIncrease[skill]
+					}					
 
 				default: 
 					return state;
@@ -91,7 +127,41 @@ export const handlePlayerStats = (state = initialState, action) => {
 						baseBlockChance: state.baseBlockChance - action.item.blockChanceBonus
 					}
 
+				case 'rings':
+				case 'necklaces':	
 
+					const skill = Object.keys(action.item.skillIncrease)[0]
+
+					if (skill === 'all') {
+						return {
+							...state,
+							attributes: {
+								strength: state.attributes.strength - action.item.skillIncrease[skill],
+								defense: state.attributes.defense - action.item.skillIncrease[skill],
+								agility: state.attributes.agility - action.item.skillIncrease[skill],
+								vitality: state.attributes.vitality - action.item.skillIncrease[skill]
+							}		
+						}
+					}
+
+					Object.keys(state.attributes).includes(skill) 
+
+					?
+
+					{
+						...state,
+						attributes: {
+							...state.attributes,
+							[skill]: state.attributes[skill] - action.item.skillIncrease[skill]
+						}		
+					}
+
+					:
+
+					{
+						...state,
+						[skill]: state[skill] - action.item.skillIncrease[skill]
+					}	
 					
 				default: 
 					return state;
