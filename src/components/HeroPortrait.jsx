@@ -11,13 +11,7 @@ class HeroPortrait extends React.Component {
 	render() {
 		const { maxHP, currentHP, gold, gamelocation, temporaryEffects } = this.props;
 		
-		const increasedStats = temporaryEffects.filter(effect =>
-			typeof effect.statIncrease !== 'undefined'
-		)
 
-		const increasedDamage = temporaryEffects.filter(effect =>
-			typeof effect.dmgIncrease !== 'undefined'
-		)
 
 		return (
 
@@ -44,7 +38,7 @@ class HeroPortrait extends React.Component {
 				</div>
 				{
 					gamelocation === "arena" && 
-					<EffectList increasedStats={increasedStats} increasedDamage={increasedDamage} temporaryEffects={temporaryEffects} />
+					<EffectList />
 				}
 			</div>
 		)

@@ -96,3 +96,10 @@ export const addEffect = (item) => ({
 
 })
 
+export const logMessage = (message) => ({
+
+	type: 'LOG_MESSAGE',
+	message
+
+})
+

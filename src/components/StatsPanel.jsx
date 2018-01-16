@@ -13,15 +13,7 @@ class StatsPanel extends React.Component {
 		
 	render() {
 		const { attributes, armor, blockChance, damage, hitChance, lifeDrain, attributePoints, incrementAttribute, 
-				calculateAttributeBonus, exp, level, nextLevel, maxHP, currentHP, temporaryEffects } = this.props;
-
-		const increasedStats = temporaryEffects.filter(effect =>
-			typeof effect.statIncrease !== 'undefined'
-		)
-
-		const increasedDamage = temporaryEffects.filter(effect =>
-			typeof effect.dmgIncrease !== 'undefined'
-		)				
+				calculateAttributeBonus, exp, level, nextLevel, maxHP, currentHP, temporaryEffects } = this.props;			
 
 		return (
 			<div className="flex-row">
@@ -79,7 +71,7 @@ class StatsPanel extends React.Component {
 						<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />
 					</div>
 					
-					<EffectList increasedStats={increasedStats} increasedDamage={increasedDamage} temporaryEffects={temporaryEffects} />
+					<EffectList />
 				</div>
 			</div>
 		)

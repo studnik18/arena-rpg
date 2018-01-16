@@ -7,6 +7,7 @@ import { handleExp } from './handleExp.js';
 import { handleHP } from './handleHP.js';
 import { handleOpponent } from './handleOpponent.js';
 import { handleTemporaryEffects } from './handleTemporaryEffects.js';
+import { logMessage } from './logMessage.js';
 
 export const rootReducer = combineReducers({
 	handleInventory,
@@ -16,7 +17,8 @@ export const rootReducer = combineReducers({
 	handleExp,
 	handleHP,
 	handleOpponent,
-	handleTemporaryEffects
+	handleTemporaryEffects,
+	logMessage
 });
 
 export default rootReducer;

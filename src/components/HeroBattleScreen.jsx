@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { restoreHP, dealDamage } from '../actions';
+import EffectList from './EffectList';
+import HeroPortrait from './HeroPortrait';
+import AttackButtons from './AttackButtons';
+
+import { restoreHP, dealDamage, getRandomInteger } from '../actions';
+
 
 class HeroBattleScreen extends React.Component {
-
+	
 	getRandomInteger = (min, max) => (
 		Math.floor(Math.random() * (max - min + 1)) + min
 	)
@@ -22,6 +27,9 @@ class HeroBattleScreen extends React.Component {
 		const inflictedDamage = this.getRandomInteger(...roundedDamage)
 
 		console.log(roundedDamage, inflictedDamage, hitChance)
+
+
+
 		if (Math.random() < hitChance && Math.random() > opponent.dodgeChance) {
 			dealDamage(inflictedDamage)
 		}
@@ -36,12 +44,17 @@ class HeroBattleScreen extends React.Component {
 
 		return (
 			<div class="hero-battle-screen">
-				<p>HeroBattleScreen  {currentHP} </p>
-				<p>{battlePotions.map(potion =>
-						potion.name
-					)}</p>
-				<button onClick={ () => this.attack() }>attack</button>
-				<button onClick={ () => this.attack(true) }>strong attack</button>
+				<HeroPortrait />
+				{battlePotions.map(potion =>
+						<div>
+							<p>potion.name</p>
+							<button onClick={ () => this.useItem() }>Use item</button>
+						</div>
+				)}
+{/*				<button onClick={ () => this.attack() }>attack</button>
+				<button onClick={ () => this.attack(true) }>strong attack</button>*/}
+
+				<AttackButtons />
 			</div>
 		)
 	}
