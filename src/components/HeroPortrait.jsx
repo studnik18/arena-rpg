@@ -28,10 +28,19 @@ class HeroPortrait extends React.Component {
 						<div className="coin-bg"></div>
 					</div>
 				}
-				<p className="player-name">Player</p>
+				{
+					gamelocation !== "battle" &&
+
+					<p className="player-name">Player</p>
+				}
 				<div className="hero-pic">
 
 				</div>
+				{
+					gamelocation === "battle" &&
+
+					<p className="player-name">Player</p>					
+				}
 				<div className="panel-bar health-bar">
 					<p>HP: {`${currentHP} / ${maxHP}`}</p>
 					<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />

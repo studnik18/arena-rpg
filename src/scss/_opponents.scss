@@ -1,3 +1,6 @@
+
+// Arena - List
+
 .opponents-container {
 	height: 100%;
 	width: 75%;
@@ -67,6 +70,66 @@
 		margin-right: 5px;
 	}
 }
+
+// Arena - Battle
+
+.vertical-layout {
+	@extend %flex-row;
+	width: 600px;
+
+	.console {
+		
+
+		width: 50%;
+		height: 100%;
+	}
+
+	.opponent-battle-screen {
+		width: 50%;
+		height: 100%;
+
+		
+		.opponent-battle-image {
+			width: 100%;
+			height: 60%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.panel-bar {
+			margin: 0 auto;
+			width: 200px;
+		}
+	}
+}
+
+.effect-box {
+	padding: 10px;
+}
+
+.battle-effect {
+	background-size: contain;
+	width: 40px;
+	height: 40px;
+	margin-right: 15px;
+}
+
+.effect-Poison {
+	background-image: url(./img/icons/skull-crossed-bones.png);
+}
+
+.effect-Ice {
+	background-image: url(./img/icons/frozen-orb.png);
+}
+
+.effect-Fire {
+	background-image: url(./img/icons/burning-skull.png);
+}
+
+
+
+
+// Arena - Backgrounds
 
 .rusalka {
 	background-image: url(./img/opponents/rusalka.jpg);

@@ -66,10 +66,11 @@ class AttackButtons extends React.Component {
 				dealDamage(inflictedDamage)
 
 				if (!opponent.poisoned && temporaryEffects.includes('poison')) {
-					logMessage(['player', 'Opponent has been poisoned.'])
+					logMessage(['player', "Opponent has been poisoned. Poisoned enemies receive 15% of Hero's base damage each turn."])
 					addOpponentEffect({
 						name: 'Poison',
-						dmgPerTurn: Math.round(0.15 * inflictedDamage)
+						dmgPerTurn: Math.round(0.15 * inflictedDamage),
+						duration: 20,
 					})
 				}  
 			} 

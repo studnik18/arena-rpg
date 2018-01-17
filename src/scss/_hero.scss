@@ -25,6 +25,14 @@
 
 }
 
+.hero-battle-screen {
+	width: 230px;
+	.hero-pic {
+	width: 200px;
+	height: 250px;
+	}
+}
+
 .hero-pic {
 	background-image: url('./img/hero.jpg');
 	background-size: contain;
@@ -140,11 +148,14 @@
 	}
 }
 
-.player-name {
+.player-name, .opponent-name {
 	font-size: 20px;
 	font-weight: 700;
 }
 
+.hero-battle-screen, .opponent-battle-screen {
+	margin: 0 20px;
+}
 
 
 
@@ -188,8 +199,5 @@
 	background-image: url('./img/icons/attributes/xp.png');
 }
 
-// Battle
 
-.hero-battle-screen {
-	width: 35%;
-}
+

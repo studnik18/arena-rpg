@@ -42,6 +42,7 @@ export const handleInventory = ( state = initialState, action ) => {
 
 		case 'SELL_ITEM':
 		case 'EQUIP_ITEM':
+		case 'REMOVE_ITEM':
 
 
 			const removedItem = state.inventory.filter(

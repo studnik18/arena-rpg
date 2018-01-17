@@ -15,6 +15,11 @@
 @import './scss/hero';
 @import './scss/inventory_panel';
 
+@mixin flex($flow) {
+  display: flex;
+  flex-flow: $flow;
+}
+
 @font-face {
   font-family: 'CaslonAntique';
   src: url('./fonts/CaslonAntique.ttf');
@@ -59,14 +64,22 @@ a {
 	height: 100px;
 }
 
-.flex-column {
+%flex-column {
   display: flex;
   flex-flow: column;
 }
 
-.flex-row {
+%flex-row {
   display: flex;
   flex-flow: row;
+}
+
+.flex-column {
+  @extend %flex-column
+}
+
+.flex-row {
+  @extend %flex-row
 }
 
 .coin-bg {
@@ -88,4 +101,16 @@ a {
 .inventory-panel {
   overflow-x: hidden;
   width: 175px;
+}
+
+.console {
+  overflow-y: scroll;
+}
+
+.center {
+  align-self: center;
+}
+
+.text-center {
+  text-align: center;
 }

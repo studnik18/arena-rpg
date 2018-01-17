@@ -110,3 +110,9 @@ export const addOpponentEffect = (effect) => ({
 
 })
 
+export const removeItem = (item) => ({
+
+	type: 'REMOVE_ITEM',
+	item
+	
+})

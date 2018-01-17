@@ -25,6 +25,7 @@ class Arena extends React.Component {
 
 	render() {
 		const { opponent, equipped, logs } = this.props;
+
 		
 		return (
 
@@ -44,7 +45,7 @@ class Arena extends React.Component {
 
 
 					[	<HeroBattleScreen />,
-						<div>
+						<div className="vertical-layout">
 							<Console logs={logs} />
 							<OpponentScreen opponent={opponent} />
 						</div> ]

@@ -56,7 +56,7 @@ class EquipPanel extends React.Component {
 										<button 
 											className={`use-btn ${(el.useLocation === "both" || el.useLocation === "exploration") && temporaryEffects.includes(el.effect) === false ? "enabled" : "disabled"}`}
 
-											onClick={() => this.useItem(el)}
+											onClick={ el.useLocation === "both" || el.useLocation === "exploration" ? () => this.useItem(el) : () => ''}
 										>
 											Use<br/>({el.quantity})
 										</button>

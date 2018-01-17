@@ -11,7 +11,7 @@ import { restoreHP, dealDamage } from '../actions';
 const HeroBattleScreen = () => (
 	
 	<div class="hero-battle-screen">
-		<HeroPortrait />
+		<HeroPortrait gamelocation="battle"/>
 
 		<AttackButtons />
 

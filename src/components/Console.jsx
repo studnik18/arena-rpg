@@ -2,7 +2,7 @@ import React from 'react';
 
 const Console = ({ logs }) => (
 	
-	<div>
+	<div className="console">
 
 		{
 			logs.map((log, i) => 

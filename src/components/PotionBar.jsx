@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { restoreHP, dealDamage, logMessage, addOpponentEffect, unequipItem } from '../actions';
+import { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem } from '../actions';
 
 
 class PotionBar extends React.Component {
 	
 	useItem = (potion) => {
 
-		const { restoreHP, dealDamage, logMessage, addOpponentEffect, unequipItem } = this.props
+		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem } = this.props
 
 		if (typeof potion.restore !== 'undefined') {
 			
@@ -23,12 +23,15 @@ class PotionBar extends React.Component {
 		}
 
 		if (typeof potion.effect !== 'undefined') {
-			if (Math.random > potion.effect.chance) {
-				let message = potion.effect.name === 'Fire' ? 'You have set the opponent in flames!' : 'You have frozen your enemy!'		
+			console.log(potion.effect.chance, Math.random() < potion.effect.chance)
+			if (Math.random() < potion.effect.chance) {
+				let message = potion.effect.name === 'Fire' 
+					? 'You have set the opponent in flames! It will suffer 20 damage per turn.' 
+					: 'You have frozen your enemy! Frozen enemies receive 5 damage each turn, have 30% less chance to dodge an attack and Hero has +15% to hit chance.'		
 				logMessage(['player', message])
 				addOpponentEffect(potion.effect)
 			}
-			unequipItem(potion)
+			removeItem(potion)
 		}
 
 	}
@@ -66,5 +69,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps,{
-	restoreHP, dealDamage, logMessage, addOpponentEffect, unequipItem
+	restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem
 })(PotionBar);
