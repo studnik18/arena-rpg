@@ -53,14 +53,14 @@ export const innItems = [
 		id: 61,
 		name: 'Nap on sofa',
 		buyValue: 25,
-		restore: '80%'
+		restore: 0.8
 	},
 
 	{
 		id: 62,
 		name: 'Relaxing night in bed',
 		buyValue: 50,
-		restore: '100%'
+		restore: 1
 	},
 
 ];

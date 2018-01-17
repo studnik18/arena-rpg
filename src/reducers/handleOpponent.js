@@ -19,6 +19,15 @@ export const handleOpponent = ( state = initialState, action ) => {
 					...state.opponent, 
 					currentHP: state.opponent.currentHP - action.damage
 				}
+			}
+
+		case 'ADD_OPPONENT_EFFECT':
+			return {
+				...state,
+				opponent: { 
+					...state.opponent, 
+					[action.effect]: true
+				}				
 			}			
 
 		default:

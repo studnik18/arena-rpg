@@ -21,6 +21,12 @@ class EffectList extends React.Component {
 			<div>
 				<p>Current temporary effects:</p>
 				<div className="effects-container">
+					
+					{
+						temporaryEffects.length === 0 &&
+						<p>None</p>
+					}	
+
 					<div className="effects-column">
 						{
 							increasedStats.length > 0 &&

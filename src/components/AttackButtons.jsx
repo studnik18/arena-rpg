@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { dealDamage, logMessage } from '../actions';
+import { dealDamage, logMessage, addOpponentEffect } from '../actions';
 
 class AttackButtons extends React.Component {
 
@@ -10,7 +10,7 @@ class AttackButtons extends React.Component {
 	)
 
 	attack = (isStrong = false) => {
-		const { opponent, temporaryEffects, dealDamage, logMessage } = this.props;
+		const { opponent, temporaryEffects, dealDamage, logMessage, addOpponentEffect } = this.props;
 		let { hitChance, damage } = this.props;
 
 		let minDamage = damage[0];
@@ -36,26 +36,34 @@ class AttackButtons extends React.Component {
 		maxDamage = Math.round(maxDamage)
 		const inflictedDamage = this.getRandomInteger(minDamage, maxDamage)
 
-		console.log(inflictedDamage, hitChance)
-
 		let playerHit = Math.random()
 		let message = `Player performs ${isStrong ? 'a strong attack' : 'an attack'}`
-		console.log(message);
 
 		if (playerHit > hitChance) {
 			message += ' and misses.'
-			logMessage(message)
+			logMessage(['player', message])
 		} 
 
 		if (playerHit < hitChance) {
 			if (Math.random() < opponent.dodgeChance) {
 				message += ', but the opponent successfuly dodges.'
-				logMessage(message)
+				logMessage(['player', message])
 			} else {
 				message += ` and deals ${inflictedDamage} damage!`
-				logMessage(message)
-				dealDamage(inflictedDamage)  
+				logMessage(['player', message])
+				dealDamage(inflictedDamage)
+
+				if (!opponent.poisoned && temporaryEffects.includes('poison')) {
+					logMessage(['player', 'Opponent has been poisoned.'])
+					addOpponentEffect('poisoned')
+				}  
 			} 
+		}
+
+		if (opponent.poisoned) {
+			let poisonDmg = Math.round(0.15 * inflictedDamage)
+			logMessage(['player', `Poison inflicts ${poisonDmg} damage.`])
+			dealDamage(poisonDmg)
 		}
 	}
 
@@ -86,5 +94,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps,{
-	dealDamage, logMessage
+	dealDamage, logMessage, addOpponentEffect
 })(AttackButtons);

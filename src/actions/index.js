@@ -103,3 +103,10 @@ export const logMessage = (message) => ({
 
 })
 
+export const addOpponentEffect = (effect) => ({
+
+	type: 'ADD_OPPONENT_EFFECT',
+	effect
+
+})
+

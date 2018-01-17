@@ -1,5 +1,5 @@
 const initialState = {
-	lastMessage: ''
+	logs: []
 }
 
 export const logMessage = (state = initialState, action) => {
@@ -9,7 +9,10 @@ export const logMessage = (state = initialState, action) => {
 		case 'LOG_MESSAGE':
 			return {
 				...state,
-				lastMessage: action.message
+				logs: [
+					...state.logs,
+					action.message
+				]
 			}
 
 		default:

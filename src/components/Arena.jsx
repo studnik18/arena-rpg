@@ -22,37 +22,37 @@ class Arena extends React.Component {
 		this.props.chooseOpponent(opponent);
 	}
 
-	render() {
-		const { opponent, equipped } = this.props;
 
+	render() {
+		const { opponent, equipped, logs } = this.props;
+		
 		return (
 
-
-			<div className="full-width">
-				
-				
+			<GameBox>
+						
 				{
 					opponent === 'none' 
 
 					?
 
-					<GameBox>
-						<HeroPortrait gamelocation="arena"/>
-						<OpponentList handleClick={this.handleClick} list={opponentList}/>
-					</GameBox>
+
+					[   <HeroPortrait gamelocation="arena"/>,
+						<OpponentList handleClick={this.handleClick} list={opponentList}/> ]
+
 
 					:
 
-					<GameBox>
-						<HeroBattleScreen />
+
+					[	<HeroBattleScreen />,
 						<div>
-							<Console />
+							<Console logs={logs} />
 							<OpponentScreen opponent={opponent} />
-						</div>
-					</GameBox>
+						</div> ]
+
 				}
 
-			</div>
+			</GameBox>	
+
 
 		)
 
@@ -63,7 +63,8 @@ class Arena extends React.Component {
 const mapStateToProps = (state) => ({
 
 	opponent: state.handleOpponent.opponent,
-	equipped: state.handleEquip.equipped
+	equipped: state.handleEquip.equipped,
+	logs: state.logMessage.logs
 
 })
 

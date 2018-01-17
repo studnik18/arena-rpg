@@ -10,10 +10,21 @@ export const handleHP = ( state = initialState, action) => {
 		case 'INN_BUY':
 		case 'HEAL':
 
-			return {
-				...state,
-				currentHP: state.currentHP + action.item.restore <= state.maxHP ? state.currentHP + action.item.restore : state.maxHP
-			}
+			return action.item.restore <= 1 
+
+				?
+
+				{
+					...state,
+					currentHP: Math.ceil(state.maxHP * action.item.restore)
+				}				
+
+				:
+
+				{
+					...state,
+					currentHP: state.currentHP + action.item.restore <= state.maxHP ? state.currentHP + action.item.restore : state.maxHP
+				}
 
 		case 'SUFFER_DAMAGE':
 			
