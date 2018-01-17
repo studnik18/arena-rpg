@@ -23,10 +23,11 @@ class PotionBar extends React.Component {
 		}
 
 		if (typeof potion.effect !== 'undefined') {
-			
-			let message = potion.effect === 'burn' ? 'You have set the opponent in flames!' : 'You have frozen your enemy!'		
-			logMessage(['player', message])
-			addOpponentEffect(potion.effect)
+			if (Math.random > potion.effect.chance) {
+				let message = potion.effect.name === 'Fire' ? 'You have set the opponent in flames!' : 'You have frozen your enemy!'		
+				logMessage(['player', message])
+				addOpponentEffect(potion.effect)
+			}
 			unequipItem(potion)
 		}
 

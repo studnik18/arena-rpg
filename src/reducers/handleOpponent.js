@@ -9,7 +9,10 @@ export const handleOpponent = ( state = initialState, action ) => {
 		case 'CHOOSE_OPPONENT':
 			return {
 				...state,
-				opponent: action.opponent
+				opponent: {
+					...action.opponent, 
+					effects: []
+				}
 			}
 
 		case 'DEAL_DAMAGE':
@@ -26,7 +29,10 @@ export const handleOpponent = ( state = initialState, action ) => {
 				...state,
 				opponent: { 
 					...state.opponent, 
-					[action.effect]: true
+					effects: [
+						...state.opponent.effects,
+						action.effect
+					]
 				}				
 			}			
 

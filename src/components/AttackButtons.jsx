@@ -32,6 +32,18 @@ class AttackButtons extends React.Component {
 			maxDamage *= 1.5
 		}
 
+		let opponentDodgeChance = opponent.dodgeChance
+
+		if (opponent.effects.name === 'Ice') {
+			hitChance *= 1.15
+			opponentDodgeChance *= 0.7
+		}
+
+		if (typeof opponent.armor !== 'undefined') {
+			minDamage *= (1 - opponent.armor / 100)
+			maxDamage *= (1 - opponent.armor / 100)
+		}
+
 		minDamage = Math.round(minDamage)
 		maxDamage = Math.round(maxDamage)
 		const inflictedDamage = this.getRandomInteger(minDamage, maxDamage)
@@ -45,7 +57,7 @@ class AttackButtons extends React.Component {
 		} 
 
 		if (playerHit < hitChance) {
-			if (Math.random() < opponent.dodgeChance) {
+			if (Math.random() < opponentDodgeChance) {
 				message += ', but the opponent successfuly dodges.'
 				logMessage(['player', message])
 			} else {
@@ -55,15 +67,12 @@ class AttackButtons extends React.Component {
 
 				if (!opponent.poisoned && temporaryEffects.includes('poison')) {
 					logMessage(['player', 'Opponent has been poisoned.'])
-					addOpponentEffect('poisoned')
+					addOpponentEffect({
+						name: 'Poison',
+						dmgPerTurn: Math.round(0.15 * inflictedDamage)
+					})
 				}  
 			} 
-		}
-
-		if (opponent.poisoned) {
-			let poisonDmg = Math.round(0.15 * inflictedDamage)
-			logMessage(['player', `Poison inflicts ${poisonDmg} damage.`])
-			dealDamage(poisonDmg)
 		}
 	}
 

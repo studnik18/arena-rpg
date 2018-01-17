@@ -40,7 +40,12 @@
 		buyValue: 300,
 		sellValue: 150,
 		damage: 200,
-		effect: 'burn',
+		effect: {
+			name: 'Fire',
+			chance: 0.5,
+			dmgPerTurn: 20,
+			duration: 3
+		},
 		useLocation: 'battle'
 	}, 	
 
@@ -51,7 +56,12 @@
 		buyValue: 300,
 		sellValue: 150,
 		damage: 100,
-		effect: 'freeze',
+		effect: {
+			name: 'Ice',
+			chance: 1,
+			dmgPerTurn: 5,
+			duration: 4
+		},
 		useLocation: 'battle'
 	}, 
 
