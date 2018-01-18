@@ -15,6 +15,12 @@ export const logMessage = (state = initialState, action) => {
 				]
 			}
 
+		case 'END_BATTLE':
+			return {
+				...state,
+				logs: []
+			}
+
 		default:
 			return state
 	}

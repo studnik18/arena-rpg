@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { dealDamage, logMessage, addOpponentEffect } from '../actions';
+import { dealDamage, logMessage, addOpponentEffect, drainLife } from '../actions';
 
 class AttackButtons extends React.Component {
 
@@ -10,7 +10,7 @@ class AttackButtons extends React.Component {
 	)
 
 	attack = (isStrong = false) => {
-		const { opponent, temporaryEffects, dealDamage, logMessage, addOpponentEffect } = this.props;
+		const { opponent, temporaryEffects, dealDamage, lifeDrain, logMessage, addOpponentEffect, drainLife, opponentsTurn } = this.props;
 		let { hitChance, damage } = this.props;
 
 		let minDamage = damage[0];
@@ -34,8 +34,7 @@ class AttackButtons extends React.Component {
 
 		let opponentDodgeChance = opponent.dodgeChance
 
-		if (opponent.effects.name === 'Ice') {
-			hitChance *= 1.15
+		if (opponent.effects.filter(effect => effect.name === 'Ice').length > 0) {
 			opponentDodgeChance *= 0.7
 		}
 
@@ -65,7 +64,16 @@ class AttackButtons extends React.Component {
 				logMessage(['player', message])
 				dealDamage(inflictedDamage)
 
-				if (!opponent.poisoned && temporaryEffects.includes('poison')) {
+				if (lifeDrain > 0) {
+					let drainedValue = Math.round(lifeDrain * inflictedDamage);
+					logMessage(['player', `You drain ${drainedValue} life from Your opponent.`])
+					drainLife({
+						character: 'player',
+						value: drainedValue
+					})
+				}
+
+				if (opponent.effects.filter(effect => effect.name === 'Poison').length === 0 && temporaryEffects.includes('poison')) {
 					logMessage(['player', "Opponent has been poisoned. Poisoned enemies receive 15% of Hero's base damage each turn."])
 					addOpponentEffect({
 						name: 'Poison',
@@ -75,10 +83,11 @@ class AttackButtons extends React.Component {
 				}  
 			} 
 		}
+
+		opponentsTurn(opponent.currentHP / opponent.maxHP < 0.2 ? true : false, opponent)
 	}
 
 	render() {
-		const { equipped, maxHP, currentHP, blockChance, hitChance, damage, opponent, temporaryEffects } = this.props
 
 		return (
 			<div>
@@ -98,11 +107,12 @@ const mapStateToProps = (state) => ({
 	blockChance: state.handlePlayerStats.blockChance,
 	hitChance: state.handlePlayerStats.hitChance,
 	damage: state.handlePlayerStats.damage,
+	lifeDrain: state.handlePlayerStats.lifeDrain,	
 	opponent: state.handleOpponent.opponent,
-	temporaryEffects: state.handleTemporaryEffects.temporaryEffects
+	temporaryEffects: state.handleTemporaryEffects.temporaryEffects,
 
 })
 
 export default connect(mapStateToProps,{
-	dealDamage, logMessage, addOpponentEffect
+	dealDamage, logMessage, addOpponentEffect, drainLife
 })(AttackButtons);

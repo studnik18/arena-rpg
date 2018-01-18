@@ -14,7 +14,7 @@ export const handleTemporaryEffects = (state = initialState, action) => {
 				temporaryEffects: [...state.temporaryEffects, action.item.effect]
 			}
 
-		case 'RESET_EFFECTS':
+		case 'END_BATTLE':
 
 			return {
 				...state,

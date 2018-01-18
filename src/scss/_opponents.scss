@@ -95,6 +95,16 @@
 			background-size: contain;
 			background-repeat: no-repeat;
 			background-position: center;
+
+			&.vilkolak, &.mamuna, &.poludnica, &.zmij {
+				background-size: cover;
+			}
+			&.vilkolak {
+				background-position: -170px;
+			}
+			&.zmij {
+				background-position: -60px;
+			}
 		}
 		.panel-bar {
 			margin: 0 auto;
@@ -125,9 +135,6 @@
 .effect-Fire {
 	background-image: url(./img/icons/burning-skull.png);
 }
-
-
-
 
 // Arena - Backgrounds
 
@@ -165,11 +172,9 @@
 
 .vilkolak {
 	background-image: url(./img/opponents/vilkolak.png);
-	right: -50px;
 }
 
 .zmij {
 	background-image: url(./img/opponents/zmij.jpg);
-	right: -20px;
 }
 

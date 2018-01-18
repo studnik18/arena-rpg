@@ -8,7 +8,7 @@ class PotionBar extends React.Component {
 	
 	useItem = (potion) => {
 
-		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem } = this.props
+		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, opponentsTurn, opponent } = this.props
 
 		if (typeof potion.restore !== 'undefined') {
 			
@@ -23,21 +23,23 @@ class PotionBar extends React.Component {
 		}
 
 		if (typeof potion.effect !== 'undefined') {
-			console.log(potion.effect.chance, Math.random() < potion.effect.chance)
-			if (Math.random() < potion.effect.chance) {
+
+			if (opponent.effects.filter(effect => effect.name === potion.effect.name).length === 0 && Math.random() < potion.effect.chance) {
 				let message = potion.effect.name === 'Fire' 
 					? 'You have set the opponent in flames! It will suffer 20 damage per turn.' 
-					: 'You have frozen your enemy! Frozen enemies receive 5 damage each turn, have 30% less chance to dodge an attack and Hero has +15% to hit chance.'		
+					: 'You have frozen your enemy! Frozen enemies receive 5 damage each turn, have 30% less chance to dodge an attack and -15% to hit accuracy.'		
 				logMessage(['player', message])
 				addOpponentEffect(potion.effect)
 			}
 			removeItem(potion)
 		}
 
+		opponentsTurn(opponent.currentHP / opponent.maxHP < 0.2 ? true : false, opponent)
+
 	}
 
 	render() {
-		const { equipped, maxHP, currentHP, blockChance, opponent } = this.props
+		const { equipped, maxHP, currentHP, blockChance, opponent, opponentsTurn } = this.props
 
 		const battlePotions = equipped.filter(item =>
 			item.category === 'potions' && (item.useLocation === 'battle' || item.useLocation === 'both')

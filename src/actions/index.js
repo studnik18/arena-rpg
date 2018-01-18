@@ -116,3 +116,24 @@ export const removeItem = (item) => ({
 	item
 	
 })
+
+export const drainLife = (payload) => ({
+
+	type: 'DRAIN_LIFE',
+	payload
+
+})
+
+export const effectCooldown = (effect) => ({
+
+	type: 'EFFECT_COOLDOWN',
+	effect
+
+})
+
+export const endBattle = (reward) => ({
+
+	type: 'END_BATTLE',
+	reward
+
+})

@@ -26,6 +26,21 @@ export const handleHP = ( state = initialState, action) => {
 					currentHP: state.currentHP + action.item.restore <= state.maxHP ? state.currentHP + action.item.restore : state.maxHP
 				}
 
+		case 'DRAIN_LIFE':
+
+			return action.payload.character === 'player'
+
+				?  
+
+				{
+					...state,
+					currentHP: state.currentHP + action.payload.value <= state.maxHP ? state.currentHP + action.payload.value : state.maxHP
+				}
+
+				:
+
+				state
+
 		case 'SUFFER_DAMAGE':
 			
 			return {
