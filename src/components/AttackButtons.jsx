@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { dealDamage, logMessage, addOpponentEffect, drainLife } from '../actions';
+import { dealDamage, logMessage, addOpponentEffect, drainLife, endBattle } from '../actions';
 
 class AttackButtons extends React.Component {
 
@@ -10,7 +10,7 @@ class AttackButtons extends React.Component {
 	)
 
 	attack = (isStrong = false) => {
-		const { opponent, temporaryEffects, dealDamage, lifeDrain, logMessage, addOpponentEffect, drainLife, opponentsTurn } = this.props;
+		const { opponent, temporaryEffects, dealDamage, lifeDrain, logMessage, addOpponentEffect, drainLife, opponentsTurn, endBattle } = this.props;
 		let { hitChance, damage } = this.props;
 
 		let minDamage = damage[0];
@@ -47,6 +47,7 @@ class AttackButtons extends React.Component {
 		maxDamage = Math.round(maxDamage)
 		const inflictedDamage = this.getRandomInteger(minDamage, maxDamage)
 
+
 		let playerHit = Math.random()
 		let message = `Player performs ${isStrong ? 'a strong attack' : 'an attack'}`
 
@@ -73,6 +74,12 @@ class AttackButtons extends React.Component {
 					})
 				}
 
+				if (opponent.currentHP - inflictedDamage <= 0) {
+
+					endBattle(opponent.reward)
+					
+				}
+
 				if (opponent.effects.filter(effect => effect.name === 'Poison').length === 0 && temporaryEffects.includes('poison')) {
 					logMessage(['player', "Opponent has been poisoned. Poisoned enemies receive 15% of Hero's base damage each turn."])
 					addOpponentEffect({
@@ -85,10 +92,11 @@ class AttackButtons extends React.Component {
 		}
 
 		opponentsTurn(opponent.currentHP / opponent.maxHP < 0.2 ? true : false, opponent)
+
 	}
 
 	render() {
-
+		
 		return (
 			<div>
 				<button onClick={ () => this.attack() }>attack</button>
@@ -114,5 +122,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps,{
-	dealDamage, logMessage, addOpponentEffect, drainLife
+	dealDamage, logMessage, addOpponentEffect, drainLife, endBattle
 })(AttackButtons);

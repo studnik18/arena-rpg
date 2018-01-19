@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem } from '../actions';
+import { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, endBattle } from '../actions';
 
 
 class PotionBar extends React.Component {
 	
 	useItem = (potion) => {
 
-		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, opponentsTurn, opponent } = this.props
+		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, opponentsTurn, opponent, endBattle } = this.props
 
 		if (typeof potion.restore !== 'undefined') {
 			
@@ -20,6 +20,13 @@ class PotionBar extends React.Component {
 
 			logMessage(['player', `${potion.name} deals ${potion.damage} damage.`])
 			dealDamage(potion.damage)
+
+			if (opponent.currentHP - potion.damage <= 0) {
+
+				endBattle(opponent.reward)
+				return
+					
+			}
 		}
 
 		if (typeof potion.effect !== 'undefined') {
@@ -71,5 +78,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps,{
-	restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem
+	restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, endBattle
 })(PotionBar);

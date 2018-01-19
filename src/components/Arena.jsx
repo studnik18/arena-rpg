@@ -43,7 +43,7 @@ class Arena extends React.Component {
 
 					:
 
-
+					
 					[	<HeroBattleScreen />,
 						<div className="vertical-layout">
 							<Console logs={logs} />
