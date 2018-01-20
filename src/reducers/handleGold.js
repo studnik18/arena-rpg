@@ -1,4 +1,4 @@
-const initialState = { gold: 500 };
+const initialState = { gold: 5000 };
 
 
 export const handleGold = ( state = initialState, action ) => {
@@ -15,9 +15,18 @@ export const handleGold = ( state = initialState, action ) => {
 
 			return { ...state, gold: state.gold + action.item.sellValue}
 
-		case 'EARN_GOLD':
+		case 'END_BATTLE':
 
-			return { ...state, gold: state.gold + action.gold}
+			return action.result === 'success'
+
+			?
+
+			{ 
+				...state, 
+				gold: state.gold + action.reward.gold
+			}
+
+			: ''
 
 		default:
 			return state;

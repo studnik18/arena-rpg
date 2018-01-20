@@ -33,20 +33,6 @@ export const incrementAttribute = (attribute) => ({
 
 })
 
-export const earnExp = (exp) => ({
-
-	type: 'EARN_EXP',
-	exp
-
-})
-
-export const earnGold = (gold) => ({
-
-	type: 'EARN_GOLD',
-	gold
-
-})
-
 export const restoreHP = (item) => ({
 
 	type: 'HEAL',
@@ -131,9 +117,10 @@ export const effectCooldown = (effect) => ({
 
 })
 
-export const endBattle = (reward) => ({
+export const endBattle = (reward, result) => ({
 
 	type: 'END_BATTLE',
-	reward
+	reward,
+	result
 
 })

@@ -76,7 +76,8 @@ class AttackButtons extends React.Component {
 
 				if (opponent.currentHP - inflictedDamage <= 0) {
 
-					endBattle(opponent.reward)
+					endBattle(opponent.reward, 'success')
+					return
 					
 				}
 
@@ -92,15 +93,20 @@ class AttackButtons extends React.Component {
 		}
 
 		opponentsTurn(opponent.currentHP / opponent.maxHP < 0.2 ? true : false, opponent)
-
 	}
 
 	render() {
 		
 		return (
-			<div>
-				<button onClick={ () => this.attack() }>attack</button>
-				<button onClick={ () => this.attack(true) }>strong attack</button>
+			<div className="flex-row space-around">
+				<button className="flex-row btn-attack" onClick={ () => this.attack() }>
+					<div className="btn-attack-img normal"/>
+					<p>Attack</p>
+				</button>
+				<button className="flex-row btn-attack" onClick={ () => this.attack(true) }>
+					<div className="btn-attack-img strong"/>
+					<p>Strong attack<br/>+50% damage<br/>-30% hit chance</p>
+				</button>
 			</div>
 		)
 

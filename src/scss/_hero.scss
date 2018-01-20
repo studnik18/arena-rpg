@@ -28,8 +28,8 @@
 .hero-battle-screen {
 	width: 230px;
 	.hero-pic {
-	width: 200px;
-	height: 250px;
+		width: 192px;
+		height: 240px;
 	}
 }
 
@@ -55,6 +55,17 @@
 		display: flex;
 		justify-content: space-between
 	}
+}
+
+.hero-battle {
+	@extend %flex-column;
+	margin-bottom: 10px;
+	align-items: center;
+
+	.panel-bar {
+		width: 192px;
+	}
+
 }
 
 .hero-inn {
@@ -157,7 +168,25 @@
 	margin: 0 20px;
 }
 
+.btn-attack {
+	height: 55px;
+	align-items: center;
 
+	.btn-attack-img {
+		width: 40px;
+		height: 40px;
+		background-size: contain;
+		margin-right: 5px;
+
+		&.normal {
+			background-image: url('./img/icons/saber-slash.png');
+		}
+
+		&.strong {
+			background-image: url('./img/icons/axe-swing.png');
+		}
+	}
+}
 
 .panel-hp {
 	background-image: url('./img/icons/attributes/hp.png');

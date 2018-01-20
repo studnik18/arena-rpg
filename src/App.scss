@@ -82,6 +82,10 @@ a {
   @extend %flex-row
 }
 
+.space-around {
+  justify-content: space-around;
+}
+
 .coin-bg {
   background-image: url('./img/icons/coin.png');
   background-size: contain;

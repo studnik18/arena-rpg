@@ -9,6 +9,7 @@ const initialState = {
 		agility: 10,
 		vitality: 10
 	},
+	boostedAttributes: [],
 	attributePoints: 20,
 	armor: 0,
 	baseBlockChance: 0.05,
@@ -200,18 +201,24 @@ export const handlePlayerStats = (state = initialState, action) => {
 					...state,
 					attributes: {
 						...state.attributes, [increasedStat]: state.attributes[increasedStat] + 10
-					}				
+					},
+					boostedAttributes: [
+						...state.boostedAttributes, increasedStat
+					]				
 				}
 			}
 
-/*		case 'RESET_EFFECTS':
-			console.log(state)
-			const increasedStats = state.temporaryEffects.filter(effect =>
-				typeof effect.statIncrease !== 'undefined'
-			)
-			console.log(increasedStats)
-			console.log(state)
-			return state*/
+		case 'END_BATTLE':
+			return {
+				...state,
+				attributes: {
+					strength: state.boostedAttributes.includes('strength') ? state.attributes.strength - 10 : state.attributes.strength,
+					defense: state.boostedAttributes.includes('defense') ? state.attributes.defense - 10 : state.attributes.defense,
+					agility: state.boostedAttributes.includes('agility') ? state.attributes.agility - 10 : state.attributes.agility,
+					vitality: state.boostedAttributes.includes('vitality') ? state.attributes.vitality - 10 : state.attributes.vitality
+				},
+				boostedAttributes: []
+			}
 
 		default: 
 			return state

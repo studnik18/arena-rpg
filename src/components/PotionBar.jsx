@@ -6,6 +6,14 @@ import { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, endBa
 
 class PotionBar extends React.Component {
 	
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			hoveredItem: ''
+		}
+	};
+
 	useItem = (potion) => {
 
 		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, opponentsTurn, opponent, endBattle } = this.props
@@ -23,7 +31,7 @@ class PotionBar extends React.Component {
 
 			if (opponent.currentHP - potion.damage <= 0) {
 
-				endBattle(opponent.reward)
+				endBattle(opponent.reward, 'success')
 				return
 					
 			}
@@ -52,16 +60,62 @@ class PotionBar extends React.Component {
 			item.category === 'potions' && (item.useLocation === 'battle' || item.useLocation === 'both')
 		)
 
+		let hoveredPotion = this.state.hoveredItem
 		return (
-			<div class="potion-bar">
+			[
+			<div class="flex-row potion-bar">
 				
-				{battlePotions.map(potion =>
-					<div>
-						<p>potion.name</p>
-						<button onClick={ () => this.useItem(potion) }>Use item</button>
+				{	
+					battlePotions.length === 0 
+
+					?
+						[
+							<div className="bag-img" />,
+							<p>Your potion bag is empty.</p>
+						]
+
+
+					:
+				
+					battlePotions.map(potion =>
+					<div 
+						className="flex-column potion-container"
+						onMouseEnter={() => this.setState({hoveredItem: potion})}
+						onMouseLeave={() => this.setState({hoveredItem: ''})}
+					>
+						<div className={`potion id_${potion.id}`} />	
+
+						<button className="use-btn" onClick={ () => this.useItem(potion) }>Use ({potion.quantity})</button>
 					</div>
-				)}
-			</div>
+					)
+					
+				}
+				
+			</div>,
+			<p>{hoveredPotion.length === 0 ? '' : hoveredPotion.name}</p>,
+			<p>
+				{
+					hoveredPotion.length === 0
+
+					?
+
+					''
+
+					: 
+
+					typeof hoveredPotion.restore !== 'undefined'
+
+					?
+
+					`Restore ${hoveredPotion.restore} HP.`
+
+					:
+
+					`Deal ${hoveredPotion.damage} damage. ${hoveredPotion.effect.chance * 100}% chance to trigger effect: 
+					'${hoveredPotion.effect.name}' for ${hoveredPotion.effect.duration} turns.`
+				}
+			</p>
+			]
 		)
 	}
 }

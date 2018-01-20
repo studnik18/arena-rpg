@@ -9,7 +9,7 @@ const Opponent = ({ handleClick, opponent }) => (
 					<p className="opponent-name">{opponent.name}</p>
 					<p>{opponent.engTranslation}</p>
 				</div>
-				<button className="fight-button flex-row" onClick={()=> handleClick(opponent)}><div />Fight</button>
+				<button className="fight-button flex-row" onClick={() => handleClick(opponent)}><div />Fight</button>
 				<p>
 					Art: <a href={opponent.source.link}>{opponent.source.author}</a>
 				</p>

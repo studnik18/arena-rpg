@@ -22,11 +22,9 @@ class Arena extends React.Component {
 		this.props.chooseOpponent(opponent);
 	}
 
-
 	render() {
 		const { opponent, equipped, logs } = this.props;
-
-		
+	
 		return (
 
 			<GameBox>
@@ -36,29 +34,20 @@ class Arena extends React.Component {
 
 					?
 
-
 					[   <HeroPortrait gamelocation="arena"/>,
 						<OpponentList handleClick={this.handleClick} list={opponentList}/> ]
-
-
 					:
-
 					
 					[	<HeroBattleScreen />,
 						<div className="vertical-layout">
 							<Console logs={logs} />
 							<OpponentScreen opponent={opponent} />
 						</div> ]
-
 				}
 
 			</GameBox>	
-
-
 		)
-
 	}
-
 }
  
 const mapStateToProps = (state) => ({

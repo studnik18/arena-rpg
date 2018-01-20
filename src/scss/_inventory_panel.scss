@@ -31,13 +31,11 @@
 	left: 260px;
 
 	.bag-img {
-		background-image: url('./img/icons/potion-bag.png');
 		background-size: 45px 45px;
 		background-repeat: no-repeat;
 		background-position: center;
 		background-color: #000;
 		width: 93px;
-		height: 45px;
 	}
 
 	.scroll-container {
@@ -53,6 +51,11 @@
 		border: 1px solid black;
 	}
 
+	.potion {
+		width: 45px;
+		height: 45px;
+	}
+
 	.use-btn {
 		height: 100%;
 		font-weight: 700;
@@ -66,15 +69,39 @@
 			background-color: #db3039;
 		}
 	}
+}
 
-	.potion  {
-		width: 45px;
-		height: 45px;
-		background-size: contain;	
-	}
+.bag-img {
+	background-image: url('./img/icons/potion-bag.png');
+	background-size: contain;
+	height: 45px;
+	width: 45px;
 }
 
 
+.potion  {
+
+	background-size: contain;	
+}
+
+.potion-bar {
+	margin: 10px 0;
+	align-items: center;
+	.potion-container {
+		margin-right: 3px;
+	}
+	.potion {
+		width: 42px;
+		height: 42px;
+	}
+	.bag-img {
+		margin-right: 10px;
+	}
+	.use-btn {
+		padding: 0;
+	}
+
+}
 
 .equip-icon {
 	

@@ -14,11 +14,9 @@ class HeroBattleScreen extends React.Component {
 		Math.floor(Math.random() * (max - min + 1)) + min
 	)	
 
-	checkHP = (health, damage) => {
+	checkHP = (health, damage, result) => {
 		if (health - damage <= 0) {
-			endBattle(this.props.opponent.reward) 
-			console.log('someone is dead')
-			console.log(endBattle)
+			this.props.endBattle(this.props.opponent.reward, result) 
 			return
 		}
 	}
@@ -31,12 +29,11 @@ class HeroBattleScreen extends React.Component {
 			opponent.effects.map(effect => {
 				logMessage(['player', `${effect.name} deals ${effect.dmgPerTurn} damage to Your opponent.`])
 				dealDamage(effect.dmgPerTurn)
-				this.checkHP(opponent.currentHP, effect.dmgPerTurn)
+				this.checkHP(opponent.currentHP, effect.dmgPerTurn, 'success')
 				effectCooldown(effect)				
 			})
 		}
 		
-
 		let minDamage = opponent.damage[0];
 		let maxDamage = opponent.damage[1];		
 
@@ -69,7 +66,7 @@ class HeroBattleScreen extends React.Component {
 				logMessage(['opponent', message])
 				sufferDamage(inflictedDamage)
 
-				this.checkHP(currentHP, inflictedDamage);
+				this.checkHP(currentHP, inflictedDamage, 'defeat');
 
 				if (opponent.lifeDrain > 0) {
 					let drainedValue = Math.round(opponent.lifeDrain * inflictedDamage);

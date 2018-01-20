@@ -1,7 +1,9 @@
 const initialState = {
 	exp: 0,
 	level: 1,
-	nextLevel: 100
+	nextLevel: 100,
+	isVictoryScreenOpen: false,
+	isDefeatScreenOpen: false
 }
 
 const levelThresholds = {
@@ -20,26 +22,31 @@ const levelThresholds = {
 export const handleExp = ( state = initialState, action ) => {
 
 	switch(action.type) {
-		case 'EARN_EXP':
-			return state.exp + action.exp < levelThresholds[state.level]
-				?
-				{
-					...state,
-					exp: state.exp + action.exp
-				}
-				:
-				{
-					...state,
-					level: state.level + 1,
-					exp: state.exp + action.exp - levelThresholds[state.level],
-					nextLevel: levelThresholds[state.level + 1]
-				}
+		case 'END_BATTLE':
+			
+			const isLevelGained = state.exp + action.reward.XP >= levelThresholds[state.level]
+
+			return action.result === 'success'
+
+			?
+
+			{
+				...state,
+				level: isLevelGained ? state.level + 1 : state.level,
+				exp: isLevelGained ? state.exp + action.reward.XP - levelThresholds[state.level] : state.exp + action.reward.XP,
+				nextLevel: isLevelGained ? levelThresholds[state.level + 1] : state.nextLevel,
+				isVictoryScreenOpen: isLevelGained ? 'with-level-up' : 'no-level-up'
+			}
+
+			:
+
+			{
+				...state,
+				isDefeatScreenOpen: true
+			}
+
 		default: 
 			return state;
 
 	}
-
-
-
-
 }

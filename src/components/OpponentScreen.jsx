@@ -18,7 +18,7 @@ const OpponentScreen = ({ opponent }) => (
 				<p>Current effects: {opponent.effects.length === 0 && 'none'}</p>
 				{
 					opponent.effects.map((effect, i) =>
-						console.log(effect) ||
+
 						<div key={i} className="flex-row">
 							<div className={`battle-effect effect-${effect.name}`} />
 
