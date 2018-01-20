@@ -1,10 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import ItemDescription from './ItemDescription';
 
-const DialogBox = ({ location }) => (
+class DialogBox extends React.Component {
 
-	<div className="dialog-box"><p>hi</p></div>
+	render() {
 
-);
+		const { location, hoveredItem } = this.props;
 
-export default DialogBox;
+		return (
+		
+		<div className="dialog-box">
+			<p>hi</p>
+			<ItemDescription hoveredItem={hoveredItem}/>
+		</div>
+
+		)
+	}
+}
+
+const mapStateToProps = (state) => ({
+	hoveredItem: state.showDescription.hoveredItem
+})
+
+export default connect(mapStateToProps, 
+null
+)(DialogBox);

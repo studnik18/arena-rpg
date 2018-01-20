@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sellItem } from '../actions';
-import { PanelElement } from './PanelElement';
+import PanelElement from './PanelElement';
 
 class SellPanel extends React.Component {
 	handleClick = (el) => {

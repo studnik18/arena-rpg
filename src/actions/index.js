@@ -124,3 +124,10 @@ export const endBattle = (reward, result) => ({
 	result
 
 })
+
+export const showDescription = (item) => ({
+
+	type: 'SHOW_DESCRIPTION',
+	item
+
+})

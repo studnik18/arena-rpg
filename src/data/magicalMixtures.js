@@ -9,7 +9,8 @@
 		buyValue: 50,
 		sellValue: 25,
 		restore: 20,
-		useLocation: 'both'
+		useLocation: 'both',
+		description: 'Restores 20 HP.'
 
 	}, 
 
@@ -20,7 +21,8 @@
 		buyValue: 150,
 		sellValue: 75,
 		restore: 75,
-		useLocation: 'both'
+		useLocation: 'both',
+		description: 'Restores 75 HP.'
 	}, 
 
 	{
@@ -30,7 +32,8 @@
 		buyValue: 500,
 		sellValue: 250,
 		restore: 200,
-		useLocation: 'both'
+		useLocation: 'both',
+		description: 'Restores 200 HP.'		
 	}, 	
 
 	{
@@ -46,7 +49,8 @@
 			dmgPerTurn: 20,
 			duration: 3
 		},
-		useLocation: 'battle'
+		useLocation: 'battle',
+		description: 'Deals 200 damage to Your enemy and has 50% to set it in flames for 3 turns. Burning enemies suffer 20 damage each turn.'
 	}, 	
 
 	{
@@ -62,7 +66,8 @@
 			dmgPerTurn: 5,
 			duration: 4
 		},
-		useLocation: 'battle'
+		useLocation: 'battle',
+		description: 'Deals 100 damage to Your enemy and freezes it for 4 turns. Frozen opponents have -15% hit chance, -30% dodge chance and suffer 5 damage each turn.'	
 	}, 
 
 	{
@@ -74,7 +79,8 @@
 		effect: {
 			statIncrease: 'strength'	
 		},
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Increases strength by 10 during next battle.'	
 	}, 	
 
 	{
@@ -86,7 +92,8 @@
 		effect: {
 			statIncrease: 'defense'	
 		},
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Increases defense by 10 during next battle.'			
 	}, 	
 
 	{
@@ -98,7 +105,8 @@
 		effect: {
 			statIncrease: 'agility'	
 		},
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Increases agility by 10 during next battle.'		
 	},
 
 	{
@@ -110,7 +118,8 @@
 		effect: {
 			statIncrease: 'vitality'	
 		},
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Increases vitality by 10 during next battle.'		
 	},
 
 	{
@@ -122,7 +131,8 @@
 		effect: {
 			dmgIncrease: ['all', 0.5]	
 		},
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Used before the battle on Your weapon increases damage against all enemies by 50%.'
 	}, 	
 
 	{
@@ -134,7 +144,8 @@
 		effect: {
 			dmgIncrease: ['undead', 0.25]
 		},
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Used before the battle on Your weapon increases damage against undead enemies by 25%.'
 	},
 
 	{
@@ -144,7 +155,8 @@
 		buyValue: 300,
 		sellValue: 150,
 		effect: 'poison',
-		useLocation: 'exploration'
+		useLocation: 'exploration',
+		description: 'Used before the battle on Your weapon can poison living enemies. Poison deals 15% of base weapon damage each turn'
 	}
 ]
 

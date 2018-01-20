@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { buyItem, innBuy } from '../actions';
-import { PanelElement } from './PanelElement';
+
+import PanelElement from './PanelElement';
 
 class BuyPanel extends React.Component {
 	
@@ -20,6 +22,7 @@ class BuyPanel extends React.Component {
 
 	render() {
 		const { items, gamelocation, buyItem, innBuy, gold } = this.props;
+
 		return (
 
 			<div className="panel buy-panel" gamelocation={gamelocation}>

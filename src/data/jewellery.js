@@ -8,7 +8,8 @@ export const jewellery = [
 		sellValue: 75,
 		skillIncrease: {
 			baseHitChance: 0.05
-		}
+		},
+		description: '+5% to hit chance.'
 
 	}, 
 
@@ -20,7 +21,9 @@ export const jewellery = [
 		sellValue: 200,
 		skillIncrease:{
 			strength: 10
-		}
+		},
+		description: '+10 to strength.'
+
 	}, 
 
 	{
@@ -31,7 +34,8 @@ export const jewellery = [
 		sellValue: 200,
 		skillIncrease:{
 			defense: 10
-		}
+		},
+		description: '+10 to defense.'
 	}, 	
 
 	{
@@ -42,7 +46,8 @@ export const jewellery = [
 		sellValue: 200,
 		skillIncrease:{
 			agility: 10
-		}
+		},
+		description: '+10 to agility.'
 	}, 	
 
 	{
@@ -53,7 +58,8 @@ export const jewellery = [
 		sellValue: 200,
 		skillIncrease:{
 			vitality: 10
-		}
+		},
+		description: '+10 to vitality.'
 	}, 
 
 	{
@@ -64,7 +70,8 @@ export const jewellery = [
 		sellValue: 1000,
 		skillIncrease:{
 			all: 10
-		}
+		},
+		description: '+ 10 to all attributes.'
 	}, 	
 
 	{
@@ -75,7 +82,8 @@ export const jewellery = [
 		sellValue: 100,
 		skillIncrease:{
 			baseBlockChance: 0.05
-		}
+		},
+		description: '+5% to block chance.'
 	},
 
 	{
@@ -84,10 +92,10 @@ export const jewellery = [
 		name: 'Lesser ring of destruction',
 		buyValue: 400,
 		sellValue: 200,
-		damage: 100,
 		skillIncrease: {
 			baseDamage: 0.05
-		}
+		},
+		description: '+5% damage'		
 	},
 
 	{
@@ -98,7 +106,8 @@ export const jewellery = [
 		sellValue: 400,
 		skillIncrease: {
 			baseDamage: 0.1
-		}
+		},
+		description: '+10% damage'		
 	},
 
 	{
@@ -109,7 +118,8 @@ export const jewellery = [
 		sellValue: 300,
 		skillIncrease:{
 			armor: 5
-		}
+		},
+		description: '+10% damage'		
 	}, 	
 
 	{
@@ -120,7 +130,8 @@ export const jewellery = [
 		sellValue: 150,
 		skillIncrease:{
 			lifeDrain: 0.05
-		}		
+		},
+		description: '+5% life drain ability.'			
 	},
 
 	{
@@ -131,8 +142,8 @@ export const jewellery = [
 		sellValue: 350,
 		skillIncrease:{
 			lifeDrain: 0.1
-		}
-		
+		},
+		description: '+10% life drain ability.'	
 	}
 
 ]

@@ -16,6 +16,7 @@
 
 .inn-box {
 	width: 400px;
+	margin-right: 15px;
 }
 
 .shop, .blacksmith, .inn {
@@ -23,5 +24,17 @@
 	background-position: center;	
 	width: 100%;
 	height: 400px;
+}
+
+.dialog-box {
+	width: 100%;
+	height: 100px;
+
+	.item-description {
+		p {
+			display: inline-block;
+			margin-right: 20px;
+		}
+	}
 }
 

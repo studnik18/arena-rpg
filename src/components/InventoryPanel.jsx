@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PanelElement from './PanelElement';
-import { equipItem, unequipItem, calculateAttributeBonus } from '../actions';
+import { equipItem, unequipItem, calculateAttributeBonus, showDescription } from '../actions';
 
 
 class InventoryPanel extends React.Component {
@@ -19,8 +19,12 @@ class InventoryPanel extends React.Component {
 		this.props.calculateAttributeBonus();
 	}
 
+	showItemDescription = (item) => {
+		this.props.showDescription(item)
+	}
+
 	render() {
-		const { inventory, equipped, gold, equipItem, unequipItem, calculateAttributeBonus } = this.props;
+		const { inventory, equipped, gold, equipItem, unequipItem, calculateAttributeBonus, showDescription } = this.props;
 		return (
 			<div className="panel inventory-panel">
 				
@@ -39,7 +43,7 @@ class InventoryPanel extends React.Component {
 						: ''
 					}
 				</div>
-
+				
 				{
 					inventory.length > 0 ?
 
@@ -47,7 +51,11 @@ class InventoryPanel extends React.Component {
 
 
 
-						<div className='item-container'>
+						<div 
+							className='item-container'
+							onMouseEnter={() => this.showItemDescription(el)}
+							onMouseLeave={() => this.showItemDescription('')}							
+						>
 
 
 							<p className="item-title">{el.name} {el.quantity > 1 ? ` (${el.quantity})`: ''}</p>
@@ -60,7 +68,7 @@ class InventoryPanel extends React.Component {
 								
 								<button 
 									className="equip-btn"
-									onClick={ () => this.handleClick(el) }			
+									onClick={ () => { this.handleClick(el); this.showItemDescription('') } }			
 								>
 									Equip
 									<div className="equip-icon" />
@@ -86,7 +94,7 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-	equipItem, unequipItem, calculateAttributeBonus
+	equipItem, unequipItem, calculateAttributeBonus, showDescription
 })(InventoryPanel)
 
 
