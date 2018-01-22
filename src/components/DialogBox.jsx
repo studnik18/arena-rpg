@@ -3,16 +3,111 @@ import { connect } from 'react-redux';
 
 import ItemDescription from './ItemDescription';
 
+import { blacksmithDialogs, shopDialogs, innDialogs } from '../data/dialogs';
+
 class DialogBox extends React.Component {
+
+	generateInnMsg = (hoveredItem, HPState, goldState) => {
+			
+		let message = ''; 
+
+		if (typeof hoveredItem.id === 'undefined') {
+			Object.keys(HPState).map(state => {
+				if (HPState[state]) {
+					message += innDialogs[state] 
+				}
+			})
+		} else if (hoveredItem.id >= 54 && hoveredItem.id <= 56) {
+			message += innDialogs.lightDrinkHovered
+		} else if (hoveredItem.id >= 57 && hoveredItem.id <= 60) {
+			message += innDialogs.strongDrinkHovered
+		} else if (hoveredItem.id === 61 || hoveredItem.id === 62) {
+			message += innDialogs.sleepHovered
+		};
+
+		if (typeof hoveredItem.id !== 'undefined') {
+			if (goldState.enoughGold) {
+				message += ` ${innDialogs.enoughGold}`
+			} else {
+				message += ` ${innDialogs.goldShortage}`
+			}
+		}
+		return message
+	}
+
+	generateShopMsg = (hoveredItem, HPState, goldState) => {
+		
+		let message = ''; 
+
+		if (typeof hoveredItem.id === 'undefined') {
+			if (HPState.firmHP) {
+				message += ` ${shopDialogs.firmHP}`
+			} else {
+				message += ` ${shopDialogs.lowHP}`
+			}
+		} else if (hoveredItem.action === 'buy') {
+			if (hoveredItem.id >= 1 && hoveredItem.id <= 12) {
+				message += shopDialogs.potionsHovered
+			} else if (hoveredItem.id >= 13 && hoveredItem.id <= 24 && hoveredItem.id !== 18) {
+				message += shopDialogs.jewelleryHovered
+			} else if (hoveredItem.id === 18) {
+				message += shopDialogs.powerfulNecklaceHovered
+			}				
+		} else if (hoveredItem.action === 'sell') {
+			if (hoveredItem.id >= 1 && hoveredItem.id <= 24) {
+				message += shopDialogs.sellShopItem
+			} else if (hoveredItem.id >= 25) {
+				message += shopDialogs.sellBlacksmithHovered
+			} 
+		}
+		if (typeof hoveredItem.id !== 'undefined' && hoveredItem.action === 'buy') {
+			Object.keys(goldState).map(state => {
+				if (goldState[state]) {
+					message += ` ${shopDialogs[state]}`
+				}
+			})
+		}
+		return message	
+	}
+
+
+
+
+
+	generateMsg = (hoveredItem, HPState, goldState) => {
+		switch(this.props.gamelocation) {
+			case 'inn': 
+				return this.generateInnMsg(hoveredItem, HPState, goldState)
+			case 'shop':
+				return this.generateShopMsg(hoveredItem, HPState, goldState)
+			case 'blacksmith':
+				return this.generateBlacksmithMsg(hoveredItem, HPState, goldState)
+			default:
+				return ''
+		}
+	}
+
+
 
 	render() {
 
-		const { location, hoveredItem } = this.props;
+		const { hoveredItem, gold, gamelocation, maxHP, currentHP } = this.props;
+
+		const goldState = {
+			enoughGold: gold >= hoveredItem.buyValue,
+			goldShortage: gold < hoveredItem.buyValue && gold > hoveredItem.buyValue / 10,
+			seriousShortage: gold <= hoveredItem.buyValue / 10
+		}
+		const HPState = {
+			firmHP: currentHP / maxHP >= 0.8,
+			mediumHP: currentHP / maxHP > 0.4 && currentHP / maxHP < 0.8,
+			lowHP:  currentHP / maxHP <= 0.4 
+		}
 
 		return (
 		
 		<div className="dialog-box">
-			<p>hi</p>
+			<p>{this.generateMsg(hoveredItem, HPState, goldState)}</p>
 			<ItemDescription hoveredItem={hoveredItem}/>
 		</div>
 
@@ -21,7 +116,10 @@ class DialogBox extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	hoveredItem: state.showDescription.hoveredItem
+	hoveredItem: state.showDescription.hoveredItem,
+	gold: state.handleGold.gold,
+	maxHP: state.handleHP.maxHP,
+	currentHP: state.handleHP.currentHP
 })
 
 export default connect(mapStateToProps, 

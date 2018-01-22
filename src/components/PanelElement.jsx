@@ -18,7 +18,7 @@ class PanelElement extends React.Component {
 
 			<div 
 				className='item-container'
-				onMouseEnter={() => this.showItemDescription(item)}
+				onMouseEnter={() => this.showItemDescription({...item, action: action})}
 				onMouseLeave={() => this.showItemDescription('')}
 			>
 				<p className="item-title">{item.name} {action === "sell" && item.quantity > 1 ? ` (${item.quantity})`: ''}</p>

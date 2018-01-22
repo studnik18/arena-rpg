@@ -26,7 +26,15 @@ const ItemDescription = ({ hoveredItem }) => (
 
 				hoveredItem.category === 'weapons' ? 
 
-				[<p>{`Damage range: ${hoveredItem.dmgRange[0]} - ${hoveredItem.dmgRange[1]}`}</p>, <p>{`Attack accuracy: ${hoveredItem.hitChance * 100}%`}</p>] : ''
+				[<p>{`Damage range: ${hoveredItem.dmgRange[0]} - ${hoveredItem.dmgRange[1]}`}</p>, <p>{`Attack accuracy: ${hoveredItem.hitChance * 100}%`}</p>] : 
+
+				hoveredItem.category === 'inn' && hoveredItem.restore > 1 ?
+
+				<p>{`Restore ${hoveredItem.restore} HP.`}</p> :
+
+				hoveredItem.category === 'inn' && hoveredItem.restore <= 1 ?
+
+				<p>{hoveredItem.description}</p> :	''
 			}
 			
 	</div>
