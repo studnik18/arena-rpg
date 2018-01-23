@@ -131,3 +131,16 @@ export const showDescription = (item) => ({
 	item
 
 })
+
+export const addAttributePoints = () => ({
+
+	type: 'NEW_LEVEL_POINTS'
+
+})
+
+export const closeModal = (result) => ({
+
+	type: 'CLOSE_MODAL',
+	result
+
+})

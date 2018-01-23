@@ -187,7 +187,7 @@ export const handlePlayerStats = (state = initialState, action) => {
 				damage: [state.baseDamage[0] * (1 + state.attributes.strength * 0.01), state.baseDamage[1] * (1 + state.attributes.strength * 0.01)]
 			}
 
-		case 'NEW_LEVEL':
+		case 'NEW_LEVEL_POINTS':
 
 			return {
 				...state,

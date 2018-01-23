@@ -4,11 +4,21 @@ import { connect } from 'react-redux';
 
 import VictoryScreen from './VictoryScreen';
 
+import { addAttributePoints, closeModal } from '../actions'
+
 class GameBox extends React.Component {
 	
+	handleModal = (result) => {
+		this.props.closeModal(result)
+	}
+
+	handleAttributePoints = () => {
+		this.props.addAttributePoints()
+	}
+
 	render() {
 
-		const { children, isVictoryScreenOpen, isDefeatScreenOpen } = this.props
+		const { children, isVictoryScreenOpen, isDefeatScreenOpen, lastReward, level, addAttributePoints, closeModal } = this.props
 
 		return (
 			
@@ -17,13 +27,27 @@ class GameBox extends React.Component {
 
 					isDefeatScreenOpen ?
 
-					<p>You lost</p>
+					<div className="defeat-screen">
+						<div className="battle-summary">
+							<p>Your foe has kicked the shit out of You...</p>
+							<button className="flex-row align-center" onClick={() => this.handleModal('defeat')}>
+								<div className="tombstone-icon"/>
+								<p>Game over</p>
+							</button>
+						</div>
+					</div>
 
 					:
 
 					isVictoryScreenOpen !== false ?
 
-					<VictoryScreen type={isVictoryScreenOpen} />
+					<VictoryScreen 
+						type={isVictoryScreenOpen} 
+						lastReward={lastReward}
+						level={level}
+						handleAttributePoints={this.handleAttributePoints}
+						handleModal={this.handleModal}
+					/>
 
 					:
 
@@ -39,10 +63,12 @@ class GameBox extends React.Component {
 const mapStateToProps = (state) => ({
 
 	isVictoryScreenOpen: state.handleExp.isVictoryScreenOpen,
-	isDefeatScreenOpen: state.handleExp.isDefeatScreenOpen	
+	isDefeatScreenOpen: state.handleExp.isDefeatScreenOpen,
+	lastReward: state.handleExp.lastReward,
+	level: state.handleExp.level
 
 })
 
-export default connect(mapStateToProps, 
-null
-)(GameBox);
+export default connect(mapStateToProps, {
+	addAttributePoints, closeModal
+})(GameBox);

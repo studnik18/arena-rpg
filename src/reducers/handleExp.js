@@ -35,7 +35,8 @@ export const handleExp = ( state = initialState, action ) => {
 				level: isLevelGained ? state.level + 1 : state.level,
 				exp: isLevelGained ? state.exp + action.reward.XP - levelThresholds[state.level] : state.exp + action.reward.XP,
 				nextLevel: isLevelGained ? levelThresholds[state.level + 1] : state.nextLevel,
-				isVictoryScreenOpen: isLevelGained ? 'with-level-up' : 'no-level-up'
+				isVictoryScreenOpen: isLevelGained ? 'with-level-up' : 'no-level-up',
+				lastReward: action.reward
 			}
 
 			:
@@ -44,6 +45,14 @@ export const handleExp = ( state = initialState, action ) => {
 				...state,
 				isDefeatScreenOpen: true
 			}
+
+		case 'CLOSE_MODAL':
+
+			return {
+					...state,
+					isDefeatScreenOpen: false,
+					isVictoryScreenOpen: false
+				}
 
 		default: 
 			return state;

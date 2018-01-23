@@ -15,10 +15,6 @@
 @import './scss/hero';
 @import './scss/inventory_panel';
 
-@mixin flex($flow) {
-  display: flex;
-  flex-flow: $flow;
-}
 
 @font-face {
   font-family: 'CaslonAntique';
@@ -52,11 +48,6 @@ a {
   flex-flow: column;
   align-items: center;
   overflow-y: scroll;
-}
-
-.location-box {
-	width: 500px;
-	height: 500px;
 }
 
 %flex-column {
@@ -97,11 +88,6 @@ a {
   align-items: center;
 }
 
-.inventory-panel {
-  overflow-x: hidden;
-  width: 175px;
-}
-
 .console {
   overflow-y: scroll;
 }
@@ -113,3 +99,52 @@ a {
 .text-center {
   text-align: center;
 }
+
+.defeat-screen, .victory-screen {
+  @extend %flex-column;
+  width: 100%;
+  height: 100%;
+  p {
+    font-size: $font-large;
+    text-align: center;
+  }
+  justify-content: center;
+  align-items: center;
+
+  .panel-xp, .gold-icon {
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    margin: 5px 10px;
+  }
+
+  .gold-icon {
+    background-image: url(./img/icons/coin.png);
+  }
+}
+
+
+%result-icon {
+  width: 45px;
+  height: 45px;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+.tombstone-icon {
+  background-image: url(./img/icons/tombstone.png);
+  @extend %result-icon;
+
+}
+
+.laurel-icon {
+  @extend %result-icon;
+  background-image: url(./img/icons/laurels.png);
+}
+
+.battle-summary {
+  @extend %flex-column;
+  justify-content: center;
+  align-items: center;
+}
+

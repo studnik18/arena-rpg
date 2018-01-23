@@ -41,9 +41,9 @@ class DialogBox extends React.Component {
 
 		if (typeof hoveredItem.id === 'undefined') {
 			if (HPState.firmHP) {
-				message += ` ${shopDialogs.firmHP}`
+				message += shopDialogs.firmHP
 			} else {
-				message += ` ${shopDialogs.lowHP}`
+				message += shopDialogs.lowHP
 			}
 		} else if (hoveredItem.action === 'buy') {
 			if (hoveredItem.id >= 1 && hoveredItem.id <= 12) {
@@ -70,24 +70,68 @@ class DialogBox extends React.Component {
 		return message	
 	}
 
+	generateBlacksmithMsg = (hoveredItem, HPState, goldState) => {
 
+		let message = '';
 
+		if (typeof hoveredItem.id === 'undefined') {
+			if (HPState.firmHP) {
+				message += blacksmithDialogs.firmHP
+			} else {
+				message += blacksmithDialogs.lowHP
+			}
+		} else if (hoveredItem.action === 'buy') {
+			if (hoveredItem.id === 25 || hoveredItem.id === 26) {
+				message += blacksmithDialogs.daggerHovered
+			} else if (hoveredItem.id >= 27 && hoveredItem.id <= 31) {
+				message += blacksmithDialogs.swordHovered
+			} else if (hoveredItem.id === 32 || hoveredItem.id === 36) {
+				message += blacksmithDialogs.legendaryWeaponHovered
+			} else if (hoveredItem.id >= 33 && hoveredItem.id <= 35) {
+				message += blacksmithDialogs.axeHovered
+			} else if ([37, 41, 45, 48].includes(hoveredItem.id)) {
+				message += blacksmithDialogs.leatherHovered
+			} else if (hoveredItem.id >= 51 && hoveredItem.id <= 53) {
+				message += blacksmithDialogs.shieldHovered
+			} else if ([38, 42, 43, 46, 49].includes(hoveredItem.id)) {
+				message += blacksmithDialogs.mediumArmorHovered
+			} else if ([39, 44, 47, 50].includes(hoveredItem.id)) {
+				message += blacksmithDialogs.metalArmorHovered
+			} else if (hoveredItem.id === 40) {
+				message += blacksmithDialogs.breastplateHovered
+			}							
+		} else if (hoveredItem.action === 'sell') {
+			if (hoveredItem.id >= 1 && hoveredItem.id <= 12) {
+				message += blacksmithDialogs.sellPotionHovered
+			} else if (hoveredItem.id >= 1 && hoveredItem.id <= 12) {
+				message += blacksmithDialogs.sellJewelleryHovered
+			} else if (hoveredItem.id >= 25) {
+				message += blacksmithDialogs.sellBlacksmithHovered
+			} 
+		}
+		if (typeof hoveredItem.id !== 'undefined' && hoveredItem.action === 'buy') {
+			Object.keys(goldState).map(state => {
+				if (goldState[state]) {
+					message += ` ${blacksmithDialogs[state]}`
+				}
+			})
+		}
+		return message
 
+	}
 
-	generateMsg = (hoveredItem, HPState, goldState) => {
+	generateMsg = (...args) => {
 		switch(this.props.gamelocation) {
 			case 'inn': 
-				return this.generateInnMsg(hoveredItem, HPState, goldState)
+				return this.generateInnMsg(...args)
 			case 'shop':
-				return this.generateShopMsg(hoveredItem, HPState, goldState)
+				return this.generateShopMsg(...args)
 			case 'blacksmith':
-				return this.generateBlacksmithMsg(hoveredItem, HPState, goldState)
+				return this.generateBlacksmithMsg(...args)
 			default:
 				return ''
 		}
 	}
-
-
 
 	render() {
 
@@ -98,16 +142,19 @@ class DialogBox extends React.Component {
 			goldShortage: gold < hoveredItem.buyValue && gold > hoveredItem.buyValue / 10,
 			seriousShortage: gold <= hoveredItem.buyValue / 10
 		}
+
 		const HPState = {
 			firmHP: currentHP / maxHP >= 0.8,
 			mediumHP: currentHP / maxHP > 0.4 && currentHP / maxHP < 0.8,
 			lowHP:  currentHP / maxHP <= 0.4 
 		}
 
+		const args = [ hoveredItem, HPState, goldState ];
+
 		return (
 		
 		<div className="dialog-box">
-			<p>{this.generateMsg(hoveredItem, HPState, goldState)}</p>
+			<p className="dialog-message">{this.generateMsg(...args)}</p>
 			<ItemDescription hoveredItem={hoveredItem}/>
 		</div>
 
