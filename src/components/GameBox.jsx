@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import VictoryScreen from './VictoryScreen';
 
-import { addAttributePoints, closeModal } from '../actions'
+import { addAttributePoints, closeModal, gameOver } from '../actions'
 
 class GameBox extends React.Component {
 	
@@ -14,6 +14,10 @@ class GameBox extends React.Component {
 
 	handleAttributePoints = () => {
 		this.props.addAttributePoints()
+	}
+
+	endGame = () => {
+		this.props.gameOver()
 	}
 
 	render() {
@@ -30,7 +34,7 @@ class GameBox extends React.Component {
 					<div className="defeat-screen">
 						<div className="battle-summary">
 							<p>Your foe has kicked the shit out of You...</p>
-							<button className="flex-row align-center" onClick={() => this.handleModal('defeat')}>
+							<button className="flex-row align-center" onClick={() => { this.handleModal('defeat'); this.endGame() }}>
 								<div className="tombstone-icon"/>
 								<p>Game over</p>
 							</button>
@@ -52,7 +56,6 @@ class GameBox extends React.Component {
 					:
 
 					children
-
 				}
 			</div>
 
@@ -65,10 +68,11 @@ const mapStateToProps = (state) => ({
 	isVictoryScreenOpen: state.handleExp.isVictoryScreenOpen,
 	isDefeatScreenOpen: state.handleExp.isDefeatScreenOpen,
 	lastReward: state.handleExp.lastReward,
-	level: state.handleExp.level
+	level: state.handleExp.level,
+	opponent: state.handleOpponent.opponent
 
 })
 
 export default connect(mapStateToProps, {
-	addAttributePoints, closeModal
+	addAttributePoints, closeModal, gameOver
 })(GameBox);

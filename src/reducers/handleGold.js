@@ -1,4 +1,4 @@
-const initialState = { gold: 5000 };
+const initialState = { gold: 300 };
 
 
 export const handleGold = ( state = initialState, action ) => {
@@ -27,6 +27,13 @@ export const handleGold = ( state = initialState, action ) => {
 			}
 
 			: ''
+
+		case 'END_GAME':
+
+			return {
+				...state,
+				...initialState
+			}
 
 		default:
 			return state;

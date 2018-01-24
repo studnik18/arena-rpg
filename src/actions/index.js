@@ -144,3 +144,9 @@ export const closeModal = (result) => ({
 	result
 
 })
+
+export const gameOver = () => ({
+
+	type: 'END_GAME'
+
+})

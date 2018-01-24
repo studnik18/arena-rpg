@@ -47,7 +47,7 @@ a {
   display: flex;
   flex-flow: column;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 %flex-column {
@@ -89,7 +89,8 @@ a {
 }
 
 .console {
-  overflow-y: scroll;
+  overflow-y: auto;
+  height: 450px;
 }
 
 .center {
@@ -98,6 +99,10 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.font-medium {
+  font-size: $font-medium;
 }
 
 .defeat-screen, .victory-screen {
@@ -146,5 +151,28 @@ a {
   @extend %flex-column;
   justify-content: center;
   align-items: center;
+}
+
+.player-log {
+  color: #13a610;
+}
+
+.opponent-log {
+  color: #b0270b;
+}
+
+.console p {
+  padding: 2px 5px;
+}
+
+.log-icon {
+  background-image: url(./img/icons/scroll-unfurled.png);
+  margin-right: 10px;
+  @extend %result-icon;
+}
+
+.battle-log-header {
+  justify-content: center;
+  margin-bottom: 5px;
 }
 

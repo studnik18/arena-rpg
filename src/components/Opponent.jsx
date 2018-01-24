@@ -11,7 +11,7 @@ const Opponent = ({ handleClick, opponent }) => (
 				</div>
 				<button className="fight-button flex-row" onClick={() => handleClick(opponent)}><div />Fight</button>
 				<p>
-					Art: <a href={opponent.source.link}>{opponent.source.author}</a>
+					Art: <a href={opponent.source.link} target="_blank">{opponent.source.author}</a>
 				</p>
 			</div>
 			<div className="flex-row">

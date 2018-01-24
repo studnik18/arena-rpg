@@ -18,10 +18,11 @@ class PotionBar extends React.Component {
 
 		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, opponentsTurn, opponent, endBattle } = this.props
 
-		if (typeof potion.restore !== 'undefined') {
-			
+		if (typeof potion.restore !== 'undefined') {		
 			logMessage(['player', `You have healed ${potion.restore} HP`])
 			restoreHP(potion)
+		} else {
+			removeItem(potion)
 		}
 
 		if (typeof potion.damage !== 'undefined') {
@@ -30,10 +31,8 @@ class PotionBar extends React.Component {
 			dealDamage(potion.damage)
 
 			if (opponent.currentHP - potion.damage <= 0) {
-
 				endBattle(opponent.reward, 'success')
-				return
-					
+				return					
 			}
 		}
 
@@ -45,8 +44,7 @@ class PotionBar extends React.Component {
 					: 'You have frozen your enemy! Frozen enemies receive 5 damage each turn, have 30% less chance to dodge an attack and -15% to hit accuracy.'		
 				logMessage(['player', message])
 				addOpponentEffect(potion.effect)
-			}
-			removeItem(potion)
+			}		
 		}
 
 		opponentsTurn(opponent.currentHP / opponent.maxHP < 0.2 ? true : false, opponent)

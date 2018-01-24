@@ -5,7 +5,7 @@ const Footer = () => (
 	
 	<div className="footer">
 		<p>Arena RPG</p>
-		<p>&copy; 2017</p>
+		<p>&copy; 2018 <a href="https://github.com/studnik18" target="_blank">Maciej Studniarz</a></p>
 	</div>
 
 )

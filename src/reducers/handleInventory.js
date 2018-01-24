@@ -42,8 +42,6 @@ export const handleInventory = ( state = initialState, action ) => {
 
 		case 'SELL_ITEM':
 		case 'EQUIP_ITEM':
-		case 'REMOVE_ITEM':
-
 
 			const removedItem = state.inventory.filter(
 				item => item.id === action.item.id 
@@ -77,6 +75,10 @@ export const handleInventory = ( state = initialState, action ) => {
 							...state.inventory.slice(removedIndex + 1)
 						] 
 				}
+
+		case 'END_GAME':
+
+			return initialState			
 
 		default:
 			return state;

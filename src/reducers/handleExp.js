@@ -54,6 +54,10 @@ export const handleExp = ( state = initialState, action ) => {
 					isVictoryScreenOpen: false
 				}
 
+		case 'END_GAME':
+
+			return initialState
+
 		default: 
 			return state;
 

@@ -72,6 +72,10 @@ export const handleEquip = ( state = initialState, action ) => {
 							...state.equipped.slice(unequippedIndex + 1)
 						] 
 				}
+		
+		case 'END_GAME':
+
+			return initialState		
 
 		default:
 			return state;

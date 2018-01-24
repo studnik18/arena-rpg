@@ -64,6 +64,10 @@ export const handleHP = ( state = initialState, action) => {
 
 			state
 
+		case 'END_GAME':
+
+			return initialState
+
 		default:
 			return state
 	}

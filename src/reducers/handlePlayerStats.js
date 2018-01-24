@@ -220,6 +220,13 @@ export const handlePlayerStats = (state = initialState, action) => {
 				boostedAttributes: []
 			}
 
+		case 'END_GAME':
+
+			return {
+				...state,
+				...initialState
+			}
+
 		default: 
 			return state
 

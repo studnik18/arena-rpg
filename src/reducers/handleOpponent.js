@@ -37,10 +37,6 @@ export const handleOpponent = ( state = initialState, action ) => {
 			}
 
 		case 'EFFECT_COOLDOWN':
-			
-/*			const effect = state.opponent.effects.filter(
-				effect => effect.name === action.effect.name 
-			);*/
 
 			const effectIndex = state.opponent.effects.map(
 				(effect) => effect.name 
@@ -61,20 +57,6 @@ export const handleOpponent = ( state = initialState, action ) => {
 									
 					})
 				})	
-/*
-				{
-					...state,
-					opponent: { 
-						...state.opponent, 
-						effects: [
-							...state.opponent.effects,
-							[effectIndex] : {
-								...state.opponent.effects[effectIndex],
-								duration: state.opponent.effects[effectIndex].duration - 1
-							}
-						]
-					}
-				}*/
 
 				:
 

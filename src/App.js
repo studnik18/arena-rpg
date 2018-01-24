@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 /*Components*/
@@ -23,21 +24,28 @@ import './minireset.min.css';
 
 class App extends Component {
   render() {
+    const { opponent } = this.props
     return (
-              <Router>        
-                <div className="main-container">
-                  <NavBar/>
-                  <Route exact path="/" component={MainMenu} />
-                  <Route path="/panel" component={HeroPanel} /> 
-                  <Route path="/magic_shop" component={MagicShop} />
-                  <Route path="/blacksmith" component={Blacksmith} />         
-                  <Route path="/inn" component={Inn} />
-                  <Route path="/arena" component={Arena} />
-                  <Footer/>
-                </div>
-              </Router>
+            <Router>        
+              <div className="main-container">
+                <NavBar/>
+                <Route exact path="/" component={MainMenu} />
+                <Route path="/panel" component={ opponent === 'none' ? HeroPanel : Arena } /> 
+                <Route path="/magic_shop" component={ opponent === 'none' ? MagicShop : Arena } />
+                <Route path="/blacksmith" component={ opponent === 'none' ? Blacksmith : Arena } />         
+                <Route path="/inn" component={ opponent === 'none' ? Inn : Arena } />
+                <Route path="/arena" component={Arena} />
+                <Footer/>
+              </div>
+            </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  opponent: state.handleOpponent.opponent
+})
+
+export default connect(mapStateToProps,
+null
+)(App);

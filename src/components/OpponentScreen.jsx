@@ -9,7 +9,15 @@ const OpponentScreen = ({ opponent }) => (
 		<div className={`opponent-battle-image ${opponent.name}`} />
 		
 		<div>
-			<p className="text-center"><span className="opponent-name">{opponent.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;Art: <a href={opponent.source.link}>{opponent.source.author}</a></p>
+			<p className="text-center">
+				<span className="opponent-name">
+					{opponent.name}
+				</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;Art: 
+				<a href={opponent.source.link} target="_blank">
+					{opponent.source.author}
+				</a>
+			</p>
 			<div className="panel-bar health-bar">
 				<p>HP: {`${opponent.currentHP} / ${opponent.maxHP}`}</p>
 				<div style={{width: `${Math.floor(100 - (opponent.currentHP / opponent.maxHP * 100))}%`}} className="damage" />
