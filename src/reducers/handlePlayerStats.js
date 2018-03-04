@@ -164,7 +164,7 @@ export const handlePlayerStats = (state = initialState, action) => {
 					]				
 				}
 			}
-			break;
+			return state;
 		case actionTypes.END_BATTLE:
 			return {
 				...state,

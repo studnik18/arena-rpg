@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const NavBarEl = ({link, image, title}) => (
-
 	<li className="navbar-el">
 		<Link to={link}>
 			<div className="navbar-el-container">
@@ -15,7 +14,6 @@ const NavBarEl = ({link, image, title}) => (
 			<p className="navbar-el-title">{title}</p>
 		</Link>
 	</li>
-
 );
 
 export default NavBarEl;

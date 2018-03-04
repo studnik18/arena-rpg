@@ -24,18 +24,18 @@ class App extends Component {
   render() {
     const { opponent, inProgress } = this.props
     return (
-            <Router>        
-              <div className="main-container">
-                <NavBar/>
-                <Route exact path="/arena-rpg/" component={MainMenu} />
-                <Route path="/arena-rpg/panel" component={ !inProgress ? MainMenu : opponent === 'none' ? HeroPanel : Arena } /> 
-                <Route path="/arena-rpg/magic_shop" component={ !inProgress ? MainMenu : opponent === 'none' ? MagicShop : Arena } />
-                <Route path="/arena-rpg/blacksmith" component={ !inProgress ? MainMenu : opponent === 'none' ? Blacksmith : Arena } />         
-                <Route path="/arena-rpg/inn" component={ !inProgress ? MainMenu : opponent === 'none' ? Inn : Arena } />
-                <Route path="/arena-rpg/arena" component={!inProgress ? MainMenu : Arena} />
-                <Footer/>
-              </div>
-            </Router>
+      <Router>        
+        <div className="main-container">
+          <NavBar/>
+          <Route exact path="/arena-rpg/" component={MainMenu} />
+          <Route path="/arena-rpg/panel" component={ !inProgress ? MainMenu : opponent === 'none' ? HeroPanel : Arena } /> 
+          <Route path="/arena-rpg/magic_shop" component={ !inProgress ? MainMenu : opponent === 'none' ? MagicShop : Arena } />
+          <Route path="/arena-rpg/blacksmith" component={ !inProgress ? MainMenu : opponent === 'none' ? Blacksmith : Arena } />         
+          <Route path="/arena-rpg/inn" component={ !inProgress ? MainMenu : opponent === 'none' ? Inn : Arena } />
+          <Route path="/arena-rpg/arena" component={!inProgress ? MainMenu : Arena} />
+          <Footer/>
+        </div>
+      </Router>
     );
   }
 }
