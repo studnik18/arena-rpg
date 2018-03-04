@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { startGame } from '../actions';
 import GameBox from './GameBox';
+import { Link } from 'react-router-dom';
 
 class MainMenu extends React.Component {
 
@@ -15,11 +16,14 @@ class MainMenu extends React.Component {
 	}
 
 	start = name => {
-		this.props.startGame(name)
+		if (!!name.length) {
+			this.props.startGame(name)		
+		}
 	}
 
 	render() {
 		const { name, inProgress } = this.props;
+
 		return (
 
 			<GameBox>
@@ -34,7 +38,9 @@ class MainMenu extends React.Component {
 								name="player-name" 
 								onChange={this.handleChange}
 							/>
-							<button onClick={() => this.start(this.state.name)}>Proceed</button>
+							<Link to="/">
+								<button onClick={() => this.start(this.state.name)}>Proceed</button>
+							</Link>
 						</div>
 					</div>
 

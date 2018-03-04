@@ -63,14 +63,16 @@ class StatsPanel extends React.Component {
 						<div style={{width: `${Math.floor(exp / nextLevel * 100)}%`}} className="exp" />
 					</div>	
 
-					<div className="hero-pic">
-
-					</div>
+					<div className="hero-pic" />
 					<div className="panel-bar health-bar">
 						<p>HP: {`${currentHP} / ${maxHP}`}</p>
 						<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />
 					</div>
-					
+					<p>Art:&nbsp; 
+						<a href="https://heavyarmorhellfire.deviantart.com/art/Slavic-Warlord-688314872" target="_blank">
+							Heavyarmorhellfire
+						</a>
+					</p>										
 					<EffectList />
 				</div>
 			</div>

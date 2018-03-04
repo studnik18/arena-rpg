@@ -19,7 +19,13 @@
 
 .inn {
 	background-image: url(./img/backgrounds/inn_bg.jpg);
-	background-size: 100% 100%;	
+	background-size: 100% 100%;
+	p {
+		background-color: #fff;
+		opacity: 0.6;
+		display: inline-block;
+		padding: 0 10px;
+	}
 }
 
 .inn-box {

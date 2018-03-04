@@ -1,6 +1,5 @@
 .attribute {
-	display: flex;
-	flex-flow: row;
+	@extend %flex-row;
 	p {
 		text-transform: capitalize;
 	}
@@ -22,7 +21,6 @@
 .hero-right-panel .hero-pic {
 	width: 100%;
 	height: 185px;
-
 }
 
 .hero-battle-screen {
@@ -36,6 +34,16 @@
 .hero-pic {
 	background-image: url('./img/hero.jpg');
 	background-size: contain;
+	position: relative;
+	p {
+		position: absolute;
+		bottom: 0;
+		background-color: #fff;
+		opacity: 0.7;
+		display: inline-block;
+		padding: 0 10px;
+		self-align: bottom;
+	}
 }
 
 .hero-arena {
@@ -65,7 +73,6 @@
 	.panel-bar {
 		width: 192px;
 	}
-
 }
 
 .hero-inn {

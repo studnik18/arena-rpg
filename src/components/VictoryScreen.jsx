@@ -3,9 +3,16 @@ import React from 'react';
 const VictoryScreen = ({ type, lastReward, level, handleModal, handleAttributePoints }) => (
 
 	<div className="victory-screen">
+		<p>Art:&nbsp; 
+			<a href="https://vk.com/id69481172" target="_blank">
+				Igor Ozhiganov
+			</a>
+		</p>
 		<div className="battle-summary">	
-			<p>Congratualtions. You have defeated Your foe!</p>
-			<p>For the successful fight You gain:</p>
+			<p>
+				Congratulations. You have defeated Your foe!<br/>
+				For the successful fight You gain:
+			</p>
 			<div className="flex-row">
 				<div className="flex-column">
 					<div className="panel-xp"/>
@@ -26,7 +33,6 @@ const VictoryScreen = ({ type, lastReward, level, handleModal, handleAttributePo
 			</button>
 		</div>
 	</div>
-
 )
 
 export default VictoryScreen;

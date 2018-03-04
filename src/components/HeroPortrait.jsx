@@ -1,13 +1,8 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-
 import EffectList from './EffectList';
 
-
-
 class HeroPortrait extends React.Component {
-
 	render() {
 		const { maxHP, currentHP, gold, gamelocation, temporaryEffects, name } = this.props;
 		return (
@@ -30,7 +25,11 @@ class HeroPortrait extends React.Component {
 					<p className="player-name">{name}</p>
 				}
 				<div className="hero-pic">
-
+					<p>Art:&nbsp; 
+						<a href="https://heavyarmorhellfire.deviantart.com/art/Slavic-Warlord-688314872" target="_blank">
+							Heavyarmorhellfire
+						</a>
+					</p>
 				</div>
 				{
 					gamelocation === "battle" &&
