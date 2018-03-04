@@ -6,11 +6,11 @@
 		id: 1,
 		category: 'potions',
 		name: 'Small health potion',
-		buyValue: 50,
-		sellValue: 25,
-		restore: 20,
+		buyValue: 25,
+		sellValue: 12,
+		restore: 50,
 		useLocation: 'both',
-		description: 'Restores 20 HP.'
+		description: 'Restores 50 HP.'
 
 	}, 
 
@@ -18,31 +18,31 @@
 		id: 2,
 		category: 'potions',
 		name: 'Medium health potion',
-		buyValue: 150,
-		sellValue: 75,
-		restore: 75,
+		buyValue: 60,
+		sellValue: 30,
+		restore: 120,
 		useLocation: 'both',
-		description: 'Restores 75 HP.'
+		description: 'Restores 120 HP.'
 	}, 
 
 	{
 		id: 3,
 		category: 'potions',
 		name: 'Large health potion',
-		buyValue: 500,
-		sellValue: 250,
-		restore: 200,
+		buyValue: 120,
+		sellValue: 60,
+		restore: 250,
 		useLocation: 'both',
-		description: 'Restores 200 HP.'		
+		description: 'Restores 250 HP.'		
 	}, 	
 
 	{
 		id: 4,
 		category: 'potions',
 		name: "Alchemist's fire",
-		buyValue: 300,
-		sellValue: 150,
-		damage: 200,
+		buyValue: 150,
+		sellValue: 75,
+		damage: 150,
 		effect: {
 			name: 'Fire',
 			chance: 0.5,
@@ -57,9 +57,9 @@
 		id: 5,
 		category: 'potions',
 		name: 'Freeze blast',
-		buyValue: 300,
-		sellValue: 150,
-		damage: 100,
+		buyValue: 150,
+		sellValue: 75,
+		damage: 50,
 		effect: {
 			name: 'Ice',
 			chance: 1,
@@ -74,8 +74,8 @@
 		id: 6,
 		category: 'potions',
 		name: 'Potion of strength',
-		buyValue: 500,
-		sellValue: 250,
+		buyValue: 200,
+		sellValue: 100,
 		effect: {
 			statIncrease: 'strength'	
 		},
@@ -87,8 +87,8 @@
 		id: 7,
 		category: 'potions',
 		name: "Potion of defense",
-		buyValue: 500,
-		sellValue: 250,
+		buyValue: 200,
+		sellValue: 100,
 		effect: {
 			statIncrease: 'defense'	
 		},
@@ -100,8 +100,8 @@
 		id: 8,
 		category: 'potions',
 		name: 'Potion of agility',
-		buyValue: 500,
-		sellValue: 250,
+		buyValue: 200,
+		sellValue: 100,
 		effect: {
 			statIncrease: 'agility'	
 		},
@@ -113,8 +113,8 @@
 		id: 9,
 		category: 'potions',
 		name: 'Potion of vitality',
-		buyValue: 500,
-		sellValue: 250,
+		buyValue: 200,
+		sellValue: 100,
 		effect: {
 			statIncrease: 'vitality'	
 		},
@@ -126,8 +126,8 @@
 		id: 10,
 		category: 'oils',
 		name: "Might of Perun",
-		buyValue: 600,
-		sellValue: 300,
+		buyValue: 300,
+		sellValue: 150,
 		effect: {
 			dmgIncrease: ['all', 0.5]	
 		},
@@ -139,8 +139,8 @@
 		id: 11,
 		category: 'oils',
 		name: 'Holy water',
-		buyValue: 300,
-		sellValue: 150,
+		buyValue: 100,
+		sellValue: 75,
 		effect: {
 			dmgIncrease: ['undead', 0.25]
 		},
@@ -152,8 +152,8 @@
 		id: 12,
 		category: 'oils',
 		name: 'Poison',
-		buyValue: 300,
-		sellValue: 150,
+		buyValue: 40,
+		sellValue: 20,
 		effect: 'poison',
 		useLocation: 'exploration',
 		description: 'Used before the battle on Your weapon can poison living enemies. Poison deals 15% of base weapon damage each turn'

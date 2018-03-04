@@ -5,8 +5,8 @@ export const opponentList = [
 		engTranslation: 'Water nymph',
 		maxHP: 100,
 		currentHP: 100,
-		hitChance: 0.75,
-		damage: [8, 10],
+		hitChance: 0.7,
+		damage: [6, 8],
 		dodgeChance: 0.2,
 		reward: {
 			gold: 20,
@@ -24,8 +24,8 @@ export const opponentList = [
 		maxHP: 150,
 		currentHP: 150,
 		hitChance: 0.75,
-		damage: [10, 14],
-		dodgeChance: 0.5,
+		damage: [10, 12],
+		dodgeChance: 0.4,
 		reward: {
 			gold: 30,
 			XP: 20
@@ -42,7 +42,7 @@ export const opponentList = [
 		maxHP: 220,
 		currentHP: 220,
 		hitChance: 0.7,
-		damage: [16, 18],
+		damage: [14, 16],
 		dodgeChance: 0.3,
 		reward: {
 			gold: 50,

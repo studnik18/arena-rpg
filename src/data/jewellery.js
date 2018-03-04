@@ -17,8 +17,8 @@ export const jewellery = [
 		id: 14,
 		category: 'necklaces',
 		name: 'Necklace of strength',
-		buyValue: 400,
-		sellValue: 200,
+		buyValue: 300,
+		sellValue: 150,
 		skillIncrease:{
 			strength: 10
 		},
@@ -30,8 +30,8 @@ export const jewellery = [
 		id: 15,
 		category: 'necklaces',
 		name: 'Necklace of defense',
-		buyValue: 400,
-		sellValue: 200,
+		buyValue: 300,
+		sellValue: 150,
 		skillIncrease:{
 			defense: 10
 		},
@@ -42,8 +42,8 @@ export const jewellery = [
 		id: 16,
 		category: 'necklaces',
 		name: 'Necklace of agility',
-		buyValue: 400,
-		sellValue: 200,
+		buyValue: 300,
+		sellValue: 150,
 		skillIncrease:{
 			agility: 10
 		},
@@ -54,8 +54,8 @@ export const jewellery = [
 		id: 17,
 		category: 'necklaces',
 		name: 'Necklace of vitality',
-		buyValue: 400,
-		sellValue: 200,
+		buyValue: 300,
+		sellValue: 150,
 		skillIncrease:{
 			vitality: 10
 		},
@@ -90,8 +90,8 @@ export const jewellery = [
 		id: 20,
 		category: 'rings',
 		name: 'Lesser ring of destruction',
-		buyValue: 400,
-		sellValue: 200,
+		buyValue: 300,
+		sellValue: 150,
 		skillIncrease: {
 			baseDamage: 0.05
 		},
@@ -102,8 +102,8 @@ export const jewellery = [
 		id: 21,
 		category: 'rings',
 		name: 'Greater ring of destruction',
-		buyValue: 800,
-		sellValue: 400,
+		buyValue: 600,
+		sellValue: 300,
 		skillIncrease: {
 			baseDamage: 0.1
 		},
@@ -114,12 +114,12 @@ export const jewellery = [
 		id: 22,
 		category: 'rings',
 		name: 'Ring of protection',
-		buyValue: 600,
-		sellValue: 300,
+		buyValue: 500,
+		sellValue: 250,
 		skillIncrease:{
 			armor: 5
 		},
-		description: '+10% damage'		
+		description: '+5 armor'		
 	}, 	
 
 	{
@@ -129,7 +129,7 @@ export const jewellery = [
 		buyValue: 300,
 		sellValue: 150,
 		skillIncrease:{
-			lifeDrain: 0.05
+			lifeDrain: 0.15
 		},
 		description: '+5% life drain ability.'			
 	},
@@ -141,7 +141,7 @@ export const jewellery = [
 		buyValue: 700,
 		sellValue: 350,
 		skillIncrease:{
-			lifeDrain: 0.1
+			lifeDrain: 0.3
 		},
 		description: '+10% life drain ability.'	
 	}
