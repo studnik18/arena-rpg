@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 /*Components*/
 import NavBar from './components/NavBar.jsx';
 import MainMenu from './components/MainMenu.jsx';
@@ -18,23 +17,22 @@ import HeroPanel from './components/HeroPanel.jsx';
 import Footer from './components/Footer.jsx';
 
 /*css*/
-// import logo from './logo.svg';
 import './App.css';
 import './minireset.min.css';
 
 class App extends Component {
   render() {
-    const { opponent } = this.props
+    const { opponent, inProgress } = this.props
     return (
             <Router>        
               <div className="main-container">
                 <NavBar/>
                 <Route exact path="/" component={MainMenu} />
-                <Route path="/panel" component={ opponent === 'none' ? HeroPanel : Arena } /> 
-                <Route path="/magic_shop" component={ opponent === 'none' ? MagicShop : Arena } />
-                <Route path="/blacksmith" component={ opponent === 'none' ? Blacksmith : Arena } />         
-                <Route path="/inn" component={ opponent === 'none' ? Inn : Arena } />
-                <Route path="/arena" component={Arena} />
+                <Route path="/panel" component={ !inProgress ? MainMenu : opponent === 'none' ? HeroPanel : Arena } /> 
+                <Route path="/magic_shop" component={ !inProgress ? MainMenu : opponent === 'none' ? MagicShop : Arena } />
+                <Route path="/blacksmith" component={ !inProgress ? MainMenu : opponent === 'none' ? Blacksmith : Arena } />         
+                <Route path="/inn" component={ !inProgress ? MainMenu : opponent === 'none' ? Inn : Arena } />
+                <Route path="/arena" component={!inProgress ? MainMenu : Arena} />
                 <Footer/>
               </div>
             </Router>
@@ -42,7 +40,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
+  inProgress: state.startGame.inProgress,
   opponent: state.handleOpponent.opponent
 })
 

@@ -1,12 +1,6 @@
-
-const initialState = {
-  inventory: [],
-}
-
+const initialState = { inventory: [] }
 
 export const handleInventory = ( state = initialState, action ) => {
-
-
 
 	switch(action.type) {
 		
@@ -16,21 +10,16 @@ export const handleInventory = ( state = initialState, action ) => {
 			const addedItem = state.inventory.filter(
 				item => item.id === action.item.id 
 			);
-
 			const addedIndex = state.inventory.map(
 				(item) => item.id 
 			).indexOf(action.item.id);
 
 			return addedItem.length === 0
-
 				?
-
 				Object.assign({}, state, {
 					inventory: [ ...state.inventory, { ...action.item, quantity : 1}],
 				})
-
 				:
-
 				Object.assign({}, state, {
 					inventory: Object.assign([ ...state.inventory], {
 						[addedIndex] : {
@@ -46,16 +35,12 @@ export const handleInventory = ( state = initialState, action ) => {
 			const removedItem = state.inventory.filter(
 				item => item.id === action.item.id 
 			);
-
 			const removedIndex = state.inventory.map(
-				(item) => item.id 
+				item => item.id 
 			).indexOf(action.item.id);
-
 			
 			return action.item.quantity > 1 
-
 				?
-
 				Object.assign({}, state, {
 					inventory: Object.assign([ ...state.inventory], {
 						[removedIndex] : {
@@ -65,9 +50,7 @@ export const handleInventory = ( state = initialState, action ) => {
 						}										
 					}),
 				})				
-
 				:
-
 				{ 
 					...state,  
 					inventory: 
@@ -77,14 +60,10 @@ export const handleInventory = ( state = initialState, action ) => {
 				}
 
 		case 'END_GAME':
-
 			return initialState			
-
 		default:
 			return state;
-
 	}
-
 }
 
 export default handleInventory;

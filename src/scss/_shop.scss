@@ -10,7 +10,6 @@
 .shop {
 	background-image: url(./img/backgrounds/shop_bg.png);
 	background-size: 100% 100%;
-
 }
 
 .blacksmith {
@@ -44,6 +43,10 @@
 		p {
 			display: inline-block;
 			margin-right: 20px;
+		}
+		.item-name {
+			font-weight: 700;
+			font-size: 17px;
 		}
 	}
 }

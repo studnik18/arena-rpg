@@ -36,8 +36,11 @@ class HeroBattleScreen extends React.Component {
 		
 		let minDamage = opponent.damage[0];
 		let maxDamage = opponent.damage[1];		
-
-		let hitChance = opponent.effects.filter(effect => effect.name === 'Ice').length > 0 ? opponent.hitChance : opponent.hitChance * 0.85;
+		let hitChance = opponent.effects.filter(effect => 
+			effect.name === 'Ice'
+		).length > 0 
+		? opponent.hitChance
+		: opponent.hitChance * 0.85;
 
 		if (isStrong) {
 			hitChance *= 0.7
@@ -48,7 +51,6 @@ class HeroBattleScreen extends React.Component {
 		minDamage = Math.round(minDamage)
 		maxDamage = Math.round(maxDamage)
 		const inflictedDamage = this.getRandomInteger(minDamage, maxDamage)
-
 		let opponentHit = Math.random()
 		let message = `Opponent performs ${isStrong ? 'a strong attack' : 'an attack'}`		
 
@@ -81,9 +83,7 @@ class HeroBattleScreen extends React.Component {
 	}
 
 	render() {
-
 		return (
-
 			<div class="hero-battle-screen">
 				<HeroPortrait gamelocation="battle"/>
 
@@ -91,20 +91,17 @@ class HeroBattleScreen extends React.Component {
 
 				<PotionBar opponentsTurn={this.opponentsTurn}/>
 			</div>
-
 		)
 	}		
 }
 
 const mapStateToProps = (state) => ({
-
 	opponent: state.handleOpponent.opponent,
 	currentHP: state.handleHP.currentHP,
 	blockChance: state.handlePlayerStats.blockChance,
 	armor: state.handlePlayerStats.armor,	
 	opponent: state.handleOpponent.opponent,
 	temporaryEffects: state.handleTemporaryEffects.temporaryEffects
-
 })
 
 export default connect(mapStateToProps, {

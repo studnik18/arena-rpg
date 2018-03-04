@@ -1,14 +1,15 @@
 import { combineReducers } from 'redux';
-import { handleInventory } from './handleInventory.js';
-import { handleEquip } from './handleEquip.js';
-import { handleGold } from './handleGold.js';
-import { handlePlayerStats } from './handlePlayerStats.js';
-import { handleExp } from './handleExp.js';
-import { handleHP } from './handleHP.js';
-import { handleOpponent } from './handleOpponent.js';
-import { handleTemporaryEffects } from './handleTemporaryEffects.js';
-import { logMessage } from './logMessage.js';
-import { showDescription } from './showDescription.js';
+import { handleInventory } from './handleInventory';
+import { handleEquip } from './handleEquip';
+import { handleGold } from './handleGold';
+import { handlePlayerStats } from './handlePlayerStats';
+import { handleExp } from './handleExp';
+import { handleHP } from './handleHP';
+import { handleOpponent } from './handleOpponent';
+import { handleTemporaryEffects } from './handleTemporaryEffects';
+import { logMessage } from './logMessage';
+import { showDescription } from './showDescription';
+import { startGame } from './startGame';
 
 export const rootReducer = combineReducers({
 	handleInventory,
@@ -20,7 +21,8 @@ export const rootReducer = combineReducers({
 	handleOpponent,
 	handleTemporaryEffects,
 	logMessage,
-	showDescription
+	showDescription,
+	startGame
 });
 
 export default rootReducer;

@@ -10,3 +10,43 @@
 	align-items: center;
 };
 
+.main-box {
+	width: 100%;
+	height: 100%;
+	background-image: url(./img/backgrounds/main_bg.jpg);
+	background-size: cover;
+	background-position: center;
+	align-items: center;
+	justify-content: space-between;
+	@extend %flex-column;
+	.main-title {
+		width: 350px;
+		font-size: 30px;
+		font-weight: 700;
+		background-color: #fff;
+		opacity: 0.5;
+		text-align: center;
+		margin-top: 15px;
+		padding: 5px;		
+	}
+	.launch-box {
+		opacity: 0.8;
+		margin-bottom: 15px;
+		input, button {
+			font-size: 20px;
+		}
+		input {
+			padding-left: 10px;
+		}
+	}
+}
+
+.game-info {
+	margin: 15px 15px;
+	font-size: 17px;
+	line-height: 140%;
+	li li {
+		margin-left: 15px;
+	}
+}
+

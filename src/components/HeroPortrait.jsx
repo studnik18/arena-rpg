@@ -9,12 +9,8 @@ import EffectList from './EffectList';
 class HeroPortrait extends React.Component {
 
 	render() {
-		const { maxHP, currentHP, gold, gamelocation, temporaryEffects } = this.props;
-		
-
-
+		const { maxHP, currentHP, gold, gamelocation, temporaryEffects, name } = this.props;
 		return (
-
 			<div className={`hero-${gamelocation}`}>
 				{
 					gamelocation === "arena" && <p className="header">Choose your opponent</p>
@@ -31,7 +27,7 @@ class HeroPortrait extends React.Component {
 				{
 					gamelocation !== "battle" &&
 
-					<p className="player-name">Player</p>
+					<p className="player-name">{name}</p>
 				}
 				<div className="hero-pic">
 
@@ -39,7 +35,7 @@ class HeroPortrait extends React.Component {
 				{
 					gamelocation === "battle" &&
 
-					<p className="player-name">Player</p>					
+					<p className="player-name">{name}</p>					
 				}
 				<div className="panel-bar health-bar">
 					<p>HP: {`${currentHP} / ${maxHP}`}</p>
@@ -56,6 +52,7 @@ class HeroPortrait extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+	name: state.startGame.name,
 	maxHP: state.handleHP.maxHP,
 	currentHP: state.handleHP.currentHP,
 	gold: state.handleGold.gold,
