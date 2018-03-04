@@ -29,7 +29,7 @@ class Arena extends React.Component {
 					opponent === 'none' 
 					?
 					<Fragment>   
-						<HeroPortrait gamelocation="arena"/>,
+						<HeroPortrait gamelocation="arena"/>
 						<OpponentList handleClick={this.handleClick} list={opponentList}/>
 					</Fragment>
 					:					
