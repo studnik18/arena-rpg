@@ -34,11 +34,11 @@ class MainMenu extends React.Component {
 							<input 
 								type="text" 
 								placeholder="Enter name" 
-								maxlength="15" 
+								maxLength="15" 
 								name="player-name" 
 								onChange={this.handleChange}
 							/>
-							<Link to="/">
+							<Link to="/arena-rpg/">
 								<button onClick={() => this.start(this.state.name)}>Proceed</button>
 							</Link>
 						</div>

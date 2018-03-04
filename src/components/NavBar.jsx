@@ -7,51 +7,47 @@ import blacksmith from '../img/navbar/blacksmith.png';
 import inn from '../img/navbar/inn.png';
 import arena from '../img/navbar/arena.png';
 
-
-
 const elData = [
 	
 	{
-		link: "/",
+		link: "/arena-rpg/",
 		title: "Main Menu",
 		image: main_menu
 	},
 
 	{
-		link: "/panel",
+		link: "/arena-rpg/panel",
 		title: "Hero Panel",
 		image: hero_panel
 	},
 
 	{
-		link: "/magic_shop",
+		link: "/arena-rpg/magic_shop",
 		title: "Magic shop",
 		image: magic_shop
 	},
 
 	{
-		link: "/blacksmith",
+		link: "/arena-rpg/blacksmith",
 		title: "Blacksmith",
 		image: blacksmith
 	},
 
 	{
-		link: "/inn",
+		link: "/arena-rpg/inn",
 		title: "Inn",
 		image: inn
 	},
 
 	{
-		link: "/arena",
+		link: "/arena-rpg/arena",
 		title: "Arena",
 		image: arena
 	}
-
 ];
 
 const NavBar = () => (
-	<ul className="navbar">
-		
+	<ul className="navbar">		
 		{
 			elData.map((el, i) =>
 				<NavBarEl
@@ -62,9 +58,7 @@ const NavBar = () => (
 				/>
 			)
 		}	
-
 	</ul>
-
 );
 
 export default NavBar;
