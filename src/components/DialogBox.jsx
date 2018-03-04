@@ -7,14 +7,12 @@ import { blacksmithDialogs, shopDialogs, innDialogs } from '../data/dialogs';
 
 class DialogBox extends React.Component {
 
-	generateInnMsg = (hoveredItem, HPState, goldState) => {
-			
+	generateInnMsg = (hoveredItem, HPState, goldState) => {		
 		let message = ''; 
-
 		if (typeof hoveredItem.id === 'undefined') {
-			Object.keys(HPState).map(state => {
+			Object.keys(HPState).forEach(state => {
 				if (HPState[state]) {
-					message += innDialogs[state] 
+					message += innDialogs[state]
 				}
 			})
 		} else if (hoveredItem.id >= 54 && hoveredItem.id <= 56) {
@@ -24,7 +22,6 @@ class DialogBox extends React.Component {
 		} else if (hoveredItem.id === 61 || hoveredItem.id === 62) {
 			message += innDialogs.sleepHovered
 		};
-
 		if (typeof hoveredItem.id !== 'undefined') {
 			if (goldState.enoughGold) {
 				message += ` ${innDialogs.enoughGold}`
@@ -35,10 +32,8 @@ class DialogBox extends React.Component {
 		return message
 	}
 
-	generateShopMsg = (hoveredItem, HPState, goldState) => {
-		
+	generateShopMsg = (hoveredItem, HPState, goldState) => {		
 		let message = ''; 
-
 		if (typeof hoveredItem.id === 'undefined') {
 			if (HPState.firmHP) {
 				message += shopDialogs.firmHP
@@ -61,7 +56,7 @@ class DialogBox extends React.Component {
 			} 
 		}
 		if (typeof hoveredItem.id !== 'undefined' && hoveredItem.action === 'buy') {
-			Object.keys(goldState).map(state => {
+			Object.keys(goldState).forEach(state => {
 				if (goldState[state]) {
 					message += ` ${shopDialogs[state]}`
 				}
@@ -71,9 +66,7 @@ class DialogBox extends React.Component {
 	}
 
 	generateBlacksmithMsg = (hoveredItem, HPState, goldState) => {
-
 		let message = '';
-
 		if (typeof hoveredItem.id === 'undefined') {
 			if (HPState.firmHP) {
 				message += blacksmithDialogs.firmHP
@@ -110,14 +103,13 @@ class DialogBox extends React.Component {
 			} 
 		}
 		if (typeof hoveredItem.id !== 'undefined' && hoveredItem.action === 'buy') {
-			Object.keys(goldState).map(state => {
+			Object.keys(goldState).forEach(state => {
 				if (goldState[state]) {
 					message += ` ${blacksmithDialogs[state]}`
 				}
 			})
 		}
 		return message
-
 	}
 
 	generateMsg = (...args) => {
@@ -134,30 +126,24 @@ class DialogBox extends React.Component {
 	}
 
 	render() {
-
-		const { hoveredItem, gold, gamelocation, maxHP, currentHP } = this.props;
-
+		const { hoveredItem, gold, maxHP, currentHP } = this.props;
 		const goldState = {
 			enoughGold: gold >= hoveredItem.buyValue,
 			goldShortage: gold < hoveredItem.buyValue && gold > hoveredItem.buyValue / 10,
 			seriousShortage: gold <= hoveredItem.buyValue / 10
 		}
-
 		const HPState = {
 			firmHP: currentHP / maxHP >= 0.8,
 			mediumHP: currentHP / maxHP > 0.4 && currentHP / maxHP < 0.8,
 			lowHP:  currentHP / maxHP <= 0.4 
 		}
-
 		const args = [ hoveredItem, HPState, goldState ];
 
-		return (
-		
-		<div className="dialog-box">
-			<p className="dialog-message">{this.generateMsg(...args)}</p>
-			<ItemDescription hoveredItem={hoveredItem}/>
-		</div>
-
+		return (	
+			<div className="dialog-box">
+				<p className="dialog-message">{this.generateMsg(...args)}</p>
+				<ItemDescription hoveredItem={hoveredItem}/>
+			</div>
 		)
 	}
 }

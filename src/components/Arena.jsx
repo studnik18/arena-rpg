@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 // Copmponents
@@ -22,24 +22,24 @@ class Arena extends React.Component {
 	}
 
 	render() {
-		const { opponent, equipped, logs } = this.props;
-	
+		const { opponent, logs } = this.props;
 		return (
 			<GameBox>					
 				{
 					opponent === 'none' 
 					?
-					[   
+					<Fragment>   
 						<HeroPortrait gamelocation="arena"/>,
 						<OpponentList handleClick={this.handleClick} list={opponentList}/>
-					]
+					</Fragment>
 					:					
-					[	<HeroBattleScreen />,
+					<Fragment>
+						<HeroBattleScreen />
 						<div className="vertical-layout">
 							<Console logs={logs} />
 							<OpponentScreen opponent={opponent} />
 						</div> 
-					]
+					</Fragment>
 				}
 			</GameBox>	
 		)
@@ -48,7 +48,6 @@ class Arena extends React.Component {
  
 const mapStateToProps = (state) => ({
 	opponent: state.handleOpponent.opponent,
-	equipped: state.handleEquip.equipped,
 	logs: state.logMessage.logs
 })
 

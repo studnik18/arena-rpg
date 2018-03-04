@@ -13,7 +13,15 @@ const Inn = () => (
 		<HeroPortrait gamelocation="inn"/>
 		<div className="inn-box">
 			<div className="inn">
-				<p>Art: <a href="https://dashinvaine.deviantart.com/art/Tavern-Wench048-418114669" target="_blank">dashinvaine</a></p>
+				<p>Art: 
+					<a 
+						href="https://dashinvaine.deviantart.com/art/Tavern-Wench048-418114669" 
+						target="_blank" 
+						rel="noopener noreferrer"
+					>
+						dashinvaine
+					</a>
+				</p>
 			</div>
 			<DialogBox gamelocation="inn"/>	
 		</div>

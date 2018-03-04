@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, endBattle } from '../actions';
-
 
 class PotionBar extends React.Component {
 	
@@ -15,18 +14,14 @@ class PotionBar extends React.Component {
 	};
 
 	useItem = (potion) => {
-
 		const { restoreHP, dealDamage, logMessage, addOpponentEffect, removeItem, opponentsTurn, opponent, endBattle } = this.props
-
 		if (typeof potion.restore !== 'undefined') {		
 			logMessage(['player', `You have healed ${potion.restore} HP`])
 			restoreHP(potion)
 		} else {
 			removeItem(potion)
 		}
-
 		if (typeof potion.damage !== 'undefined') {
-
 			logMessage(['player', `${potion.name} deals ${potion.damage} damage.`])
 			dealDamage(potion.damage)
 
@@ -35,7 +30,6 @@ class PotionBar extends React.Component {
 				return					
 			}
 		}
-
 		if (typeof potion.effect !== 'undefined') {
 
 			if (opponent.effects.filter(effect => effect.name === potion.effect.name).length === 0 && Math.random() < potion.effect.chance) {
@@ -46,13 +40,11 @@ class PotionBar extends React.Component {
 				addOpponentEffect(potion.effect)
 			}		
 		}
-
 		opponentsTurn(opponent.currentHP / opponent.maxHP < 0.2 ? true : false, opponent)
-
 	}
 
 	render() {
-		const { equipped, maxHP, currentHP, blockChance, opponent, opponentsTurn } = this.props
+		const { equipped } = this.props
 
 		const battlePotions = equipped.filter(item =>
 			item.category === 'potions' && (item.useLocation === 'battle' || item.useLocation === 'both')
@@ -60,73 +52,56 @@ class PotionBar extends React.Component {
 
 		let hoveredPotion = this.state.hoveredItem
 		return (
-			[
-			<div class="flex-row potion-bar">
-				
-				{	
-					battlePotions.length === 0 
+			<Fragment>
+				<div className="flex-row potion-bar">				
+					{	
+						battlePotions.length === 0 
+						?
+							<Fragment>
+								<div className="bag-img" />
+								<p>Your potion bag is empty.</p>
+							</Fragment>
+						:				
+						battlePotions.map(potion =>
+						<div 
+							className="flex-column potion-container"
+							onMouseEnter={() => this.setState({hoveredItem: potion})}
+							onMouseLeave={() => this.setState({hoveredItem: ''})}
+						>
+							<div className={`potion id_${potion.id}`} />	
 
-					?
-						[
-							<div className="bag-img" />,
-							<p>Your potion bag is empty.</p>
-						]
-
-
-					:
-				
-					battlePotions.map(potion =>
-					<div 
-						className="flex-column potion-container"
-						onMouseEnter={() => this.setState({hoveredItem: potion})}
-						onMouseLeave={() => this.setState({hoveredItem: ''})}
-					>
-						<div className={`potion id_${potion.id}`} />	
-
-						<button className="use-btn" onClick={ () => this.useItem(potion) }>Use ({potion.quantity})</button>
-					</div>
-					)
-					
-				}
-				
-			</div>,
-			<p>{hoveredPotion.length === 0 ? '' : hoveredPotion.name}</p>,
-			<p>
-				{
-					hoveredPotion.length === 0
-
-					?
-
-					''
-
-					: 
-
-					typeof hoveredPotion.restore !== 'undefined'
-
-					?
-
-					`Restore ${hoveredPotion.restore} HP.`
-
-					:
-
-					`Deal ${hoveredPotion.damage} damage. ${hoveredPotion.effect.chance * 100}% chance to trigger effect: 
-					'${hoveredPotion.effect.name}' for ${hoveredPotion.effect.duration} turns.`
-				}
-			</p>
-			]
+							<button className="use-btn" onClick={ () => this.useItem(potion) }>Use ({potion.quantity})</button>
+						</div>
+						)					
+					}			
+				</div>
+				<p>{hoveredPotion.length === 0 ? '' : hoveredPotion.name}</p>
+				<p>
+					{
+						hoveredPotion.length === 0
+						?
+						''
+						: 
+						typeof hoveredPotion.restore !== 'undefined'
+						?
+						`Restore ${hoveredPotion.restore} HP.`
+						:
+						`Deal ${hoveredPotion.damage} damage. ${hoveredPotion.effect.chance * 100}% chance to trigger effect: 
+						'${hoveredPotion.effect.name}' for ${hoveredPotion.effect.duration} turns.`
+					}
+				</p>
+			</Fragment>
 		)
 	}
 }
 
-const mapStateToProps = (state) => ({
-	
+const mapStateToProps = (state) => ({	
 	equipped: state.handleEquip.equipped,
 	maxHP: state.handleHP.maxXP,
 	currentHP: state.handleHP.currentHP,
 	blockChance: state.handlePlayerStats.blockChance,
 	damage: state.handlePlayerStats.damage,
 	opponent: state.handleOpponent.opponent
-
 })
 
 export default connect(mapStateToProps,{

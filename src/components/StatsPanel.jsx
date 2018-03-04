@@ -12,8 +12,8 @@ class StatsPanel extends React.Component {
 	}
 		
 	render() {
-		const { attributes, armor, blockChance, damage, hitChance, lifeDrain, attributePoints, incrementAttribute, 
-				calculateAttributeBonus, exp, level, nextLevel, maxHP, currentHP, temporaryEffects, name } = this.props;			
+		const { attributes, armor, blockChance, damage, hitChance, lifeDrain, attributePoints,
+				exp, level, nextLevel, maxHP, currentHP, name } = this.props;			
 
 		return (
 			<div className="flex-row">
@@ -62,14 +62,17 @@ class StatsPanel extends React.Component {
 						<p>EXP: {`${exp} / ${nextLevel}`}</p>
 						<div style={{width: `${Math.floor(exp / nextLevel * 100)}%`}} className="exp" />
 					</div>	
-
 					<div className="hero-pic" />
 					<div className="panel-bar health-bar">
 						<p>HP: {`${currentHP} / ${maxHP}`}</p>
 						<div style={{width: `${Math.floor(100 - (currentHP / maxHP * 100))}%`}} className="damage" />
 					</div>
 					<p>Art:&nbsp; 
-						<a href="https://heavyarmorhellfire.deviantart.com/art/Slavic-Warlord-688314872" target="_blank">
+						<a 
+							href="https://heavyarmorhellfire.deviantart.com/art/Slavic-Warlord-688314872" 
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							Heavyarmorhellfire
 						</a>
 					</p>										
@@ -79,7 +82,6 @@ class StatsPanel extends React.Component {
 		)
 	}
 }
-
 
 const mapStateToProps = (state) => ({
 	name: state.startGame.name,
@@ -96,7 +98,6 @@ const mapStateToProps = (state) => ({
 	nextLevel: state.handleExp.nextLevel,
 	maxHP: state.handleHP.maxHP,
 	currentHP: state.handleHP.currentHP,
-	temporaryEffects: state.handleTemporaryEffects.temporaryEffects
 })
 
 export default connect(mapStateToProps, {

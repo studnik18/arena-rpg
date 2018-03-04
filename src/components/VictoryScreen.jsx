@@ -4,7 +4,7 @@ const VictoryScreen = ({ type, lastReward, level, handleModal, handleAttributePo
 
 	<div className="victory-screen">
 		<p>Art:&nbsp; 
-			<a href="https://vk.com/id69481172" target="_blank">
+			<a href="https://vk.com/id69481172" target="_blank" rel="noopener noreferrer">
 				Igor Ozhiganov
 			</a>
 		</p>
@@ -26,7 +26,12 @@ const VictoryScreen = ({ type, lastReward, level, handleModal, handleAttributePo
 			<p>{type === 'with-level-up' ? `New level reached! Current level: ${level}.` : ''}</p>
 			<button 
 				className="flex-row align-center" 
-				onClick={() => {handleModal(); type === 'with-level-up' ? handleAttributePoints() : '' } }
+				onClick={() => {
+					handleModal(); 
+					if (type === 'with-level-up') {
+						handleAttributePoints()
+					} 
+				}}
 			>
 				<div className="laurel-icon"/>
 				<p>Proceed</p>

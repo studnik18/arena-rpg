@@ -114,7 +114,7 @@ export const handlePlayerStats = (state = initialState, action) => {
 							}		
 						}
 					}
-					Object.keys(state.attributes).includes(skill) 
+					return Object.keys(state.attributes).includes(skill) 
 					?
 					{
 						...state,
@@ -164,6 +164,7 @@ export const handlePlayerStats = (state = initialState, action) => {
 					]				
 				}
 			}
+			break;
 		case actionTypes.END_BATTLE:
 			return {
 				...state,

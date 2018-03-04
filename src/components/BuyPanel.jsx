@@ -14,14 +14,10 @@ class BuyPanel extends React.Component {
 	}
 
 	render() {
-		const { items, gamelocation, buyItem, innBuy, gold } = this.props;
-
+		const { items, gamelocation, gold } = this.props;
 		return (
-
-			<div className="panel buy-panel" gamelocation={gamelocation}>
-		
+			<div className="panel buy-panel" gamelocation={gamelocation}>	
 				{ items.map((el, i) => 
-
 					<PanelElement
 						key={i}
 						handleClick={this.handleClick}
@@ -30,7 +26,6 @@ class BuyPanel extends React.Component {
 						action="buy"
 					/>
 				)}
-
 			</div>
 		)
 	}
@@ -38,8 +33,7 @@ class BuyPanel extends React.Component {
 
 const mapStateToProps = (state) => ({
 	gold: state.handleGold.gold
-})
-	
+});
 
 export default connect(mapStateToProps, {
 	buyItem, innBuy

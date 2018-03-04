@@ -7,11 +7,9 @@ class SellPanel extends React.Component {
 	handleClick = (el) => {
 		this.props.sellItem(el)
 	}
-
 	render() {
-		const { inventory, gamelocation, sellItem, gold } = this.props;
+		const { inventory, gamelocation,gold } = this.props;
 		return (
-
 			<div>
 				<div>
 					<div className="flex-row gold-container">
@@ -27,8 +25,7 @@ class SellPanel extends React.Component {
 						</p> 
 						: ''
 					}
-				</div>
-				
+				</div>				
 					{ 
 						inventory.length > 0
 
@@ -44,18 +41,13 @@ class SellPanel extends React.Component {
 									item={el}
 									action="sell"
 									gamelocation={gamelocation}
-								/>
-						
+								/>						
 							)
 						}
-
 						</div>
 						:
-
 						<p className="inventory-header">Your inventory is empty</p>
-					}
-
-		
+					}	
 			</div>
 		)
 	}

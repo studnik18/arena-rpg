@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PanelElement from './PanelElement';
 import { equipItem, unequipItem, calculateAttributeBonus, showDescription } from '../actions';
 
 
@@ -24,7 +23,7 @@ class InventoryPanel extends React.Component {
 	}
 
 	render() {
-		const { inventory, equipped, gold, equipItem, unequipItem, calculateAttributeBonus, showDescription } = this.props;
+		const { inventory, gold } = this.props;
 		return (
 			<div className="panel inventory-panel">
 				
@@ -42,30 +41,21 @@ class InventoryPanel extends React.Component {
 						</p> 
 						: ''
 					}
-				</div>
-				
+				</div>			
 				{
 					inventory.length > 0 ?
-
 					inventory.map((el, i) =>
-
-
-
 						<div 
 							className='item-container'
 							onMouseEnter={() => this.showItemDescription(el)}
-							onMouseLeave={() => this.showItemDescription('')}							
+							onMouseLeave={() => this.showItemDescription('')}
+							key={el.id}							
 						>
-
-
 							<p className="item-title">{el.name} {el.quantity > 1 ? ` (${el.quantity})`: ''}</p>
-
-
 							<div className="item-data">
 								<div
 									className={`item-icon id_${el.id}`} 
-								/>
-								
+								/>								
 								<button 
 									className="equip-btn"
 									onClick={ () => { this.handleClick(el); this.showItemDescription('') } }			
@@ -76,12 +66,9 @@ class InventoryPanel extends React.Component {
 
 							</div>
 						</div>
-
-
 					)
 					: <p className="inventory-header">Your inventory is empty</p>
 				}
-
 			</div>
 		)
 	}

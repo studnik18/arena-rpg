@@ -9,7 +9,7 @@ const NavBarEl = ({link, image, title}) => (
 				<img 
 					className="navbar-el-img"
 					src={image}
-					alt={`${title} image`}
+					alt={`${title}`}
 				/>				
 			</div>
 			<p className="navbar-el-title">{title}</p>

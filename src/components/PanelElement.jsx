@@ -11,11 +11,8 @@ class PanelElement extends React.Component {
 	}
 
 	render() {
-
-		const { handleClick, item, gold, action, gamelocation, showDescription } = this.props;
-
+		const { handleClick, item, gold, action, gamelocation } = this.props;
 		return (
-
 			<div 
 				className='item-container'
 				onMouseEnter={() => this.showItemDescription({...item, action: action})}
@@ -36,43 +33,32 @@ class PanelElement extends React.Component {
 							}
 						</p>
 						<div className="coin-bg"/>
-					</div>
-					
+					</div>					
 					{ 	action === 'buy'
-
 						? 
-
 						<button 
 							onClick={ gold >= item.buyValue ? () => {handleClick(item); this.showItemDescription('')} : () => ''}
 							className={ `buy-btn ${gold >= item.buyValue ? 'enabled' : 'disabled'}`}			
 						>
 							Buy
 						</button>
-
 						:
-
 						(gamelocation === "blacksmith" && ['weapons', 'armors', 'helmets', 'gloves', 'boots', 'shields'].includes(item.category) === true) || 
-						(gamelocation === "shop" && ['potions', 'oils', 'necklaces', 'rings'].includes(item.category) === true)
-						
+						(gamelocation === "shop" && ['potions', 'oils', 'necklaces', 'rings'].includes(item.category) === true)						
 						?
-
 						<button 
 							onClick={ () => {handleClick(item); this.showItemDescription('')} }
 							className="enabled sell-btn"			
 						>
 							Sell
 						</button>
-
 						:
-
 						<button className="disabled sell-btn">
 							Sell
 						</button>
-
 					}
 				</div>
 			</div>
-
 		)
 	}
 };

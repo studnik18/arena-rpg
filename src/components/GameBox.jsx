@@ -21,18 +21,18 @@ class GameBox extends React.Component {
 	}
 
 	render() {
-
-		const { children, isVictoryScreenOpen, isDefeatScreenOpen, lastReward, level, addAttributePoints, closeModal } = this.props
-
+		const { children, isVictoryScreenOpen, isDefeatScreenOpen, lastReward, level } = this.props
 		return (
 			
 			<div className="game-box">
 				{
 					isDefeatScreenOpen ?
-
 					<div className="defeat-screen">
 						<p>Art:&nbsp; 
-							<a href="https://snatti89.deviantart.com/art/238-365-A-Feast-For-Crows-597848649" target="_blank">
+							<a href="https://snatti89.deviantart.com/art/238-365-A-Feast-For-Crows-597848649" 
+							target="_blank"
+							rel="noopener noreferrer"
+							>
 								snatti89
 							</a>
 						</p>
@@ -46,7 +46,6 @@ class GameBox extends React.Component {
 					</div>
 					:
 					isVictoryScreenOpen !== false ?
-
 					<VictoryScreen 
 						type={isVictoryScreenOpen} 
 						lastReward={lastReward}

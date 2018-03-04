@@ -18,7 +18,6 @@ class EquipPanel extends React.Component {
 	}
 
 	useItem = (el) => {
-
 		if (typeof el.restore !== "undefined") {
 			this.props.restoreHP(el)
 		}
@@ -26,13 +25,11 @@ class EquipPanel extends React.Component {
 		if (typeof el.effect !== "undefined" && this.props.temporaryEffects.includes(el.effect) === false) {
 			this.props.addEffect(el)
 		}
-
 		this.props.calculateAttributeBonus();	
 	}
 
 	render() {
-
-		const { equipped, temporaryEffects, unequipItem, addEffect, calculateAttributeBonus, restoreHP, showDescription, hoveredItem } = this.props;
+		const { equipped, temporaryEffects, hoveredItem } = this.props;
 		const categoriesArray = ['weapons', 'helmets', 'necklaces', 'armors', 'boots', 'gloves', 'rings', 'shields'];
 		const potions = equipped.filter(item =>
 			item.category === 'potions' || item.category === 'oils'
@@ -40,10 +37,7 @@ class EquipPanel extends React.Component {
 		const battleGear = equipped.filter(item =>
 			item.category !== 'potions' && item.category !== 'oils'
 		)
-
 		return (
-			
-
 			<div className="equip-panel">
 				<ItemDescription hoveredItem={hoveredItem} />
 				<div className="potion-bag">
@@ -78,16 +72,13 @@ class EquipPanel extends React.Component {
 					}
 					</div>
 				</div>
-
 				{
 					categoriesArray.map((el, i) =>
 						<div key={i} className={`empty-slot equipped-item ${el}`} />
 					)
 				}
-
 				{
 					battleGear.map((el, i) =>
-
 						<div 
 							key={i}
 							className={`used-slot equipped-item ${el.category} id_${el.id}`}
@@ -95,7 +86,6 @@ class EquipPanel extends React.Component {
 							onMouseEnter={() => this.showItemDescription(el)}
 							onMouseLeave={() =>this.showItemDescription('')}
 						/>
-
 					)
 				}
 			</div>

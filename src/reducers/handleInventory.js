@@ -28,9 +28,6 @@ export const handleInventory = ( state = initialState, action ) => {
 				})
 		case actionTypes.SELL_ITEM:
 		case actionTypes.EQUIP_ITEM:
-			const removedItem = state.inventory.filter(
-				item => item.id === action.item.id 
-			);
 			const removedIndex = state.inventory.map(
 				item => item.id 
 			).indexOf(action.item.id);			
