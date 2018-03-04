@@ -18,7 +18,8 @@ export const handleGold = ( state = initialState, action ) => {
 				...state, 
 				gold: state.gold + action.reward.gold
 			}
-			: ''
+			: 
+			state
 		case actionTypes.END_GAME:
 			return {
 				...state,

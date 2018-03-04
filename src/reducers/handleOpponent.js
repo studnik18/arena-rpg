@@ -32,33 +32,36 @@ export const handleOpponent = ( state = initialState, action ) => {
 				}				
 			}
 		case actionTypes.EFFECT_COOLDOWN:
-			const effectIndex = state.opponent.effects.map(
-				(effect) => effect.name 
-			).indexOf(action.effect.name);
-			return action.effect.duration > 1 
-				?
-				Object.assign({}, state, {
-					opponent: Object.assign({ ...state.opponent }, {
-						effects: Object.assign([...state.opponent.effects], {
-							[effectIndex] : {
-								...state.opponent.effects[effectIndex],
-								duration: action.effect.duration - 1
-							}
+			if (typeof state.opponent.effects !== 'undefined') {
+				const effectIndex = state.opponent.effects.map(
+					(effect) => effect.name 
+				).indexOf(action.effect.name);
+				return action.effect.duration > 1 
+					?
+					Object.assign({}, state, {
+						opponent: Object.assign({ ...state.opponent }, {
+							effects: Object.assign([...state.opponent.effects], {
+								[effectIndex] : {
+									...state.opponent.effects[effectIndex],
+									duration: action.effect.duration - 1
+								}
+							})
+										
 						})
-									
-					})
-				})	
-				:
-				{ 
-					...state,  
-					opponent: {
-						...state.opponent,
-						effects: 
-							[	...state.opponent.effects.slice(0, effectIndex), 
-								...state.opponent.effects.slice(effectIndex + 1)
-							] 
+					})	
+					:
+					{ 
+						...state,  
+						opponent: {
+							...state.opponent,
+							effects: 
+								[	...state.opponent.effects.slice(0, effectIndex), 
+									...state.opponent.effects.slice(effectIndex + 1)
+								] 
+						}
 					}
-				}				
+			}
+			return state;			
 		case actionTypes.DRAIN_LIFE:
 			return action.payload.character === 'opponent' 
 				? 
