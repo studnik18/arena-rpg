@@ -1,8 +1,8 @@
+import * as actionTypes from '../constants/ActionTypes';
 
 //base statisicts - without bonus from attributes
 
-const initialState = {
-	
+const initialState = {	
 	attributes: {
 		strength: 10,
 		defense: 10,
@@ -19,49 +19,36 @@ const initialState = {
 	damage: [2, 4],
 	hitChance: 0.55,
 	lifeDrain: 0
-
 }
 
-
 export const handlePlayerStats = (state = initialState, action) => {
-
 	switch(action.type) {
-
-		case 'EQUIP_ITEM':
-
+		case actionTypes.EQUIP_ITEM:
 			switch(action.item.category){
 				case 'helmets':
 				case 'armors':
 				case 'boots':
 				case 'gloves':
-
 					return {
 						...state, 
 						armor: state.armor + action.item.armor,
 						baseHitChance: state.baseHitChance - action.item.hitChancePenalty
 					}
-
-				case 'weapons': 
-					
+				case 'weapons': 					
 					return {
 						...state,
 						baseDamage: action.item.dmgRange,
 						baseHitChance: action.item.hitChance
 					}
-
 				case 'shields':
 
 					return {
 						...state,
 						baseBlockChance: state.baseBlockChance + action.item.blockChanceBonus
 					}
-
 				case 'rings':
 				case 'necklaces':
-
-
 					const skill = Object.keys(action.item.skillIncrease)[0];
-
 					if (skill === 'all') {
 						return {
 							...state,
@@ -73,11 +60,8 @@ export const handlePlayerStats = (state = initialState, action) => {
 							}		
 						}
 					}
-
 					return Object.keys(state.attributes).includes(skill) 
-
 					?
-
 					{
 						...state,
 						attributes: {
@@ -85,54 +69,40 @@ export const handlePlayerStats = (state = initialState, action) => {
 							[skill]: state.attributes[skill] + action.item.skillIncrease[skill]
 						}		
 					}
-
 					:
-
 					{
 						...state,
 						[skill]: state[skill] + action.item.skillIncrease[skill]
 					}					
-
 				default: 
 					return state;
-
 			}
-
-		case 'UNEQUIP_ITEM':
-
+		case actionTypes.UNEQUIP_ITEM:
 			switch(action.item.category){
 				case 'helmets':
 				case 'armors':
 				case 'boots':
 				case 'gloves':
-
 					return {
 
 						...state, 
 							armor: state.armor - action.item.armor,
-							baseHitChance: state.baseHitChance + action.item.hitChancePenalty
-							
+							baseHitChance: state.baseHitChance + action.item.hitChancePenalty							
 					}
-
 				case 'weapons':
-					return {
-						
+					return {					
 						...state,
 						baseDamage: [2,4],
 						baseHitChance: state.baseHitChance - action.item.hitChance + 0.5
 					}
-
 				case 'shields':
 					return {
 						...state,
 						baseBlockChance: state.baseBlockChance - action.item.blockChanceBonus
 					}
-
 				case 'rings':
 				case 'necklaces':	
-
 					const skill = Object.keys(action.item.skillIncrease)[0]
-
 					if (skill === 'all') {
 						return {
 							...state,
@@ -144,11 +114,8 @@ export const handlePlayerStats = (state = initialState, action) => {
 							}		
 						}
 					}
-
 					Object.keys(state.attributes).includes(skill) 
-
 					?
-
 					{
 						...state,
 						attributes: {
@@ -156,20 +123,15 @@ export const handlePlayerStats = (state = initialState, action) => {
 							[skill]: state.attributes[skill] - action.item.skillIncrease[skill]
 						}		
 					}
-
 					:
-
 					{
 						...state,
 						[skill]: state[skill] - action.item.skillIncrease[skill]
-					}	
-					
+					}						
 				default: 
 					return state;
 			}
-
-		case 'INCREMENT_ATTRIBUTE':
-
+		case actionTypes.INCREMENT_ATTRIBUTE:
 			return {
 				...state,
 				attributes: {
@@ -177,24 +139,19 @@ export const handlePlayerStats = (state = initialState, action) => {
 				},
 				attributePoints: state.attributePoints - 1
 			}
-
-		case 'CALCULATE_ATTRIBUTE_BONUS':
-
+		case actionTypes.CALCULATE_ATTRIBUTE_BONUS:
 			return {
 				...state,
 				blockChance: state.baseBlockChance * (1 + (state.attributes.defense * 0.005)),
 				hitChance: state.baseHitChance * (1 + (state.attributes.agility * 0.005)),
 				damage: [state.baseDamage[0] * (1 + state.attributes.strength * 0.01), state.baseDamage[1] * (1 + state.attributes.strength * 0.01)]
 			}
-
-		case 'NEW_LEVEL_POINTS':
-
+		case actionTypes.NEW_LEVEL_POINTS:
 			return {
 				...state,
 				attributePoints: state.attributePoints + 20
 			}
-
-		case 'ADD_EFFECT': 
+		case actionTypes.ADD_EFFECT: 
 			const increasedStat = action.item.effect.statIncrease;
 			if (Object.keys(state.attributes).includes(increasedStat)) {
 				return {
@@ -207,29 +164,32 @@ export const handlePlayerStats = (state = initialState, action) => {
 					]				
 				}
 			}
-
-		case 'END_BATTLE':
+		case actionTypes.END_BATTLE:
 			return {
 				...state,
 				attributes: {
-					strength: state.boostedAttributes.includes('strength') ? state.attributes.strength - 10 : state.attributes.strength,
-					defense: state.boostedAttributes.includes('defense') ? state.attributes.defense - 10 : state.attributes.defense,
-					agility: state.boostedAttributes.includes('agility') ? state.attributes.agility - 10 : state.attributes.agility,
-					vitality: state.boostedAttributes.includes('vitality') ? state.attributes.vitality - 10 : state.attributes.vitality
+					strength: state.boostedAttributes.includes('strength') 
+						? state.attributes.strength - 10 
+						: state.attributes.strength,
+					defense: state.boostedAttributes.includes('defense') 
+						? state.attributes.defense - 10 
+						: state.attributes.defense,
+					agility: state.boostedAttributes.includes('agility') 
+						? state.attributes.agility - 10 
+						: state.attributes.agility,
+					vitality: state.boostedAttributes.includes('vitality') 
+						? state.attributes.vitality - 10 
+						: state.attributes.vitality
 				},
 				boostedAttributes: []
 			}
-
-		case 'END_GAME':
-
+		case actionTypes.END_GAME:
 			return {
 				...state,
 				...initialState
 			}
-
 		default: 
 			return state
-
 	}
 }
 

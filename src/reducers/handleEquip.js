@@ -1,13 +1,12 @@
-const initialState = {
-  equipped: [],
-}
+import * as actionTypes from '../constants/ActionTypes';
 
+const initialState = { equipped: [] }
 
 export const handleEquip = ( state = initialState, action ) => {
 	
 	switch(action.type) {
 		
-		case 'EQUIP_ITEM':
+		case actionTypes.EQUIP_ITEM:
 
 			const equippedItem = state.equipped.filter(
 				item => item.id === action.item.id 
@@ -18,15 +17,11 @@ export const handleEquip = ( state = initialState, action ) => {
 			).indexOf(action.item.id);
 
 			return equippedItem.length === 0
-
 				?
-
 				Object.assign({}, state, {
 					equipped: [ ...state.equipped, { ...action.item, quantity : 1}],
 				})
-
 				:
-
 				Object.assign({}, state, {
 					equipped: Object.assign([ ...state.equipped], {
 						[equippedIndex] : {
@@ -35,12 +30,10 @@ export const handleEquip = ( state = initialState, action ) => {
 						}										
 					}),
 				})
-
-		case 'UNEQUIP_ITEM':
-		case 'HEAL':
-		case 'ADD_EFFECT':
-		case 'REMOVE_ITEM':
-			
+		case actionTypes.UNEQUIP_ITEM:
+		case actionTypes.HEAL:
+		case actionTypes.ADD_EFFECT:
+		case actionTypes.REMOVE_ITEM:		
 			const unequippedItem = state.equipped.filter(
 				item => item.id === action.item.id 
 			);
@@ -50,9 +43,7 @@ export const handleEquip = ( state = initialState, action ) => {
 			).indexOf(action.item.id);
 
 			return action.item.quantity > 1 
-
 				?
-
 				Object.assign({}, state, {
 					equipped: Object.assign([ ...state.equipped], {
 						[unequippedIndex] : {
@@ -62,25 +53,19 @@ export const handleEquip = ( state = initialState, action ) => {
 						}										
 					}),
 				})				
-
 				:
-
 				{ 
 					...state,  
 					equipped: 
 						[	...state.equipped.slice(0, unequippedIndex), 
 							...state.equipped.slice(unequippedIndex + 1)
 						] 
-				}
-		
-		case 'END_GAME':
-
+				}		
+		case actionTypes.END_GAME:
 			return initialState		
-
 		default:
 			return state;
 	}
-
 }
 
 export default handleEquip;

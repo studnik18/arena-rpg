@@ -1,3 +1,5 @@
+import * as actionTypes from '../constants/ActionTypes';
+
 const initialState = {
 	exp: 0,
 	level: 1,
@@ -16,20 +18,19 @@ const levelThresholds = {
 	7: 1500,
 	8: 2100,
 	9: 3000,
-	10: 4000
+	10: 4000,
+	11: 5200,
+	12: 6500,
+	13: 8000,
+	14: 10000
 }
 
 export const handleExp = ( state = initialState, action ) => {
-
 	switch(action.type) {
-		case 'END_BATTLE':
-			
+		case actionTypes.END_BATTLE:			
 			const isLevelGained = state.exp + action.reward.XP >= levelThresholds[state.level]
-
 			return action.result === 'success'
-
 			?
-
 			{
 				...state,
 				level: isLevelGained ? state.level + 1 : state.level,
@@ -38,28 +39,21 @@ export const handleExp = ( state = initialState, action ) => {
 				isVictoryScreenOpen: isLevelGained ? 'with-level-up' : 'no-level-up',
 				lastReward: action.reward
 			}
-
 			:
-
 			{
 				...state,
 				isDefeatScreenOpen: true
 			}
-
-		case 'CLOSE_MODAL':
+		case actionTypes.CLOSE_MODAL:
 
 			return {
 					...state,
 					isDefeatScreenOpen: false,
 					isVictoryScreenOpen: false
 				}
-
-		case 'END_GAME':
-
+		case actionTypes.END_GAME:
 			return initialState
-
 		default: 
 			return state;
-
 	}
 }

@@ -1,19 +1,17 @@
+import * as actionTypes from '../constants/ActionTypes';
+
 const initialState = { inventory: [] }
 
 export const handleInventory = ( state = initialState, action ) => {
-
-	switch(action.type) {
-		
-		case 'BUY_ITEM':
-		case 'UNEQUIP_ITEM':
-
+	switch(action.type) {	
+		case actionTypes.BUY_ITEM:
+		case actionTypes.UNEQUIP_ITEM:
 			const addedItem = state.inventory.filter(
 				item => item.id === action.item.id 
 			);
 			const addedIndex = state.inventory.map(
 				(item) => item.id 
 			).indexOf(action.item.id);
-
 			return addedItem.length === 0
 				?
 				Object.assign({}, state, {
@@ -28,17 +26,14 @@ export const handleInventory = ( state = initialState, action ) => {
 						}										
 					}),
 				})
-
-		case 'SELL_ITEM':
-		case 'EQUIP_ITEM':
-
+		case actionTypes.SELL_ITEM:
+		case actionTypes.EQUIP_ITEM:
 			const removedItem = state.inventory.filter(
 				item => item.id === action.item.id 
 			);
 			const removedIndex = state.inventory.map(
 				item => item.id 
-			).indexOf(action.item.id);
-			
+			).indexOf(action.item.id);			
 			return action.item.quantity > 1 
 				?
 				Object.assign({}, state, {
@@ -46,7 +41,6 @@ export const handleInventory = ( state = initialState, action ) => {
 						[removedIndex] : {
 							...action.item,
 							quantity: --action.item.quantity
-
 						}										
 					}),
 				})				
@@ -58,8 +52,7 @@ export const handleInventory = ( state = initialState, action ) => {
 							...state.inventory.slice(removedIndex + 1)
 						] 
 				}
-
-		case 'END_GAME':
+		case actionTypes.END_GAME:
 			return initialState			
 		default:
 			return state;

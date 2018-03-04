@@ -1,12 +1,10 @@
-const initialState = {
-	opponent: 'none'
-}
+import * as actionTypes from '../constants/ActionTypes';
+
+const initialState = { opponent: 'none' }
 
 export const handleOpponent = ( state = initialState, action ) => {
-
 	switch(action.type) {
-
-		case 'CHOOSE_OPPONENT':
+		case actionTypes.CHOOSE_OPPONENT:
 			return {
 				...state,
 				opponent: {
@@ -14,8 +12,7 @@ export const handleOpponent = ( state = initialState, action ) => {
 					effects: []
 				}
 			}
-
-		case 'DEAL_DAMAGE':
+		case actionTypes.DEAL_DAMAGE:
 			return {
 				...state,
 				opponent: { 
@@ -23,8 +20,7 @@ export const handleOpponent = ( state = initialState, action ) => {
 					currentHP: state.opponent.currentHP - action.damage
 				}
 			}
-
-		case 'ADD_OPPONENT_EFFECT':
+		case actionTypes.ADD_OPPONENT_EFFECT:
 			return {
 				...state,
 				opponent: { 
@@ -35,17 +31,12 @@ export const handleOpponent = ( state = initialState, action ) => {
 					]
 				}				
 			}
-
-		case 'EFFECT_COOLDOWN':
-
+		case actionTypes.EFFECT_COOLDOWN:
 			const effectIndex = state.opponent.effects.map(
 				(effect) => effect.name 
 			).indexOf(action.effect.name);
-
 			return action.effect.duration > 1 
-
 				?
-
 				Object.assign({}, state, {
 					opponent: Object.assign({ ...state.opponent }, {
 						effects: Object.assign([...state.opponent.effects], {
@@ -57,9 +48,7 @@ export const handleOpponent = ( state = initialState, action ) => {
 									
 					})
 				})	
-
 				:
-
 				{ 
 					...state,  
 					opponent: {
@@ -70,12 +59,9 @@ export const handleOpponent = ( state = initialState, action ) => {
 							] 
 					}
 				}				
-
-		case 'DRAIN_LIFE':
+		case actionTypes.DRAIN_LIFE:
 			return action.payload.character === 'opponent' 
-
 				? 
-
 				{
 					...state,
 					opponent: {
@@ -83,17 +69,13 @@ export const handleOpponent = ( state = initialState, action ) => {
 						currentHP: state.opponent.currentHP + action.payload.value <= state.opponent.maxHP ? state.opponent.currentHP + action.payload.value : state.opponent.maxHP
 					}
 				}
-
 				:
-
 				state
-
-		case 'END_BATTLE':
+		case actionTypes.END_BATTLE:
 			return {
 				...state,
 				opponent: 'none'
 			}				
-
 		default:
 			return state
 	}

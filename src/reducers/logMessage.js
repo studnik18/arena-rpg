@@ -1,12 +1,10 @@
-const initialState = {
-	logs: []
-}
+import * as actionTypes from '../constants/ActionTypes';
+
+const initialState = { logs: [] }
 
 export const logMessage = (state = initialState, action) => {
-
 	switch(action.type) {
-
-		case 'LOG_MESSAGE':
+		case actionTypes.LOG_MESSAGE:
 			return {
 				...state,
 				logs: [
@@ -14,13 +12,11 @@ export const logMessage = (state = initialState, action) => {
 					action.message
 				]
 			}
-
-		case 'END_BATTLE':
+		case actionTypes.END_BATTLE:
 			return {
 				...state,
 				logs: []
 			}
-
 		default:
 			return state
 	}

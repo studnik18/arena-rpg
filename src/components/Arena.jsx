@@ -13,7 +13,6 @@ import HeroPortrait from './HeroPortrait.jsx';
 import { opponentList } from '../data/opponentList.js';
 
 // Actions
-
 import { chooseOpponent } from '../actions';
 
 class Arena extends React.Component {
@@ -26,36 +25,31 @@ class Arena extends React.Component {
 		const { opponent, equipped, logs } = this.props;
 	
 		return (
-
-			<GameBox>
-						
+			<GameBox>					
 				{
 					opponent === 'none' 
-
 					?
-
-					[   <HeroPortrait gamelocation="arena"/>,
-						<OpponentList handleClick={this.handleClick} list={opponentList}/> ]
-					:
-					
+					[   
+						<HeroPortrait gamelocation="arena"/>,
+						<OpponentList handleClick={this.handleClick} list={opponentList}/>
+					]
+					:					
 					[	<HeroBattleScreen />,
 						<div className="vertical-layout">
 							<Console logs={logs} />
 							<OpponentScreen opponent={opponent} />
-						</div> ]
+						</div> 
+					]
 				}
-
 			</GameBox>	
 		)
 	}
 }
  
 const mapStateToProps = (state) => ({
-
 	opponent: state.handleOpponent.opponent,
 	equipped: state.handleEquip.equipped,
 	logs: state.logMessage.logs
-
 })
 
 export default connect(mapStateToProps, {
