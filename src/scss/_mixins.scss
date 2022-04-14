@@ -1,0 +1,21 @@
+@mixin scrollbar {
+  // Values supported only in firefox for now, will take over when scrollbar pseudoelement is deprecated
+  scrollbar-width: thin;
+  scrollbar-color: #000 #fff;
+
+  // Scrollbar pseudolement styling has been deprecated. When it's not supported anymore,
+  // scrollbar-width and scrollbar-color from above will take over
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color:#fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #000;
+    border-radius: 20px;
+    border: 2px solid #fff;
+  }
+}

@@ -1,6 +1,9 @@
 /* importing variables */
 @import './scss/variables';
 
+/* importing variamixinsbles */
+@import './scss/mixins';
+
 /* importing page elements */
 
 @import './scss/main_container';
@@ -43,7 +46,9 @@ a {
 }
 
 .panel {
-	width: 190px;
+	@include scrollbar;
+
+  width: 190px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -178,7 +183,7 @@ a {
     font-size: $font-large;
     text-align: center;
   }
-  
+
   & > p {
     margin-bottom: 10px;
   }
